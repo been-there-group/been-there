@@ -7,6 +7,7 @@ const Home = () => {
 
     return(
         <div>
+            <div>Home</div>
             <Nav />
             <PopularDestinations />
             <ItineraryAd />
