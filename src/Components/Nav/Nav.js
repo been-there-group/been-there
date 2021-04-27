@@ -3,7 +3,10 @@ import React from 'react';
 const Nav = () => {
 
     return(
-        <div>Nav</div>
+        <div>
+            <div>logo</div>
+            <div>profile picture</div>
+        </div>
     )
 }
 export default Nav;
