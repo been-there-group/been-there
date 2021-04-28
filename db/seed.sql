@@ -15,6 +15,7 @@
 -- );
 
 -- CREATE TABLE ratings (
+-- rating_id SERIAL PRIMARY KEY,
 -- place_id TEXT NOT NULL,
 -- rating integer NOT NULL,
 -- user_id INTEGER references users(user_id)
