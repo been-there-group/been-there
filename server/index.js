@@ -4,7 +4,7 @@ const massive = require("massive");
 const express = require("express");
 const session = require("express-session");
 //require controllers
-
+const authCtrl = require('./controllers/auth');
 
 //middlware 
 const app = express();
@@ -24,6 +24,11 @@ app.use(session ({
 );
 
 //endpoints 
+
+//Auth Endpoints
+app.post('/api/register', authCtrl.register);
+app.post('/api/login', authCtrl.login);
+app.post('/api/logout', authCtrl.logout);
 
 
 //massive 
