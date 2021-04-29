@@ -7,8 +7,8 @@ const Home = () => {
 
     return(
         <div>
-            <div>Home</div>
             <Nav />
+            <div>Home</div>
             <PopularDestinations />
             <ItineraryAd />
         </div>

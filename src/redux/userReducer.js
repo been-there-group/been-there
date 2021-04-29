@@ -1,6 +1,7 @@
 const initialState = {
   username: '',
-  user_id: ''
+  user_id: '',
+  profile_pic: ''
 };
 
 const UPDATE_USER = 'UPDATE_USER';
@@ -27,7 +28,8 @@ export default function reducer(state= initialState, action) {
       return {
         ...state, 
         username: action.payload.username,
-        user_id: action.payload.user_id
+        user_id: action.payload.user_id,
+        profile_pic: action.payload.profile_pic
       };
     case USER_LOGOUT:
       return initialState;

@@ -56,12 +56,13 @@ module.exports = {
     };
     res.status(200).send(req.session.user);
   },
-  edit: (req, res) => {
-    const {user_id} = req.session;
+  edit: async (req, res) => {
+    const {user_id} = req.session.user;
     const {username, email, profile_pic} = req.body;
     const db = req.app.get('db');
+    
+    const results = await db.users.update_user_info([username, profile_pic, email, user_id])
 
-    db.users.update_user_info(username, profile_pic, email, user_id)
-      .then(results=> res.sendStatus(200));
+    return res.status(200).send(results)
   }
 }
