@@ -1,5 +1,8 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {updateUser, logout} from '../../redux/userReducer';
+import {useSelector } from "react-redux";
 import axios from 'axios';
 import './Nav.scss';
 
@@ -13,26 +16,29 @@ const Nav = (props) => {
     const [registerMenu, setRegisterMenu] = useState('registerClosed');
     const [menu, setMenu] = useState('closed');
 
-    const {user_id} = false;
+    const user = useSelector((state) => state.userReducer);
+    const {user_id} = user;
+
     function login(){
         axios.post('/api/login', {username, password})
-            .then(res => {
-                const {user_id, username} = res.data;
-                //Update redux
-                props.updateUser({username, user_id})
-                console.log(props)
-                setLoginMenu('loginClosed')
-            })
-            .catch(err => {
-                console.log(err)
-                setErrorMsg('Incorrect username or password!')
-            })
+        .then(res => {
+            const {user_id, username} = res.data;
+            //Update redux
+            console.log(props)
+            props.updateUser({username, user_id})
+            setLoginMenu('loginClosed')
+        })
+        .catch(err => {
+            console.log(err)
+            setErrorMsg('Incorrect username or password!')
+        })
     };
-        
+    
     function register(){
         const profilePic = `https://robohash.org/${username}.png`;
         axios.post('/api/register', {username, password, email, profilePic})
             .then(res => {
+                console.log('.then')
                 const {user_id} = res.data;
                 //Update redux
                 props.updateUser({username, user_id})
@@ -43,22 +49,24 @@ const Nav = (props) => {
                 setErrorMsg('username taken')
             })
     };
-
+    
     function logout(){
         axios.post('/api/logout')
-            .then(res => {
-                setUsername('');
-                setPassword('');
-                setErrorMsg('');
-                setEmail('');
-                //Update Redux
-                props.logout()
-                props.history.push('/');
-                handleClick();
-            })
+        .then(res => {
+            setUsername('');
+            setPassword('');
+            setErrorMsg('');
+            setEmail('');
+            //Update Redux
+            props.logout()
+            props.history.push('/');
+            handleClick();
+        })
     };
-
+    
     function handleClick(){
+        console.log(props);
+        // const {user_id} = false;
         setLoginMenu('loginClosed');
         setRegisterMenu('registerClosed');
         if(!user_id){
@@ -115,7 +123,7 @@ const Nav = (props) => {
                 {errorMsg && <h3>{errorMsg}<span onClick= {removeErrorMsg}>X</span></h3>}
                 <input placeholder='Username' onChange={e => setUsername(e.target.value)}/>
                 <input placeholder='Password' type='password' onChange={e => setPassword (e.target.value)}/>
-                <button onClick={login}>Login</button>
+                <button onClick={() => login()}>Login</button>
             </div>
 
             <div className={registerMenu === 'registerClosed' ? 'closed' : 'open'}>
@@ -128,11 +136,16 @@ const Nav = (props) => {
 
             <ul className={menu === 'closed' ? 'closed' : 'open'}>
                 <Link to={`/all-trips/${user_id}`} ><li>Your Trips</li></Link>
-                <Link><li>Account</li></Link> 
-                <Link><li>Bucket List</li></Link>
+                <Link to={`/bucketlist/${user_id}`}><li>Bucket List</li></Link>
+                <Link to={`/account/${user_id}`}><li>Your Account</li></Link> 
                 <li onClick={logout}>Logout</li>
             </ul>
         </div>
     )
 }
-export default Nav;
+const mapStateToProps = (reduxState) => {
+    return {
+      user: reduxState
+  }}
+  
+  export default withRouter(connect(mapStateToProps, {updateUser, logout})(Nav));

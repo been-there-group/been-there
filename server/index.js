@@ -7,11 +7,12 @@ const session = require("express-session");
 const authCtrl = require('./controllers/auth');
 const singleTripCtrl = require('./controllers/singleTripCtrl');
 const allTripsCtrl = require('./controllers/allTripsCtrl');
+const bucketCtrl = require('./controllers/bucketCtrl');
 
 //middlware 
 const app = express();
 
-const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env
+const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env;
 app.use(express.json());
 
 //session stuff 
@@ -25,12 +26,12 @@ app.use(session ({
 })
 );
 
-//endpoints 
 
 //Auth Endpoints
 app.post('/api/register', authCtrl.register);
 app.post('/api/login', authCtrl.login);
 app.post('/api/logout', authCtrl.logout);
+
 
 //All Trips (Itineraries) Endpoints
 app.get('/api/alltrips', allTripsCtrl.getItineraries);
@@ -43,6 +44,13 @@ app.get('/api/singletrip/:itineraryId', singleTripCtrl.getItineraryItems);
 app.post('/api/singletrip/:itineraryId', singleTripCtrl.addItineraryItem); 
 app.put('/api/singletrip/:itineraryItemId', singleTripCtrl.editItineraryItem);
 app.delete('/api/singletrip/:itineraryItemId', singleTripCtrl.deleteItineraryItem);
+
+//Bucket Endpoints 
+app.get('/api/bucketList/:id', bucketCtrl.getAllSaved); //looks at all the saved places by a certain user_id
+app.post('/api/save/:place', bucketCtrl.savePlace); //saves a place based on a place_id
+// app.put('/api/remove/:id', bucketCtrl.removeBucketItem) //removes a bucket item based on place id.. but maybe ALSO user_id?
+// app.delete('/api/bucketList/:id', bucketCtrl.deleteAll) //deletes all bucket items from a user based on user_id
+
 
 //massive 
 massive ({
