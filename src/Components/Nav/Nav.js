@@ -17,15 +17,15 @@ const Nav = (props) => {
     const [menu, setMenu] = useState('closed');
 
     const user = useSelector((state) => state.userReducer);
-    const {user_id} = user;
+    const {user_id, profile_pic} = user;
 
     function login(){
         axios.post('/api/login', {username, password})
         .then(res => {
-            const {user_id, username} = res.data;
+            const {user_id, username, profile_pic} = res.data;
             //Update redux
             console.log(props)
-            props.updateUser({username, user_id})
+            props.updateUser({username, user_id, profile_pic})
             setLoginMenu('loginClosed')
         })
         .catch(err => {
@@ -111,7 +111,7 @@ const Nav = (props) => {
         <div>
             <div>logo</div>
             <div className='profilePic'>
-                <img src={`https://robohash.org/${username}.png`} alt='profile pic' onClick={handleClick} />
+                <img src={profile_pic} alt='profile pic' onClick={handleClick} />
             </div>
 
             <ul className={authMenu === 'authClosed' ? 'closed' : 'open'}>
