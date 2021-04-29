@@ -5,8 +5,9 @@ const express = require("express");
 const session = require("express-session");
 //require controllers
 const authCtrl = require('./controllers/auth');
+const singleTripCtrl = require('./controllers/singleTripCtrl');
+const allTripsCtrl = require('./controllers/allTripsCtrl');
 const bucketCtrl = require('./controllers/bucketCtrl');
-
 
 //middlware 
 const app = express();
@@ -30,6 +31,19 @@ app.use(session ({
 app.post('/api/register', authCtrl.register);
 app.post('/api/login', authCtrl.login);
 app.post('/api/logout', authCtrl.logout);
+
+
+//All Trips (Itineraries) Endpoints
+app.get('/api/alltrips', allTripsCtrl.getItineraries);
+app.post('/api/alltrips', allTripsCtrl.addItinerary);
+app.put('/api/alltrips/:itineraryId', allTripsCtrl.editItinerary);
+app.delete('/api/alltrips/:itineraryId', allTripsCtrl.deleteItinerary);
+
+//Single Trip (Itinerary Items) Endpoints
+app.get('/api/singletrip/:itineraryId', singleTripCtrl.getItineraryItems); 
+app.post('/api/singletrip/:itineraryId', singleTripCtrl.addItineraryItem); 
+app.put('/api/singletrip/:itineraryItemId', singleTripCtrl.editItineraryItem);
+app.delete('/api/singletrip/:itineraryItemId', singleTripCtrl.deleteItineraryItem);
 
 //Bucket Endpoints 
 app.get('/api/bucketList/:id', bucketCtrl.getAllSaved); //looks at all the saved places by a certain user_id
