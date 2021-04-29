@@ -15,7 +15,7 @@ module.exports = {
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
     
-    const registerUser = await db.users.register_user({username, hash, email, profile_pic});
+    const registerUser = await db.users.register_user([username, hash, email, profile_pic]);
     
     const user = registerUser[0];
     
@@ -27,16 +27,17 @@ module.exports = {
     const {username, password} = req.body;
     const db = req.app.get('db');
     const searchUser = await db.users.get_user_by_username([username]);
+    console.log(searchUser);
     const user = searchUser[0];
 
     if(!user){
-      return res.status(409).send('username/password is incorrect')
+      return res.status(409).send('username is incorrect')
     };
 
-    const isAuthenticated= bcrypt.compareSync(password, user.hash);
+    const isAuthenticated= bcrypt.compareSync(password, user.password);
 
     if(!isAuthenticated){
-      return res.status(409).send('username/password is incorrect')
+      return res.status(409).send('password is incorrect')
     }
 
     delete user.hash;
