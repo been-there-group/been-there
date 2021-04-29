@@ -49,5 +49,19 @@ module.exports = {
   logout: async (req, res) => {
     req.session.destroy();
     return res.status(200).send('Logged Out');
+  },
+  getMe: (req, res) => {
+    if(!req.session.user){
+      return res.sendStatus(404);
+    };
+    res.status(200).send(req.session.user);
+  },
+  edit: (req, res) => {
+    const {user_id} = req.session;
+    const {username, email, profile_pic} = req.body;
+    const db = req.app.get('db');
+
+    db.users.update_user_info(username, profile_pic, email, user_id)
+      .then(results=> res.sendStatus(200));
   }
 }

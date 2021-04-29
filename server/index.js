@@ -29,6 +29,8 @@ app.use(session ({
 app.post('/api/register', authCtrl.register);
 app.post('/api/login', authCtrl.login);
 app.post('/api/logout', authCtrl.logout);
+app.get('/api/get-me', authCtrl.getMe);
+app.put('/api/edit', authCtrl.edit);
 
 
 //massive 
