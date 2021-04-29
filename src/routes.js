@@ -14,6 +14,6 @@ export default (
     <Route path="/bucketlist/:id" component={BucketList} />
     <Route path="/all-trips/:id" component={AllTrips} />
     <Route path="/search-page" component={SearchPage} />
-    <Route path="/single-trip/:user-id/:trip-id" component={SingleTrip} />
+    <Route path="/single-trip/:id" component={SingleTrip} />
   </Switch>
 )
