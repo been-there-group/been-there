@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Geocode from "react-geocode";
+import './SearchPage.scss'
 import { updateLocation } from "../../redux/mapReducer";
 import { useDispatch, useSelector } from "react-redux";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
@@ -22,6 +23,11 @@ const SearchPage = () => {
   Geocode.setLocationType("ROOFTOP");
 
   useEffect(() => {
+    console.log(value)
+  setAddress(value.label);
+}, [value]);
+
+  useEffect(() => {
     // setAddress(value.label)
     if (address !== "") {
       Geocode.fromAddress(`${address}`).then(
@@ -29,6 +35,7 @@ const SearchPage = () => {
           const { lat, lng } = response.results[0].geometry.location;
           setLat(lat);
           setLng(lng);
+          console.log(lat, lng)
           dispatch(updateLocation(lat, lng));
         },
         (error) => {
@@ -40,40 +47,43 @@ const SearchPage = () => {
 
   useEffect(() => {
     setLoaded(false);
-    setAddress(address);
-  }, [lat]);
+    // setAddress(address);
+}, [lat]);
 
-  useEffect(() => {
+useEffect(() => {
     setLoaded(true);
-  });
-  const renderMap = () => {
+}, [isLoaded]);
+const renderMap = () => {
     return (
-      <MapContainer
+        <MapContainer
         id="mapId"
         center={[latitude, longitude]}
         zoom={13}
         scrollWheelZoom={false}
-      >
+        >
+            {console.log(latitude, longitude)}
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+          />
         <Marker position={[latitude, longitude]}>
           <Popup>This is {address}</Popup>
         </Marker>
       </MapContainer>
     );
-  };
+};
 
-  return (
+return (
     <div>
       <div>
+          {console.log(value)}
+          {console.log(latitude)}
         <GooglePlacesAutocomplete
           apiKey="AIzaSyBHtVVgxj5knDU1FwfIrb0mDB44iBzcS0I"
           selectProps={{
-            value,
-            onChange: setValue,
-          }}
+              value,
+              onChange: setValue,
+            }}
         />
       </div>
       {isLoaded ? renderMap() : <div></div>}
