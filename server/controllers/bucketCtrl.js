@@ -10,25 +10,41 @@ module.exports = {
     },
 
     savePlace: async (req, res) => {
-        const { user_id } = req.session.user
+        const { user_id } = req.session.user 
         console.log(user_id)
-        const { place } = req.params
-        console.log(place)
+        const { place_id, place_name} = req.body
+        console.log(place_id, place_name)
         const db = await req.app.get('db')
 
         if(user_id) {
-            db.bucket.post_bucket_activity(place, user_id)
+            db.bucket.post_bucket_activity(place_id, place_name, user_id)
             .then(() => res.sendStatus(200))
         } else {
             return res.sendStatus(404)
         }
     },
 
-    // removeBucketItem: (req, res) => {
+    removeBucketItem: (req, res) => {
+        const { user_id } = req.session.user
+        const db = req.app.get('db')
+        if(user_id){
+            db.bucket.delete_bucket_activity(req.params.id)
+            .then(() => res.sendStatus(200))
+        } else {
+            return res.sendStatus(404)
+        }
 
-    // },
 
-    // deleteAll: (req, res) => {
+    },
 
-    // }
-}
+    deleteAll: (req, res) => {
+        const { user_id } = req.session.user
+        const db = req.app.get('db')
+        if(user_id){
+            db.bucket.delete_all_from_user(req.params.id)
+            .then(() => res.sendStatus(200))
+        } else {
+            return res.sendStatus(404)
+        }
+    }
+};

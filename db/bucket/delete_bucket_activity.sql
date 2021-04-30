@@ -1,3 +1,3 @@
 DELETE
-FROM bucket_activities
-WHERE place_id = $1 AND user_id = $2;
+FROM bucket_list
+WHERE bucket_id = $1;

@@ -1,5 +1,5 @@
 SELECT * 
-FROM bucket_activities
+FROM bucket_list
 WHERE user_id = $1;
 
 
