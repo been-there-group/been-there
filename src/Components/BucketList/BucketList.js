@@ -9,7 +9,7 @@ const BucketList = () => {
     const { saved } = useSelector((state) => state.bucketReducer);
     const user = useSelector((state) => state.userReducer);
     const dispatch = useDispatch();
-    // const apiKey = 'AIzaSyAvmPNj0VsuaM2G38qmjMDg7BkzbqebKJo';
+
     const { user_id } = user;
     console.log(user_id)
 
@@ -23,17 +23,14 @@ const BucketList = () => {
         }
     }, [dispatch, user_id])
 
-    useEffect(() => {
-        axios.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJIZ4tCFMJK4cRF10FJZ3pXCE&key=AIzaSyAvmPNj0VsuaM2G38qmjMDg7BkzbqebKJo`)
-        .then((res) => console.log(res.data))
-    })
+
 
     let mappedPlaces = saved.map((places) => {
         console.log(places)
         
         return (
             <div>
-                <p>{places.place_id}</p>
+                <p>{places.name}</p>
             
             </div>
         );
