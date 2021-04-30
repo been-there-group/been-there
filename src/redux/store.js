@@ -1,9 +1,11 @@
 import {createStore, combineReducers} from 'redux';
 import userReducer from './userReducer';
+import mapReducer from './mapReducer'
 
 
 let rootReducer = combineReducers({
-  userReducer
+  userReducer,
+  mapReducer
 });
 
 export default createStore(rootReducer);
