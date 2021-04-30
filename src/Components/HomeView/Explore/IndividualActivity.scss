@@ -1,0 +1,14 @@
+@media (min-width:100px){
+    .mapped-activity{
+        height: auto;
+        width: 150px;
+        // border: 1px solid red;
+    }
+    
+    .mapped-activity-image{
+        float: left;
+        height: 150px;
+        width: 150px;
+        object-fit: cover;
+    }
+}

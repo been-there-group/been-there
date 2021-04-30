@@ -5,7 +5,7 @@ const places = [
     {place: 'London', url: 'https://images.unsplash.com/photo-1505761671935-60b3a7427bad?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bG9uZG9ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60'},
     {place: 'Paris', url: 'https://images.unsplash.com/photo-1492136344046-866c85e0bf04?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fHBhcmlzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60'},
     {place: 'Hong Kong', url: 'https://images.unsplash.com/photo-1562492892-2dafbae857e5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzF8fGhvbmclMjBrb25nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60'},
-    // {place: 'Sydney', url: 'https://images.unsplash.com/photo-1506374322094-6021fc3926f1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8c3lkbmV5fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60'},
+    {place: 'Sydney', url: 'https://images.unsplash.com/photo-1506374322094-6021fc3926f1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8c3lkbmV5fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60'},
     {place: 'Barcelona', url: 'https://images.unsplash.com/photo-1511527661048-7fe73d85e9a4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmFyY2Vsb25hfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60'},
     {place: 'Berlin', url: 'https://images.unsplash.com/photo-1560969184-10fe8719e047?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmVybGlufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60'},
     {place: 'Rio', url: 'https://images.unsplash.com/photo-1548533701-a1e8bd19f9ce?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=645&q=80'},
