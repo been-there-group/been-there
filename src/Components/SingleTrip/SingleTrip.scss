@@ -1,11 +1,29 @@
-
-.home {
-    height: 500px;
-    width: 500px;
-    background-color: blue;
+@media (min-width: 100px){
+    .single-trip-container{
+        display: flex;
+        flex-direction: row;
+        // border: 1px solid green;
+        position: relative;
+        top: 15vh;
+    }
+    .mapped-items{
+        // border: 1px solid red;
+        width: 80vw;
+        position: relative;
+        left: 10vw;
+        height: auto;
+        
+    }
+    .delete-item{
+        position: relative;
+        
+    }
 }
+
 
 .single-trip-body {
     position: relative;
+    width: 100vw;
+    height: auto;
     top: 10vh;
 }

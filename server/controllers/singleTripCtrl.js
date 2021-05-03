@@ -23,7 +23,8 @@ module.exports = {
     deleteItineraryItem: async (req, res) => {
         const db = await req.app.get('db');
         const {itineraryItemId} = req.params;
-        db.itinerary.delete_itinerary_item(itineraryItemId)
+        const {user_id} = req.session.user;
+        db.itinerary.delete_itinerary_item(itineraryItemId, user_id)
         .then(items => res.status(200).send(items))
     }
 }
