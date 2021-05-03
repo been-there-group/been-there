@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import axios from "axios";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import IndividualPlaces from "./IndividualPlaces";
+import IndividualPlaces from "./IndividualThings";
+import Nav from "../Nav/Nav"
 
 const SearchPage = () => {
   const state = useSelector((state) => state.mapReducer);
@@ -113,23 +114,26 @@ const renderMap = () => {
 
 console.log(results)
 return (
-    <div className='search-page'>
-      <div className='google-places-autocomplete'>
-          {/* {console.log(process.env.REACT_APP_GOOGLE_API)} */}
-          {console.log(latitude)}
-        <GooglePlacesAutocomplete
-          apiKey= {`${key}`}
-          selectProps={{
+  <div>
+      <Nav />
+          <div className='search-page'>
+        <div className='google-places-autocomplete'>
+            {/* {console.log(process.env.REACT_APP_GOOGLE_API)} */}
+            {console.log(latitude)}
+          <GooglePlacesAutocomplete
+            apiKey= {`${key}`}
+            selectProps={{
               value,
               onChange: setValue,
             }}
-        />
-      </div>
-      {isLoaded ? renderMap() : <div></div>}
-      <div>
-        
-        this is the results
-        {mappedThings}
+            />
+        </div>
+        {isLoaded ? renderMap() : <div></div>}
+        <div>
+          
+          this is the results
+          {mappedThings}
+        </div>
       </div>
     </div>
   );

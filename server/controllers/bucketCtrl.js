@@ -12,7 +12,7 @@ module.exports = {
     savePlace: async (req, res) => {
         const { user_id } = req.session.user 
         console.log(user_id)
-        const { place_id, place_name, bucket_list_image} = req.body
+        const {place_id, place_name, bucket_list_image} = req.body
         console.log(place_id, place_name)
         const db = await req.app.get('db')
 
