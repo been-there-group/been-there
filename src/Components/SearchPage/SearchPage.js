@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import axios from "axios";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import IndividualPlaces from "./IndividualPlaces";
 
 const SearchPage = () => {
   const state = useSelector((state) => state.mapReducer);
@@ -73,7 +74,11 @@ useEffect(() => {
 }, [isLoaded]);
 
 
-
+let mappedThings = results.map((places, index) => {
+  return(
+    <IndividualPlaces key={index} places={places} />
+  )
+})
 
 const renderMap = () => {
     return (
@@ -106,9 +111,10 @@ const renderMap = () => {
     );
 };
 
+console.log(results)
 return (
-    <div>
-      <div>
+    <div className='search-page'>
+      <div className='google-places-autocomplete'>
           {/* {console.log(process.env.REACT_APP_GOOGLE_API)} */}
           {console.log(latitude)}
         <GooglePlacesAutocomplete
@@ -120,6 +126,11 @@ return (
         />
       </div>
       {isLoaded ? renderMap() : <div></div>}
+      <div>
+        
+        this is the results
+        {mappedThings}
+      </div>
     </div>
   );
 };

@@ -1,3 +1,16 @@
+.search-page{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+
 #mapId {
-    height: 200px
+    height: 200px;
+    position: relative;
+}
+
+.google-places-autocomplete{
+    width: 100vw;
+    position: relative;
+    z-index: 2;
 }
