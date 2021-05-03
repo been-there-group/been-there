@@ -33,7 +33,7 @@ const BucketList = () => {
     const mappedPlaces = saved.map((places) => {
         console.log(places)
         return (
-            <div>
+            <div key={places.place_id}>
                 <img className="bucket-list-images" alt="" src={places.bucket_list_image}/>
                 <p>{places.place_name}</p>
             </div>
