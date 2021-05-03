@@ -49,7 +49,7 @@ app.delete('/api/singletrip/:itineraryItemId', singleTripCtrl.deleteItineraryIte
 
 //Bucket Endpoints 
 app.get('/api/bucketList/:id', bucketCtrl.getAllSaved); //looks at all the saved places by a certain user_id
-app.post('/api/save/:id', bucketCtrl.savePlace); //saves a place based on a place_id - but uses a request body.
+app.post('/api/save', bucketCtrl.savePlace); //saves a place based on a place_id - but uses a request body.
 app.put('/api/remove/:id', bucketCtrl.removeBucketItem) //removes a bucket item based on place id.. but maybe ALSO user_id?
 app.delete('/api/delete/:id', bucketCtrl.deleteAll) //deletes all bucket items from a user based on user_id
 
