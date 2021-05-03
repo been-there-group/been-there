@@ -49,7 +49,9 @@ const AllTrips = () => {
     return(
         <div>
             <Nav />
+            <div className='all-trips-body'>
             <h1>My Trips</h1>
+            </div>
 
             <section>
                 {user_id ?

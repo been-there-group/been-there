@@ -13,12 +13,14 @@ const SearchPage = () => {
   const [address, setAddress] = useState("");
   const [value, setValue] = useState("");
   const [latitude, setLat] = useState(33.49108030585244);
+  const [results, setResults] = useState([])
   const [longitude, setLng] = useState(-111.92781239256058);
   const [isLoaded, setLoaded] = useState(false);
   const dispatch = useDispatch()
+  const key = process.env.REACT_APP_GOOGLE_API
 
 
-  Geocode.setApiKey("AIzaSyBHtVVgxj5knDU1FwfIrb0mDB44iBzcS0I");
+  Geocode.setApiKey(key);
   Geocode.setLanguage("en");
   Geocode.setLocationType("ROOFTOP");
 
@@ -48,11 +50,31 @@ const SearchPage = () => {
   useEffect(() => {
     setLoaded(false);
     // setAddress(address);
-}, [lat]);
+    axios
+    .get(
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=restaurant&key=${key}`
+        )
+        .then((res) => {
+            // console.log(res.data.results[5].name);
+            console.log(res.data.next_page_token)
+            let first = res.data.results
+            setTimeout(() => {
+                axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`)
+                .then(res => {
+                    console.log(first, res.data.results)
+                    setResults([...first, ...res.data.results])
+                })
+            }, 1000)
+        });
+  }, [lat]);
 
 useEffect(() => {
     setLoaded(true);
 }, [isLoaded]);
+
+
+
+
 const renderMap = () => {
     return (
         <MapContainer
@@ -69,6 +91,17 @@ const renderMap = () => {
         <Marker position={[latitude, longitude]}>
           <Popup>This is {address}</Popup>
         </Marker>
+        {results.map((e, i) => {
+          return (
+            <Marker
+              position={[e.geometry.location.lat, e.geometry.location.lng]}
+              key={i}
+            >
+              {/* {console.log(e)} */}
+              <Popup>{e.name}</Popup>
+            </Marker>
+          );
+        })}
       </MapContainer>
     );
 };
@@ -76,10 +109,10 @@ const renderMap = () => {
 return (
     <div>
       <div>
-          {console.log(value)}
+          {/* {console.log(process.env.REACT_APP_GOOGLE_API)} */}
           {console.log(latitude)}
         <GooglePlacesAutocomplete
-          apiKey="AIzaSyBHtVVgxj5knDU1FwfIrb0mDB44iBzcS0I"
+          apiKey= {`${key}`}
           selectProps={{
               value,
               onChange: setValue,
