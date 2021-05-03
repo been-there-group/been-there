@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {updateUser, logout} from '../../redux/userReducer';
 import {useSelector } from "react-redux";
 import axios from 'axios';
+import logo from '../../assets/logo.png'
 import './Nav.scss';
 
 const Nav = (props) => {
@@ -108,8 +109,12 @@ const Nav = (props) => {
       };
 
     return(
-        <div>
-            <div>logo</div>
+        <div className="nav-body">
+            <div>
+                <Link to={"/"}>
+                <img className="logo" alt="" src={logo}/>
+                </Link>
+            </div>
             <div className='profilePic'>
                 <img src={profile_pic} alt='profile pic' onClick={handleClick} />
             </div>

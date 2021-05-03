@@ -25,7 +25,9 @@ const SingleTrip = (props) => {
     return(
         <div className='home'>
             <Nav />
+            <div className="single-trip-body">
             <h1>Single Trip</h1>
+            </div>
             <section>
                 {user_id ?
                     items.map((item, index) => {

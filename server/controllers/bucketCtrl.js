@@ -12,12 +12,12 @@ module.exports = {
     savePlace: async (req, res) => {
         const { user_id } = req.session.user 
         console.log(user_id)
-        const { place_id, place_name} = req.body
+        const { place_id, place_name, bucket_list_image} = req.body
         console.log(place_id, place_name)
         const db = await req.app.get('db')
 
         if(user_id) {
-            db.bucket.post_bucket_activity(place_id, place_name, user_id)
+            db.bucket.post_bucket_activity(place_id, place_name, user_id, bucket_list_image)
             .then(() => res.sendStatus(200))
         } else {
             return res.sendStatus(404)
