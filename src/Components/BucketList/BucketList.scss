@@ -1,0 +1,30 @@
+@use "../../sass";
+
+.bucket-list-container {
+    border: 1px solid lightskyblue;
+    @include sass.flexCenterRelative(row);
+    justify-content: space-around;
+    flex-wrap: wrap;
+    top: 10vh;
+    // float: left;
+    // object-fit: cover;
+}
+
+.bucket-list-images {
+    // @include sass.flexCenterRelative(row);
+    // justify-content: space-around;
+    // flex-wrap: wrap;
+    // float: left;
+    @include sass.flexCenterRelative(row);
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 150px;
+    width: 150px;
+}
+
+.mapped-container {
+    position: relative;
+    top: 10vh;
+    z-index: -1;
+
+}

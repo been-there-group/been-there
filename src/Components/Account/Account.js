@@ -51,6 +51,7 @@ const Account = (props) => {
     return(
         <div>
             <Nav />
+            <div className="account-body">
             <body>
                 <header>Your Account</header>
                 <section className={edit === "noEdit" ? "noEdit" : "edit"}>
@@ -66,6 +67,7 @@ const Account = (props) => {
                     <button onClick={editUser}>Save Changes</button>
                 </section>
             </body>
+            </div>
         </div>
     )
 }
