@@ -17,6 +17,7 @@ module.exports = {
         const {user_id} = req.session.user;
         const {itineraryId} = req.params;
         const {itinerary_name} = req.body;
+        console.log("user_id", user_id)
         console.log("id=", itineraryId)
         console.log("name=", itinerary_name)
         db.itinerary.update_itinerary(itinerary_name, itineraryId, user_id)
