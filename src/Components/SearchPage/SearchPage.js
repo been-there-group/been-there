@@ -52,7 +52,7 @@ const SearchPage = () => {
     // setAddress(address);
     axios
     .get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=restaurants&key=${key}`
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=restaurant&key=${key}`
         )
         .then((res) => {
             // console.log(res.data.results[5].name);
