@@ -1,10 +1,25 @@
 @use '../../../sass';
 
+.exploreHeader{
+    height: 10vh;
+    font-size: 50px;
+    @include sass.flexCenterRelative(column);
+    border: solid black;
+}
+
 .mapped-activities-container{
-    // border: 2px solid green;
+    border: 2px solid green;
     height: auto;
     width: 100vw;
     @include sass.flexCenterRelative(row);
     justify-content: space-around;
     flex-wrap: wrap;
+    position: relative;
+}
+
+@media(min-width: 1200px){
+    .mapped-activities-container{
+        // height: 45vh;
+        border: 2px solid green;
+    }
 }

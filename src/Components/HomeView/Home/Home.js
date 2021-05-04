@@ -18,14 +18,16 @@ const Home = (props) => {
 
     return(
         <div>
-            <Nav />
+            <div className="homeNav">
+                <Nav />
+            </div>
             <div className="home-body">
-                <div>Home</div>
+                {/* <div>Home</div> */}
                 <div className='homeSearch'>
-                    <div className='google-places-autocomplete'>
+                    <div className='google-places-autocomplete-home'>
                         {/* {console.log(process.env.REACT_APP_GOOGLE_API)} */}
                         {/* {console.log(latitude)} */}
-                        <GooglePlacesAutocomplete apiKey= {`${key}`} selectProps={{value, onChange: setValue,}} />
+                        <GooglePlacesAutocomplete className="GooglePlacesAutocomplete" apiKey= {`${key}`} selectProps={{value, onChange: setValue,}} />
                         <button onClick={() => handleClick()}>Search</button>
                     </div>
                 </div>

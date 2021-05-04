@@ -1,14 +1,44 @@
-@media (min-width:100px){
-    .mapped-activity{
-        height: auto;
-        width: 150px;
-        // border: 1px solid red;
-    }
+@use '../../../sass';
+
+.mapped-activity{
+    height: auto;
+    width: 150px;
+    // border: 1px solid red;
+}
+
+.mapped-activity-image{
+    float: left;
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+}
+
+
+.activity-name-container{
+    // position: absolute;
+    // background-color: white;
+    // opacity: (.6);
+    // height: 30px;
+    // width: 150px;
     
+}
+
+.activity-name{
+    position: absolute;
+    color: black;
+    font-size: 30px; 
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    padding: 1%;
+    // opacity: (1); 
+}
+
+@media(min-width: 1200px){
+    .mapped-activity{
+        width: 33.3vw;
+    }
     .mapped-activity-image{
-        float: left;
-        height: 150px;
-        width: 150px;
-        object-fit: cover;
+        width: 33.3vw;
+        height: 33.3vw;
     }
 }
