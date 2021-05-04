@@ -1,4 +1,10 @@
+@use '../../../sass';
 .home-body {
     position: relative;
     top: 10vh;
+}
+.homeSearch{
+    @include sass.backgroundImage('https://miro.medium.com/max/3200/1*JfM2ePprvMkJtqNcxsCn9Q.jpeg', 200vw auto);
+    height: 450px;
+    object-fit: cover;
 }

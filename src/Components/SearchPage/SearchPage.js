@@ -9,10 +9,10 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import IndividualPlaces from "./IndividualThings";
 import Nav from "../Nav/Nav"
 
-const SearchPage = () => {
+const SearchPage = (props) => {
   const state = useSelector((state) => state.mapReducer);
   const { lat, lng} = state;
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState('');
   const [value, setValue] = useState("");
   const [latitude, setLat] = useState(33.49108030585244);
   const [results, setResults] = useState([])
@@ -20,7 +20,7 @@ const SearchPage = () => {
   const [isLoaded, setLoaded] = useState(false);
   const dispatch = useDispatch()
   const key = process.env.REACT_APP_GOOGLE_API
-
+  console.log(props)
 
   Geocode.setApiKey(key);
   Geocode.setLanguage("en");
@@ -28,8 +28,14 @@ const SearchPage = () => {
 
   useEffect(() => {
     console.log(value)
-  setAddress(value.label);
-}, [value]);
+    if(props.location.state.address.label){
+      setAddress(props.location.state.address.label)
+    } else if(props.location.state.address) {
+      setAddress(props.location.state.address)
+    }else {
+      setAddress(value.label);
+    }
+  }, [value]);
 
   useEffect(() => {
     // setAddress(value.label)
