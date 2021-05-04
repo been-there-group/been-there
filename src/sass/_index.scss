@@ -5,3 +5,10 @@
   justify-content: center;
   flex-direction: $direction;
 }
+
+@mixin backgroundImage($url, $size) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: $size;
+  background-position: center;
+}
