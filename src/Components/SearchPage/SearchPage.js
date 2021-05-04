@@ -118,7 +118,7 @@ const renderMap = () => {
     );
 };
 
-console.log(results)
+console.log('results', results)
 return (
   <div>
       <Nav />

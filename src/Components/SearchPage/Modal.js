@@ -46,10 +46,10 @@ const Modal = (props) => {
   const saveToTrip = () =>{
     const day = 'not selected yet';
     const duration = 1;
-    axios.post(`/api/singletrip/${itineraryId}`, {day, place_id, itineraryId, duration})
-    .then(res => {
-      setTrips(res.data)
-    })
+    // axios.post(`/api/singletrip/${itineraryId}`, {day, place_id, itineraryId, duration})
+    // .then(res => {
+    //   setTrips(res.data)
+    // })
   }
 
   if(!props.show){
