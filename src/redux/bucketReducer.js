@@ -1,8 +1,9 @@
 const initialState = {
-    saved: []
+    saved: [],
 }
 
 const SAVED_PLACES = 'SAVED_PLACES'
+
 
 export function savedPlaces(payload){
     return {
