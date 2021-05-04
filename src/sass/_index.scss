@@ -12,3 +12,8 @@
   background-size: $size;
   background-position: center;
 }
+
+@mixin link {
+  text-decoration: none;
+  color: black;
+}

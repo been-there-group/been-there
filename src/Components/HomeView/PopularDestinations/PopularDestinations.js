@@ -11,7 +11,7 @@ const PopularDestinations = () => {
 
     return(
         <div>
-            <header>Popular Destinations</header>
+            <header className="destinationsHeader">Popular Destinations</header>
         <div className='mapped-places-container'>
             {mappedDestinations}
         </div>

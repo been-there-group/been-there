@@ -11,7 +11,7 @@ const Explore = () => {
 
     return(
         <div>
-            <header>Explore</header>
+            <header className='exploreHeader'>Explore</header>
         <div className='mapped-activities-container'>
             {mappedActivities}
         </div>

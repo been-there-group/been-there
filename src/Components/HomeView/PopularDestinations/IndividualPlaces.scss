@@ -1,14 +1,43 @@
-@media (min-width:100px){
-    .mapped-place{
+@use '../../../sass';
+
+.mapped-place{
+        @include sass.flexCenterRelative(column);
         height: auto;
         width: 150px;
         // border: 1px solid red;
     }
     
+.mapped-image{
+    float: left;
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+}
+.destinationNames{
+    @include sass.link();
+}
+.destinationLink{
+    @include sass.link();
+}
+
+
+@media (min-width: 700px){
+    .mapped-place{
+        width: 20vw;
+    }
     .mapped-image{
-        float: left;
-        height: 150px;
-        width: 150px;
-        object-fit: cover;
+        width: 19vw;
+        height: 19vw;
+    }
+}
+
+@media (min-width: 1200px){
+    .mapped-place{
+        width: 12vw;
+        height: 25vh;
+    }
+    .mapped-image{
+        width: 9vw;
+        height: 9vw;
     }
 }

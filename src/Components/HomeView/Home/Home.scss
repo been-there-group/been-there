@@ -8,3 +8,26 @@
     height: 450px;
     object-fit: cover;
 }
+.google-places-autocomplete-home{
+    position: relative;
+    // width: 400px;
+    height: 450px;
+    @include sass.flexCenterRelative(row);
+}
+// .GooglePlacesAutocomplete{
+//     width: 400px;
+// }
+.css-2b097c-container{
+    width: 280px;
+    // height: 100px;
+}
+
+@media (min-width: 700px){
+    .homeSearch{
+        height: 600px;
+    }
+    .google-places-autocomplete-home{
+
+        height: 600px;
+    }
+}
