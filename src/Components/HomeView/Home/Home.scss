@@ -4,27 +4,86 @@
     top: 10vh;
 }
 .homeSearch{
-    @include sass.backgroundImage('https://miro.medium.com/max/3200/1*JfM2ePprvMkJtqNcxsCn9Q.jpeg', 200vw auto);
+    @include sass.backgroundImage('https://miro.medium.com/max/3200/1*JfM2ePprvMkJtqNcxsCn9Q.jpeg', 205vw auto);
     height: 450px;
     object-fit: cover;
 }
 .google-places-autocomplete-home{
     position: relative;
     // width: 400px;
-    height: 450px;
+    height: 100px;
     @include sass.flexCenterRelative(row);
 }
 // .GooglePlacesAutocomplete{
 //     width: 400px;
 // }
 .css-2b097c-container{
+    position: relative;
+    // bottom: 50px;
     width: 280px;
     // height: 100px;
+}
+.css-1wa3eu0-placeholder{
+    // display: none;
+    visibility: hidden;
+}
+.css-1wa3eu0-placeholder::before{
+    visibility:  visible;
+    content: 'Where are you going?'
+}
+.css-tlfecz-indicatorContainer{
+    display: none;
+}
+.css-1okebmr-indicatorSeparator{
+    display: none;
+}
+.css-tj5bde-Svg{
+    display: none;
+}
+.css-yk16xz-control{
+    display: none;
+    // border-color: white;
+}
+path{
+    display: none;
+}
+.searchBarHome{
+    @include sass.flexCenterRelative(column);
+    height: auto;
+    // padding: 5px;
+    // background: rgba(255, 255, 255, 1);
+    // border: green solid 1px;
+}
+.search-bar-home{
+    @include sass.flexCenterRelative(row);
+
+}
+.searchButton{
+    position: relative;
+    right: 59px;
+    box-shadow: none;
+    border: none;
+    height: 33px;
+    border-radius: 50%;
+    // background: lightskyblue;
+    background: rgb(230, 102, 87);
+    color: white;
 }
 
 @media (min-width: 700px){
     .homeSearch{
         height: 600px;
+        background-size: 145vw auto;
+    }
+    .google-places-autocomplete-home{
+
+        height: 200px;
+    }
+}
+@media (min-width: 1200px){
+    .homeSearch{
+        height: 700px;
+        background-size: 100vw auto;
     }
     .google-places-autocomplete-home{
 

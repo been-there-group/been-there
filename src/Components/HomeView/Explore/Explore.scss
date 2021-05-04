@@ -4,11 +4,11 @@
     height: 10vh;
     font-size: 50px;
     @include sass.flexCenterRelative(column);
-    border: solid black;
+    // border: solid black;
 }
 
 .mapped-activities-container{
-    border: 2px solid green;
+    // border: 2px solid green;
     height: auto;
     width: 100vw;
     @include sass.flexCenterRelative(row);
@@ -20,6 +20,6 @@
 @media(min-width: 1200px){
     .mapped-activities-container{
         // height: 45vh;
-        border: 2px solid green;
+        // border: 2px solid green;
     }
 }
