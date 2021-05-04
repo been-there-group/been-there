@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { savedPlaces } from '../../redux/bucketReducer';
 import Nav from '../Nav/Nav';
+import RealBackground from "../../assets/RealBackground.png"
 import './BucketList.scss';
 
 const BucketList = () => {
@@ -23,6 +24,7 @@ const BucketList = () => {
             })
             .catch((err) => console.log(err));
         }
+
     }, [dispatch, user_id])
 
 
@@ -34,8 +36,9 @@ const BucketList = () => {
         return (
             <div className="place-container" key={places.place_id}>
                 <img className="bucket-list-images" alt="" src={places.bucket_list_image}/>
-                <p>{places.place_name}</p>
-
+                <div id="place-name">
+                    <p>{places.place_name}</p>
+                </div>
             </div>
         );
     });
@@ -45,7 +48,8 @@ const BucketList = () => {
         <div className="bucket-body">
             <Nav/>
             <div className="mapped-container">
-                <h1>Bucket List</h1>
+                <h1>Your Bucket List</h1>
+                <img className="header-image" alt="" src={RealBackground} />
                 <div className="bucket-list-container">
                 {mappedPlaces}
                 </div>

@@ -1,22 +1,29 @@
 @use "../../sass";
 
 
-// .bucket-body {
-//     display: flex;
-//     justify-content: center;
 
-// }
+.bucket-body {
+    display: flex;
+    justify-content: center;
+}
+
+.header-image {
+width: 100vw;
+height: 110vh;
+object-fit: cover;
+}
 
 .bucket-list-container {
-    border: 1px solid lightskyblue;
-    @include sass.flexCenterRelative(row-reverse);
+    // border: 1px solid lightskyblue;
+    @include sass.flexCenterRelative(row);
+    position: absolute;
     justify-content: space-around;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     top: 10vh;
-    width: 45vw;
+    height: auto;
+    width: 75vw;
     padding: 10px;
-    // float: left;
-    // object-fit: cover;
+    
 }
 
 .bucket-list-images {
@@ -32,13 +39,36 @@
 }
 
 .place-container {
+    // border: 1px solid black;
+    box-shadow: 7px 8px 4px -2px rgba(0,0,0,0.36);
+    background-color: white;
+    height: 200px;
+    margin-bottom: 10px;
+    padding: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
     top: 5px;
-    left: 5px;
+    left: 5px;   
+}
+
+#place-name {
+    // border: 5px solid red;
+    height: 45px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .mapped-container {
+    
     position: relative;
     top: 10vh;
-    // z-index: -1;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
