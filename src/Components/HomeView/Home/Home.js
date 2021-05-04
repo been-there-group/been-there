@@ -27,8 +27,13 @@ const Home = (props) => {
                     <div className='google-places-autocomplete-home'>
                         {/* {console.log(process.env.REACT_APP_GOOGLE_API)} */}
                         {/* {console.log(latitude)} */}
-                        <GooglePlacesAutocomplete className="GooglePlacesAutocomplete" apiKey= {`${key}`} selectProps={{value, onChange: setValue,}} />
-                        <button onClick={() => handleClick()}>Search</button>
+                        <div className='searchBarHome'>
+                            
+                            <div className="search-bar-home">
+                                <GooglePlacesAutocomplete className="GooglePlacesAutocomplete" apiKey= {`${key}`} selectProps={{value, onChange: setValue,}} placeholder='Where are you going?'/>
+                                <button className='searchButton' onClick={() => handleClick()}>Search</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <PopularDestinations />
