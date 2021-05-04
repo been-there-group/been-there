@@ -1,4 +1,4 @@
-import { React, useEffect } from 'react';
+import { React, useEffect, useState, createRef} from 'react';
 import axios from 'axios';
 // import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,9 +12,7 @@ const BucketList = () => {
     const dispatch = useDispatch();
     const { user_id } = user;
     console.log(user_id)
-
-
-
+;
 
     //the object we get back from this axios call is the bucket_activities table, a user_id and a place_id, and place_name
     useEffect(() => {
@@ -29,19 +27,22 @@ const BucketList = () => {
 
 
 
-    
+
+
     const mappedPlaces = saved.map((places) => {
         console.log(places)
         return (
-            <div key={places.place_id}>
+            <div className="place-container" key={places.place_id}>
                 <img className="bucket-list-images" alt="" src={places.bucket_list_image}/>
                 <p>{places.place_name}</p>
+
             </div>
         );
     });
+
     
     return(
-        <div>
+        <div className="bucket-body">
             <Nav/>
             <div className="mapped-container">
                 <h1>Bucket List</h1>
@@ -54,31 +55,3 @@ const BucketList = () => {
     )
 }
 export default BucketList;
-
-
-
-
-
-
-
-
-
-//the object we get back from this axios call is a huge object with all kind of information
-//but... it's just not using this axios call at all
-// useEffect(() => {
-//     axios.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJIZ4tCFMJK4cRF10FJZ3pXCE&key=AIzaSyCA6Egp1CPDSAtuDEF1HxIxtvLNkaSfrqI`)
-//     .then((res) => {
-//         console.log(res.data)
-        
-//     })
-// })
-
-
-// const info = () =>{
-    //     for (let i = 0; i < saved.length; i++){
-        //         axios.get (`https://maps.googleapis.com/maps/api/place/details/json?place_id=${saved[i].place_id}&key=AIzaSyCA6Egp1CPDSAtuDEF1HxIxtvLNkaSfrqI`)
-        //         .then(res => {
-            //             dispatch(updateSaved(res.data.result.name))
-            //         })
-            //     }
-            // }

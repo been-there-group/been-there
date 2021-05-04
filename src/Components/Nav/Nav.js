@@ -1,13 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link, withRouter} from 'react-router-dom';
-import {connect} from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
 import {updateUser, logout} from '../../redux/userReducer';
-import {useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 import axios from 'axios';
 import logo from '../../assets/logo.png'
 import './Nav.scss';
 
 const Nav = (props) => {
+    console.log(props)
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
@@ -19,6 +20,15 @@ const Nav = (props) => {
 
     const user = useSelector((state) => state.userReducer);
     const {user_id, profile_pic} = user;
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        axios.get(`/api/get-me`)
+        .then((res) => {
+          dispatch(updateUser(res.data))
+          console.log(res.data)
+        })
+      }, [])
 
     function login(){
         axios.post('/api/login', {username, password})
