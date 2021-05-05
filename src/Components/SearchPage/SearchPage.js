@@ -20,6 +20,7 @@ const SearchPage = (props) => {
   const [isLoaded, setLoaded] = useState(false);
   const dispatch = useDispatch()
   const key = process.env.REACT_APP_GOOGLE_API
+  const[ list, setList] = useState([])
 
   // arrays of data from google places api call
   const [restaurants, setRestaurants] = useState([]);
@@ -167,6 +168,29 @@ useEffect(() => {
     setLoaded(true);
 }, [isLoaded]);
 
+useEffect(()=>{
+  mapList()
+}, [arts])
+
+
+
+const mapList = () => {
+let arr = []
+for(let i = 0; i < arts.length; i++){
+  if(arts[i].rating >= 4){
+    arr.push(arts[i])
+  }else if(arts[i].rating >= 3 && arts[i].rating < 4){
+    arr.push(arts[i])
+  }else if(arts[i].rating >= 2 && arts[i].rating < 3){
+    arr.push(arts[i])
+  }else if(arts[i].rating >= 1 && arts[i].rating < 2){
+  arr.push(arts[i])
+  }else{
+    arr.push(arts[i])
+  }
+}
+setList(arr);
+}
 
 let mappedThings = results.map((places, index) => {
   return(
@@ -276,9 +300,16 @@ return (
       </form>
         {isLoaded ? renderMap() : <div></div>}
         <div>
-
+{console.log(list)}
           this is the results
-          {mappedThings}
+          {list.map(e => {
+            return (
+            <div>
+              <p>{e.name}</p>
+              <p>{e.rating}</p>
+              </div>
+              )
+          })}
         </div>
       </div>
     </div>
