@@ -1,7 +1,6 @@
 @use "../../sass";
 
 
-
 .bucket-body {
     display: flex;
     justify-content: center;
@@ -9,7 +8,7 @@
 
 .header-image {
 width: 100vw;
-height: 110vh;
+height: 115vh;
 object-fit: cover;
 }
 
@@ -19,7 +18,7 @@ object-fit: cover;
     position: absolute;
     justify-content: space-around;
     flex-wrap: wrap;
-    top: 10vh;
+    top: 15vh;
     height: auto;
     width: 75vw;
     padding: 10px;
@@ -36,6 +35,8 @@ object-fit: cover;
     flex-wrap: wrap;
     height: 150px;
     width: 150px;
+    position: relative;
+    bottom: 10px;
 }
 
 .place-container {
@@ -43,14 +44,21 @@ object-fit: cover;
     box-shadow: 7px 8px 4px -2px rgba(0,0,0,0.36);
     background-color: white;
     height: 200px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     padding: 1%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
     top: 5px;
-    left: 5px;   
+    left: 5px;
+}
+
+.pushpin {
+    position: relative;
+    bottom: 15px;
+    width: 20px;
+    height: 20px;
 }
 
 #place-name {
@@ -61,14 +69,22 @@ object-fit: cover;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: relative;
+    bottom: 10px;
 }
 
 .mapped-container {
     
     position: relative;
-    top: 10vh;
+    top: 6vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+ 
+.mapped-container > h1 {
+    font-size: 30px;
+    position: relative;
+    top: 50px;
 }
