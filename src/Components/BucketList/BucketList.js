@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { savedPlaces } from '../../redux/bucketReducer';
 import Nav from '../Nav/Nav';
 import RealBackground from "../../assets/RealBackground.png"
+import pushpin from "../../assets/pushpin.png"
 import './BucketList.scss';
 
 const BucketList = () => {
@@ -35,6 +36,7 @@ const BucketList = () => {
         console.log(places)
         return (
             <div className="place-container" key={places.place_id}>
+                <img className="pushpin" alt="" src={pushpin}/>
                 <img className="bucket-list-images" alt="" src={places.bucket_list_image}/>
                 <div id="place-name">
                     <p>{places.place_name}</p>
