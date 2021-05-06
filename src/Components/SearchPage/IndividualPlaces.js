@@ -12,7 +12,7 @@ const IndividualPlaces = (props) => {
   return(
     <div>
       <Modal show={show} showModal={showModal} places={props.places}/>
-      <button  onClick={e => {
+      <button className="mapped-things-button" onClick={e => {
         showModal();
       }}
       > {props.places.name} </button>
