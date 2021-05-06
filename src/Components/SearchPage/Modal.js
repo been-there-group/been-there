@@ -26,7 +26,7 @@ const Modal = (props) => {
     }
 }, [user_id])
 
-
+{console.log('props=', props)}
   const onClose = (e) => {
     props.showModal(e);
   }
