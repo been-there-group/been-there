@@ -61,9 +61,11 @@ const Modal = (props) => {
     const day = 'none';
     const duration = 1;
     const place_id = props.places.place_id;
-    axios.post(`/api/singletrip/${itineraryId}`, {day, place_id, itineraryId, duration})
+    const place_name = props.places.name;
+    axios.post(`/api/singletrip/${itineraryId}`, {day, place_id, place_name, itineraryId, duration})
     .then(res => {
       setTrips(res.data)
+      toggleDropdown()
     })
   }
 
@@ -71,6 +73,7 @@ const Modal = (props) => {
     axios.post('/api/alltrips', {itineraryName})
     .then(res => {
       setTrips(res.data)
+      toggleDropdown()
     })
   }
 
