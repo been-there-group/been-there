@@ -553,20 +553,17 @@ const SearchPage = (props) => {
         <div className="mapped-things-container">
           <p>Check Out These Places!</p>
 
+          {console.log(list)}
 
-{console.log(list)}
-          
           {list.map((places, index) => {
             return (
-            <div>
-              <IndividualPlaces key={index} places={places} />
-
+              <div>
+                <IndividualPlaces key={index} places={places} />
               </div>
             );
           })}
         </div>
       </div>
-    </div>
     </div>
   );
 };
