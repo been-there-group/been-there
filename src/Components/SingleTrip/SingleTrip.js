@@ -13,6 +13,7 @@ const SingleTrip = (props) => {
     const user = useSelector((state) => state.userReducer);
     const {user_id} = user;
     const {id} = props.match.params;
+    console.log(id)
 
     console.log(props)
     useEffect(() => {

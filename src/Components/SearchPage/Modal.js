@@ -58,7 +58,7 @@ const Modal = (props) => {
   {/* need to access the place_id */}
   {/* need to access the itineraryId */}
   const saveToTrip = (itineraryId) =>{
-    const day = 'not selected yet';
+    const day = 'none';
     const duration = 1;
     const place_id = props.places.place_id;
     axios.post(`/api/singletrip/${itineraryId}`, {day, place_id, itineraryId, duration})
@@ -88,21 +88,28 @@ const Modal = (props) => {
       {/* if we want to do this a different way, that's fine with me :) */}
       <button className="modal-button" onClick={() => saveToBucketList()}>Save To Bucket List</button>
       {dropdown === 'show' ?
-      trips.map((trip, index) => {
-        return(
+      <section>
+        <p onClick={() => toggleNewTrip()}>Create a New Trip +</p>
+        
+        {newTrip === 'show' ?
           <section>
-            <p onClick={() => toggleNewTrip()}>Create a New Trip +</p>
-            {newTrip === 'show' ?
-            <section>
-              <input placeholder='New Trip Name' onChange={e => setItineraryName(e.target.value)}/>
-              <button onClick={() => createNewTrip()}>Save</button>
-              <button onClick={() => toggleNewTrip()}>Cancel</button>
-            </section>
-            : null}
-            <p key={index} onClick={() => saveToTrip(trip.itinerary_id)}>{trip.itinerary_name}</p>
+            <input placeholder='New Trip Name' onChange={e => setItineraryName(e.target.value)}/>
+            <button onClick={() => createNewTrip()}>Save</button>
+            <button onClick={() => toggleNewTrip()}>Cancel</button>
           </section>
-        )
-      })
+        : null}
+        
+          {trips.map((trip, index) => {
+                  
+            return(
+              <section>
+                <p key={index} onClick={() => saveToTrip(trip.itinerary_id)}>{trip.itinerary_name}</p>
+              </section>
+            )
+          })}
+      </section>
+
+
       : null}
 
         {props.places.photos 
