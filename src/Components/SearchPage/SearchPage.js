@@ -7,9 +7,8 @@ import axios from "axios";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { ReactReduxContext } from "react-redux";
 import IndividualPlaces from "./IndividualPlaces";
-import Nav from "../Nav/Nav"
-import './SearchPage.scss'
-
+import Nav from "../Nav/Nav";
+import "./SearchPage.scss";
 
 const SearchPage = (props) => {
   const state = useSelector((state) => state.mapReducer);
@@ -188,68 +187,116 @@ const SearchPage = (props) => {
         }
       }
       for (let i = 0; i < 40; i++) {
-        if (museums[i] !== undefined && museums[i].rating >= 4 && museums[i].rating < 5) {
+        if (
+          museums[i] !== undefined &&
+          museums[i].rating >= 4 &&
+          museums[i].rating < 5
+        ) {
           arr.push(museums[i]);
         }
       }
       for (let i = 0; i < 40; i++) {
-        if (arts[i] !== undefined && arts[i].rating >= 4 && arts[i].rating < 5) {
+        if (
+          arts[i] !== undefined &&
+          arts[i].rating >= 4 &&
+          arts[i].rating < 5
+        ) {
           arr.push(arts[i]);
         }
       }
       for (let i = 0; i < 40; i++) {
-        if (museums[i] !== undefined && museums[i].rating >= 3 && museums[i].rating < 4) {
+        if (
+          museums[i] !== undefined &&
+          museums[i].rating >= 3 &&
+          museums[i].rating < 4
+        ) {
           arr.push(museums[i]);
         }
       }
       for (let i = 0; i < 40; i++) {
-        if (arts[i] !== undefined && arts[i].rating >= 3 && arts[i].rating < 4) {
+        if (
+          arts[i] !== undefined &&
+          arts[i].rating >= 3 &&
+          arts[i].rating < 4
+        ) {
           arr.push(arts[i]);
         }
       }
       for (let i = 0; i < 40; i++) {
-        if (museums[i] !== undefined && museums[i].rating >= 2 && museums[i].rating < 3) {
+        if (
+          museums[i] !== undefined &&
+          museums[i].rating >= 2 &&
+          museums[i].rating < 3
+        ) {
           arr.push(museums[i]);
         }
       }
       for (let i = 0; i < 40; i++) {
-        if (arts[i] !== undefined && arts[i].rating >= 2 && arts[i].rating < 3) {
+        if (
+          arts[i] !== undefined &&
+          arts[i].rating >= 2 &&
+          arts[i].rating < 3
+        ) {
           arr.push(arts[i]);
         }
       }
       for (let i = 0; i < 40; i++) {
-        if (museums[i] !== undefined && museums[i].rating >= 1 && museums[i].rating < 2) {
+        if (
+          museums[i] !== undefined &&
+          museums[i].rating >= 1 &&
+          museums[i].rating < 2
+        ) {
           arr.push(museums[i]);
         }
       }
       for (let i = 0; i < 40; i++) {
-        if (arts[i] !== undefined && arts[i].rating >= 1 && arts[i].rating < 2) {
+        if (
+          arts[i] !== undefined &&
+          arts[i].rating >= 1 &&
+          arts[i].rating < 2
+        ) {
           arr.push(arts[i]);
         }
       }
-    }else if (artBtn && !standard) {
+    } else if (artBtn && !standard) {
       for (let i = 0; i < 40; i++) {
         if (arts[i] !== undefined && arts[i].rating >= 5) {
           arr.push(arts[i]);
         }
       }
       for (let i = 0; i < 40; i++) {
-        if (arts[i] !== undefined && arts[i].rating >= 4 && arts[i].rating < 5) {
+        if (
+          arts[i] !== undefined &&
+          arts[i].rating >= 4 &&
+          arts[i].rating < 5
+        ) {
           arr.push(arts[i]);
         }
       }
       for (let i = 0; i < 40; i++) {
-        if (arts[i] !== undefined && arts[i].rating >= 3 && arts[i].rating < 4) {
+        if (
+          arts[i] !== undefined &&
+          arts[i].rating >= 3 &&
+          arts[i].rating < 4
+        ) {
           arr.push(arts[i]);
         }
       }
       for (let i = 0; i < 40; i++) {
-        if (arts[i] !== undefined && arts[i].rating >= 2 && arts[i].rating < 3) {
+        if (
+          arts[i] !== undefined &&
+          arts[i].rating >= 2 &&
+          arts[i].rating < 3
+        ) {
           arr.push(arts[i]);
         }
       }
       for (let i = 0; i < 40; i++) {
-        if (arts[i] !== undefined && arts[i].rating >= 1 && arts[i].rating < 2) {
+        if (
+          arts[i] !== undefined &&
+          arts[i].rating >= 1 &&
+          arts[i].rating < 2
+        ) {
           arr.push(arts[i]);
         }
       }
@@ -260,29 +307,44 @@ const SearchPage = (props) => {
         }
       }
       for (let i = 0; i < 40; i++) {
-        if (museums[i] !== undefined && museums[i].rating >= 4 && museums[i].rating < 5) {
+        if (
+          museums[i] !== undefined &&
+          museums[i].rating >= 4 &&
+          museums[i].rating < 5
+        ) {
           arr.push(museums[i]);
         }
       }
       for (let i = 0; i < 40; i++) {
-        if (museums[i] !== undefined && museums[i].rating >= 3 && museums[i].rating < 4) {
+        if (
+          museums[i] !== undefined &&
+          museums[i].rating >= 3 &&
+          museums[i].rating < 4
+        ) {
           arr.push(museums[i]);
         }
       }
       for (let i = 0; i < 40; i++) {
-        if (museums[i] !== undefined && museums[i].rating >= 2 && museums[i].rating < 3) {
+        if (
+          museums[i] !== undefined &&
+          museums[i].rating >= 2 &&
+          museums[i].rating < 3
+        ) {
           arr.push(museums[i]);
         }
       }
       for (let i = 0; i < 40; i++) {
-        if (museums[i] !== undefined && museums[i].rating >= 1 && museums[i].rating < 2) {
+        if (
+          museums[i] !== undefined &&
+          museums[i].rating >= 1 &&
+          museums[i].rating < 2
+        ) {
           arr.push(museums[i]);
         }
       }
     }
     setList(arr);
     console.log(arr);
-
   };
 
   // const mapList = () => {
@@ -490,9 +552,7 @@ const SearchPage = (props) => {
 
         <div className="mapped-things-container">
           <p>Check Out These Places!</p>
-
-{console.log(list)}
-
+          {console.log(list)}
           this is the results
           {list.map((e) => {
             return (
@@ -502,9 +562,9 @@ const SearchPage = (props) => {
               </div>
             );
           })}
+        </div>
       </div>
     </div>
-
   );
 };
 export default SearchPage;
