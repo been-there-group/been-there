@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux';
 import './SearchPage.scss'
 const key = process.env.REACT_APP_GOOGLE_API
 
+
 const Modal = (props) => {
 
   {/* kaya added this */}
@@ -103,8 +104,8 @@ const Modal = (props) => {
       })
       : null}
 
-      
-        <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${props.places.photos[0].photo_reference}&key=${key}`}  /> 
+     
+        <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${props.places.photos?.[0].photo_reference}&key=${key}`}  /> 
     </div>
   )
 }
