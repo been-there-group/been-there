@@ -60,10 +60,10 @@ module.exports = {
   },
   edit: async (req, res) => {
     const {user_id} = req.session.user;
-    const {username, email, profile_pic} = req.body;
+    const {username, email, profilePic} = req.body;
     const db = req.app.get('db');
     
-    const results = await db.users.update_user_info([username, profile_pic, email, user_id])
+    const results = await db.users.update_user_info([username, profilePic, email, user_id])
 
     return res.status(200).send(results)
   }

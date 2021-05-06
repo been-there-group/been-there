@@ -9,6 +9,9 @@ const Modal = (props) => {
   {/* kaya added this */}
   const [trips, setTrips] = useState([]);
   const [dropdown, setDropdown] = useState('hide');
+  const [newTrip, setNewTrip] = useState('hide');
+  const [itineraryName, setItineraryName] = useState('');
+
   const user = useSelector((state) => state.userReducer);
   const {user_id} = user;
 
@@ -41,16 +44,32 @@ const Modal = (props) => {
     }
   }
 
+  const toggleNewTrip = () => {
+    if(newTrip === 'hide'){
+      setNewTrip('show')
+    } else {
+      setNewTrip('hide')
+    }
+  }
+
   {/* kaya added this */}
   {/* need to access the place_id */}
   {/* need to access the itineraryId */}
-  const saveToTrip = () =>{
+  const saveToTrip = (itineraryId) =>{
     const day = 'not selected yet';
     const duration = 1;
-    // axios.post(`/api/singletrip/${itineraryId}`, {day, place_id, itineraryId, duration})
-    // .then(res => {
-    //   setTrips(res.data)
-    // })
+    const place_id = props.places.place_id;
+    axios.post(`/api/singletrip/${itineraryId}`, {day, place_id, itineraryId, duration})
+    .then(res => {
+      setTrips(res.data)
+    })
+  }
+
+  const createNewTrip = () => {
+    axios.post('/api/alltrips', {itineraryName})
+    .then(res => {
+      setTrips(res.data)
+    })
   }
 
   if(!props.show){
@@ -69,10 +88,21 @@ const Modal = (props) => {
       {dropdown === 'show' ?
       trips.map((trip, index) => {
         return(
-          <p key={index} onClick={() => saveToTrip()}>{trip.itinerary_name}</p>
-          )
-        })
-        : null}
+          <section>
+            <p onClick={() => toggleNewTrip()}>Create a New Trip +</p>
+            {newTrip === 'show' ?
+            <section>
+              <input placeholder='New Trip Name' onChange={e => setItineraryName(e.target.value)}/>
+              <button onClick={() => createNewTrip()}>Save</button>
+              <button onClick={() => toggleNewTrip()}>Cancel</button>
+            </section>
+            : null}
+            <p key={index} onClick={() => saveToTrip(trip.itinerary_id)}>{trip.itinerary_name}</p>
+          </section>
+        )
+      })
+      : null}
+
       
         <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${props.places.photos[0].photo_reference}&key=${key}`}  /> 
     </div>
