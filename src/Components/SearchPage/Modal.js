@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {useSelector} from 'react-redux';
 import './SearchPage.scss'
+import noImage from '../../assets/noImage.png'
 const key = process.env.REACT_APP_GOOGLE_API
 
 
@@ -104,10 +105,10 @@ const Modal = (props) => {
       })
       : null}
 
-     
-        <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${props.places.photos?.[0].photo_reference}&key=${key}`}  /> 
+        {props.places.photos 
+          ? <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${props.places.photos[0].photo_reference}&key=${key}`}/>
+          : <img className="no-image"src={noImage}/> }
     </div>
   )
 }
 export default Modal;
-
