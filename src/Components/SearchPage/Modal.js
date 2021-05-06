@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {useSelector} from 'react-redux';
+import './SearchPage.scss'
 const key = process.env.REACT_APP_GOOGLE_API
 
 const Modal = (props) => {
@@ -56,24 +57,24 @@ const Modal = (props) => {
     return null;
   }
   return(
-    <div>
-      <button onClick={e => {onClose(e)}}>Exit</button>
+    <div className="modal-body">
+      <button className="exit-button" onClick={e => {onClose(e)}}>X</button>
       <h1>{props.places.name}</h1>
-      <button className="save-to-trip" onClick={() => toggleDropdown()}>Save To A Trip</button> 
+      <h1>Rating: {props.places.rating}</h1>
+      <button className="modal-button" onClick={() => toggleDropdown()}>Save To A Trip</button> 
 
       {/* kaya added this */}
       {/* if we want to do this a different way, that's fine with me :) */}
-      <button className="save-to-bucket-list" onClick={() => saveToBucketList()}>Save To Bucket List</button>
+      <button className="modal-button" onClick={() => saveToBucketList()}>Save To Bucket List</button>
       {dropdown === 'show' ?
       trips.map((trip, index) => {
         return(
           <p key={index} onClick={() => saveToTrip()}>{trip.itinerary_name}</p>
-        )
-      })
-      : null}
+          )
+        })
+        : null}
       
-      <div>Rating: {props.places.rating}</div>
-      <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${props.places.photos[0].photo_reference}&key=${key}`}  /> 
+        <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${props.places.photos[0].photo_reference}&key=${key}`}  /> 
     </div>
   )
 }

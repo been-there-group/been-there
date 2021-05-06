@@ -1,3 +1,5 @@
+@use "../../sass";
+
 .search-page{
     display: flex;
     position: relative;
@@ -8,6 +10,7 @@
 #mapId {
     height: 200px;
     position: relative;
+
 }
 
 .google-places-autocomplete{
@@ -15,3 +18,48 @@
     position: relative;
     z-index: 2;
 }
+
+//containers
+.mapped-things-container {
+//     @include sass.flexCenterRelative(column);
+     p {
+        font-size: 40px;
+    }
+    h1 {
+        font-size: 20px;
+        // position: relative;
+        // right: 125px;
+        // top: 20px;
+    }
+}
+
+.modal-body {
+    @include sass.flexCenterRelative(column);
+    border: 1px solid rgb(230, 101, 87);
+
+}
+
+// //various buttons
+.mapped-things-button {
+    position: relative;
+    margin-bottom: 10px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: white;
+    border: 1px solid grey;
+}
+
+.modal-button {
+    position: relative;
+    height: 35px;
+    border-radius: 50px;
+    background-color: white;
+    border: 1px solid grey;
+}
+ .exit-button {
+     @extend .modal-button;
+     bottom: 0px;
+     height: 20px;
+    //  right: 35vw;
+
+ }

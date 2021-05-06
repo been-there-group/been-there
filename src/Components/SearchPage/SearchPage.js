@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Geocode from "react-geocode";
-import './SearchPage.scss'
 import { updateLocation } from "../../redux/mapReducer";
 import { useDispatch, useSelector } from "react-redux";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import axios from "axios";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import IndividualPlaces from "./IndividualThings";
+import IndividualPlaces from "./IndividualPlaces";
 import Nav from "../Nav/Nav"
+import './SearchPage.scss'
 
 const SearchPage = (props) => {
   const state = useSelector((state) => state.mapReducer);
@@ -299,7 +299,9 @@ return (
         <label for="museumBtn">museumBtn</label>
       </form>
         {isLoaded ? renderMap() : <div></div>}
-        <div>
+        <div className="mapped-things-container">
+          <p>Check Out These Places!</p>
+
 {console.log(list)}
           this is the results
           {list.map(e => {
@@ -310,7 +312,6 @@ return (
               </div>
               )
           })}
-        </div>
       </div>
     </div>
   );
