@@ -14,17 +14,121 @@ const SearchPage = (props) => {
   const { lat, lng} = state;
   const [address, setAddress] = useState('');
   const [value, setValue] = useState("");
-  const [latitude, setLat] = useState(33.49108030585244);
+  const [latitude, setLat] = useState();
   const [results, setResults] = useState([])
-  const [longitude, setLng] = useState(-111.92781239256058);
+  const [longitude, setLng] = useState();
   const [isLoaded, setLoaded] = useState(false);
   const dispatch = useDispatch()
   const key = process.env.REACT_APP_GOOGLE_API
-  console.log(props)
+  const[ list, setList] = useState([])
+
+  // arrays of data from google places api call
+  const [restaurants, setRestaurants] = useState([]);
+  const [bars, setBars] = useState([]);
+  const [casinos, setCasinos] = useState([]);
+  const [amusementParks, setAmusementParks] = useState([]);
+  const [arts, setArts] = useState([]);
+  const [spas, setSpas] = useState([]);
+  const [aquariums, setAquariums] = useState([]);
+  const [zoos, setZoos] = useState([]);
+  const [museums, setMuseums] = useState([]);
+
+  // checkbox status for each choice
+  const [amusementBtn, setAmusementBtn] = useState(false);
+  const [artBtn, setArtBtn] = useState(false);
+  const [spaBtn, setSpaBtn] = useState(false);
+  const [aquariumsBtn, setAquariumsBtn] = useState(false);
+  const [zooBtn, setZooBtn] = useState(false);
+  const [museumBtn, setMuseumBtn] = useState(false);
+
 
   Geocode.setApiKey(key);
   Geocode.setLanguage("en");
   Geocode.setLocationType("ROOFTOP");
+
+  // google places api request
+  const getAmusementPark = () => {
+    axios
+      .get(
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=amusement_park&key=${key}`
+      )
+      .then((res) => {
+        console.log(res.data.results);
+        let first = [...res.data.results];
+        setAmusementParks(first);
+        if (res.data.next_page_token) {
+          setTimeout(() => {
+            axios
+              .get(
+                `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+              )
+              .then((res) => {
+                setAmusementParks([...first, ...res.data.results]);
+              });
+          }, 3000);
+        }
+      });
+  };
+  // google places api request
+  const getArtGallery = () => {
+    axios
+      .get(
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=art_gallery&key=${key}`
+      )
+      .then((res) => {
+        console.log(res.data);
+        let first = [...res.data.results];
+        setArts(first);
+        if (res.data.next_page_token) {
+          setTimeout(() => {
+            axios
+              .get(
+                `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+              )
+              .then((response) => {
+                console.log(arts);
+                setArts([...first, ...response.data.results]);
+                console.log(response.data);
+                console.log(arts);
+              });
+          }, 3000);
+        }
+      });
+  };
+  // google places api request
+  const getMuseum = () => {
+    axios
+      .get(
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=museum&key=${key}`
+      )
+      .then((res) => {
+        console.log(res.data.results);
+        let first = [...res.data.results];
+        setMuseums(first);
+        if (res.data.next_page_token) {
+          setTimeout(() => {
+            axios
+              .get(
+                `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+              )
+              .then((res) => {
+                setMuseums([...first, ...res.data.results]);
+              });
+          }, 3000);
+        }
+      });
+  };
+
+  useEffect(() => {
+    console.log("lat" + lat)
+    // console.log("latitude" + latitude )
+    getAmusementPark();
+    getArtGallery();
+    // getSpa();
+    // getAquarium();
+    // getZoo();
+    getMuseum();
+  }, [lat])
 
   useEffect(() => {
     console.log(value)
@@ -58,28 +162,35 @@ const SearchPage = (props) => {
   useEffect(() => {
     setLoaded(false);
     // setAddress(address);
-    axios
-    .get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=restaurant&key=${key}`
-        )
-        .then((res) => {
-            // console.log(res.data.results[5].name);
-            console.log(res.data.next_page_token)
-            let first = res.data.results
-            setTimeout(() => {
-                axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`)
-                .then(res => {
-                    console.log(first, res.data.results)
-                    setResults([...first, ...res.data.results])
-                })
-            }, 1000)
-        });
   }, [lat]);
 
 useEffect(() => {
     setLoaded(true);
 }, [isLoaded]);
 
+useEffect(()=>{
+  mapList()
+}, [arts])
+
+
+
+const mapList = () => {
+let arr = []
+for(let i = 0; i < arts.length; i++){
+  if(arts[i].rating >= 4){
+    arr.push(arts[i])
+  }else if(arts[i].rating >= 3 && arts[i].rating < 4){
+    arr.push(arts[i])
+  }else if(arts[i].rating >= 2 && arts[i].rating < 3){
+    arr.push(arts[i])
+  }else if(arts[i].rating >= 1 && arts[i].rating < 2){
+  arr.push(arts[i])
+  }else{
+    arr.push(arts[i])
+  }
+}
+setList(arr);
+}
 
 let mappedThings = results.map((places, index) => {
   return(
@@ -91,19 +202,30 @@ const renderMap = () => {
     return (
         <MapContainer
         id="mapId"
-        center={[latitude, longitude]}
+        center={[lat, lng]}
         zoom={13}
         scrollWheelZoom={false}
         >
-            {console.log(latitude, longitude)}
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-        <Marker position={[latitude, longitude]}>
+        <Marker position={[lat, lng]}>
           <Popup>This is {address}</Popup>
         </Marker>
-        {results.map((e, i) => {
+        {amusementBtn ? amusementParks.map((e, i) => {
+          return (
+            <Marker
+              position={[e.geometry.location.lat, e.geometry.location.lng]}
+              key={i}
+            >
+              {console.log("HIT")}
+              <Popup>{e.name}</Popup>
+            </Marker>
+          );
+        }) : null}
+
+{artBtn ? arts.map((e, i) => {
           return (
             <Marker
               position={[e.geometry.location.lat, e.geometry.location.lng]}
@@ -113,7 +235,19 @@ const renderMap = () => {
               <Popup>{e.name}</Popup>
             </Marker>
           );
-        })}
+        }) : null}
+
+{museumBtn ? museums.map((e, i) => {
+          return (
+            <Marker
+              position={[e.geometry.location.lat, e.geometry.location.lng]}
+              key={i}
+            >
+              {/* {console.log(e)} */}
+              <Popup>{e.name}</Popup>
+            </Marker>
+          );
+        }) : null}
       </MapContainer>
     );
 };
@@ -125,7 +259,9 @@ return (
           <div className='search-page'>
         <div className='google-places-autocomplete'>
             {/* {console.log(process.env.REACT_APP_GOOGLE_API)} */}
-            {console.log(latitude)}
+            {console.log("start")}
+            {/* {console.log(latitude)} */}
+            {console.log(lat)}
           <GooglePlacesAutocomplete
             apiKey= {`${key}`}
             selectProps={{
@@ -134,12 +270,48 @@ return (
             }}
             />
         </div>
+        <form className="checkboxes">
+        <input
+          type="checkbox"
+          value="amusementBtn"
+          id="amusementBtn"
+          onChange={() => setAmusementBtn(!amusementBtn)}
+          name="bike"
+        />
+        <label for="amusementBtn">amusementBtn</label>
+
+        <input
+          type="checkbox"
+          value="artBtn"
+          id="artBtn"
+          onChange={() => setArtBtn(!artBtn)}
+          name="bike"
+        />
+        <label for="artBtn">artBtn</label>
+
+        <input
+          type="checkbox"
+          value="museumBtn"
+          id="museumBtn"
+          onChange={() => setMuseumBtn(!museumBtn)}
+          name="bike"
+        />
+        <label for="museumBtn">museumBtn</label>
+      </form>
         {isLoaded ? renderMap() : <div></div>}
         <div className="mapped-things-container">
           <p>Check Out These Places!</p>
-          
-          {mappedThings}
-        </div>
+
+{console.log(list)}
+          this is the results
+          {list.map(e => {
+            return (
+            <div>
+              <p>{e.name}</p>
+              <p>{e.rating}</p>
+              </div>
+              )
+          })}
       </div>
     </div>
   );
