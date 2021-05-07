@@ -51,3 +51,10 @@
 .all-trips-body > header {
     font-size: 30px;
 }
+
+.all-trips-background {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}

@@ -3,6 +3,7 @@ import Nav from '../Nav/Nav';
 import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import allTripsBackground from '../../assets/allTripsBackground.png'
 import './AllTrips.scss';
 
 const AllTrips = () => {
@@ -64,6 +65,7 @@ const AllTrips = () => {
             <Nav />
             <div className='all-trips-body'>
             <header>My Trips</header>
+                <img className="all-trips-background" src={allTripsBackground} />
                
             </div>
 
@@ -76,7 +78,7 @@ const AllTrips = () => {
                             <div className='trips-container'>
                                 <Link to={`/single-trip/${trip.itinerary_id}`} key={index} className='link'>
                                     <div className='mapped-trips' >
-                                        
+                                    
                                         <h2>{trip.itinerary_name}</h2>
                                         
                                     </div>
