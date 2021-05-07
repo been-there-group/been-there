@@ -3,34 +3,175 @@
 .search-page{
     display: flex;
     position: relative;
-    flex-direction: column;
+    flex-direction: row;
     top: 10vh;
+    height: auto;
+    // border: 5px solid darkcyan;
+    overflow: hidden;
+    // filter: brightness(50%)
 }
 
 #mapId {
-    height: 200px;
-    position: relative;
+    width: 50vw;
+    height: 350px;
+    position: fixed;
+    top: 25vh;
+    // border: 3px solid orange;
+    z-index: 1;
+}
 
+.map-container{
+    // border: 3px solid mediumseagreen;
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    top: 3vh;
+    // filter: brightness(50%)
 }
 
 .google-places-autocomplete{
-    width: 100vw;
+    // width: 100vw;
+    position: fixed;
+    z-index: 1;
+    top: 13vh;
+}
+
+.checkboxes{
+    position: fixed;
+    top: 20vh;
+}
+
+//IndividualPlace.js
+.place-name{
+    font-size: 24px;
+}
+
+.rating{
+    font-size: 20px;
+}
+
+.name-and-rating{
+    // border: 1px solid fuchsia;
+}
+
+.place-image{
+    // border: 1px solid teal;
+    height: 200px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.divider{
+    width: 90%;
+    height: 1px;
+    background-color: rgb(187, 184, 184);
     position: relative;
+    left: 10%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+.single-result{
+    // border: 1px solid rgb(66, 63, 64);
+    // display: flex;
+    height: auto;
+    margin-top: 7%;
+    margin-bottom: 7%;
+}
+
+.single-result-bottom{
+    // border: 3px solid mediumseagreen;
+    display: flex;
+    // flex-direction: row;
+    justify-content: flex-end;
+    // align-items: flex-end;
+}
+
+.single-result-bottom-left{
+    // border: 2px solid chartreuse;
+    // height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.button-container{
+    // border: 2px solid orangered;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.dropdown{
+    // border: 1px solid salmon;
+    margin-top: 10%;
+    margin-right: 3%;
+    padding: 3%;
+}
+
+.user-trips{
+    // border: 1px solid salmon;
+}
+
+.itinerary-name:hover{
+    cursor: pointer;
+}
+
+.modal{
+    position: fixed;
+    // border: 5px solid hotpink;
+    background-color: white;
+    height: 600px;
+    width: 60vw;
+    left: 20vw;
+    z-index: 3;
+}
+
+.close-modal{
+    position: fixed;
+    z-index: 3;
+}
+
+.overlay{
+    position: fixed;
+    height: 500%;
+    width: 500%;
+    background-color: gray;
+    margin-left: -200%;
+    opacity: (60%);
     z-index: 2;
+    // border: 5px solid hotpink;
+
+}
+.overlay-2{
+    position: fixed;
+    height: 67.9%;
+    width: 500%;
+    background-color: gray;
+    margin-left: -200%;
+    opacity: (60%);
+    z-index: 2;
+    top: -50vh;
+    // border: 5px solid hotpink;
+
 }
 
 //containers
 .mapped-things-container {
 //     @include sass.flexCenterRelative(column);
-     p {
-        font-size: 40px;
-    }
-    h1 {
-        font-size: 20px;
-        // position: relative;
-        // right: 125px;
-        // top: 20px;
-    }
+    // p {
+    //     font-size: 40px;
+    // }
+    // h1 {
+    //     font-size: 20px;
+    // }
+    // border: 3px solid blueviolet;
+    height: auto;
+    width: 40vw;
+    padding-right: 3%;
 }
 
 .modal-body {
@@ -60,10 +201,24 @@
     background-color: white;
     border: 1px solid grey;
 }
+.modal-button-2 {
+    position: relative;
+    height: 25px;
+    border-radius: 50px;
+    background-color: white;
+    border: 1px solid grey;
+    cursor: pointer;
+}
  .exit-button {
      @extend .modal-button;
      bottom: 0px;
      height: 20px;
     //  right: 35vw;
 
+ }
+
+ .check-out-these-places{
+     font-size: 40px;
+     position: relative;
+     top: 2vh;
  }

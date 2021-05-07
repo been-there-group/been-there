@@ -7,6 +7,8 @@ import axios from 'axios';
 import logo from '../../assets/logo.png'
 import './Nav.scss';
 
+
+//add profile pic to redux state so that it will update automatically
 const Nav = (props) => {
     console.log(props)
     const [username, setUsername] = useState('');
@@ -126,7 +128,7 @@ const Nav = (props) => {
                 </Link>
             </div>
             <div className='profilePic'>
-                <img src={profile_pic} alt='profile pic' onClick={handleClick} />
+                <img src={profile_pic} className='profilePic' alt='profile pic' onClick={handleClick} />
             </div>
 
             <ul className={authMenu === 'authClosed' ? 'closed' : 'open'}>

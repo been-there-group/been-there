@@ -505,8 +505,11 @@ const SearchPage = (props) => {
   console.log("results", results);
   return (
     <div>
+      
       <Nav />
       <div className="search-page">
+        <section className='map-container'>
+
         <div className="google-places-autocomplete">
           {/* {console.log(process.env.REACT_APP_GOOGLE_API)} */}
           {console.log("start")}
@@ -549,16 +552,17 @@ const SearchPage = (props) => {
           <label for="museumBtn">museumBtn</label>
         </form>
         {isLoaded ? renderMap() : <div></div>}
+        </section>
 
         <div className="mapped-things-container">
-          <p>Check Out These Places!</p>
+          <p className='check-out-these-places'>Check Out These Places!</p>
 
           {console.log(list)}
 
           {list.map((places, index) => {
             return (
               <div>
-                <IndividualPlaces key={index} places={places} />
+                <IndividualPlaces key={index} places={places} list={list}/>
               </div>
             );
           })}
