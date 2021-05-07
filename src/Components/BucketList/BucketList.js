@@ -50,7 +50,7 @@ const BucketList = () => {
         <div className="bucket-body">
             <Nav/>
             <div className="mapped-container">
-                <h1>Your Bucket List</h1>
+                <header>Your Bucket List</header>
                 <img className="header-image" alt="" src={RealBackground} />
                 <div className="bucket-list-container">
                 {mappedPlaces}

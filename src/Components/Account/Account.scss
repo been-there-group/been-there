@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
 .account-body {
   position: relative;
   top: 10vh;
@@ -5,4 +9,8 @@
 
 .edit{
   display: none;
+}
+
+header {
+  font-family: 'Pacifico', cursive;
 }

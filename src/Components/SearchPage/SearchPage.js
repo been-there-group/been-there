@@ -555,7 +555,7 @@ const SearchPage = (props) => {
         </section>
 
         <div className="mapped-things-container">
-          <p className='check-out-these-places'>Check Out These Places!</p>
+          <header className='check-out-these-places'>Check Out These Places!</header>
 
           {console.log(list)}
 

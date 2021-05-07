@@ -9,8 +9,8 @@ module.exports = {
     addItineraryItem: async (req, res) => {
         const db = await req.app.get('db');
         const {itineraryId} = req.params;
-        const {day, place_id, duration} = req.body;
-        db.itinerary.post_itinerary_items(day, place_id, itineraryId, duration)
+        const {day, place_id, place_name, duration} = req.body;
+        db.itinerary.post_itinerary_items(day, place_id, place_name, itineraryId, duration)
         .then(items => res.status(200).send(items))
     },
     editItineraryItem: async (req, res) => {

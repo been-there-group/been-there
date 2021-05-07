@@ -17,3 +17,9 @@
   text-decoration: none;
   color: black;
 }
+
+$font: 'Open Sans', sans-serif;
+
+div {
+  font-family: $font;
+}
