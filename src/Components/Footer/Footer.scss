@@ -19,3 +19,19 @@
 .copyright{
   font-size: 14px;
 }
+
+@media (min-width: 700px){
+  .copyright{
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1175px){
+  .copyright{
+    font-size: 16.5px;
+  }
+  .footerDivider{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

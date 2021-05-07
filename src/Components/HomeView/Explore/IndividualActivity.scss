@@ -16,22 +16,27 @@
     height: 33.3vw;
 }
 
-
+.nameHome{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 33.3vw;
+    width: 33.3vw;
+}
 
 .activity-name{
-    position: absolute;
-    text-align: left;
+    position: relative;
     color: black;
     font-size: 18px; 
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 5px;
     padding: 1%;
 }
 
-// @media(min-width: 1200px){
-//     .mapped-activity{
-//     }
-//     .mapped-activity-image{
-        
-//     }
-// }
+@media(min-width: 1200px){
+    .activity-name{
+        font-size: 25px;
+    }
+}
