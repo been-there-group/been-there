@@ -16,7 +16,6 @@ const SearchPage = (props) => {
   const [address, setAddress] = useState("");
   const [value, setValue] = useState("");
   const [latitude, setLat] = useState();
-  const [results, setResults] = useState([]);
   const [longitude, setLng] = useState();
   const [isLoaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -33,19 +32,95 @@ const SearchPage = (props) => {
   const [aquariums, setAquariums] = useState([]);
   const [zoos, setZoos] = useState([]);
   const [museums, setMuseums] = useState([]);
+  const [results, setResults] = useState([]);
 
   // checkbox status for each choice
+  const [restaurantBtn, setRestaurantBtn] = useState(false);
+  const [barBtn, setBarBtn] = useState(false);
+  const [casinoBtn, setCasinoBtn] = useState(false)
   const [amusementBtn, setAmusementBtn] = useState(false);
   const [artBtn, setArtBtn] = useState(false);
   const [spaBtn, setSpaBtn] = useState(false);
-  const [aquariumsBtn, setAquariumsBtn] = useState(false);
+  const [aquariumBtn, setAquariumBtn] = useState(false);
   const [zooBtn, setZooBtn] = useState(false);
   const [museumBtn, setMuseumBtn] = useState(false);
-  const [standard, setStandard] = useState(false);
 
   Geocode.setApiKey(key);
   Geocode.setLanguage("en");
   Geocode.setLocationType("ROOFTOP");
+
+
+  // google places api request
+  const getRestaurants = () => {
+    axios
+      .get(
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=restaurants&key=AIzaSyA-1QMLloTqCeRaeN2S3zliV317TzCn634`
+      )
+      .then((res) => {
+        let first = [...res.data.results];
+        setRestaurants(first);
+        // setResults((prevResults) => [...prevResults, ...first]);
+        if (res.data.next_page_token) {
+          setTimeout(() => {
+            axios
+              .get(
+                `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+              )
+              .then((res) => {
+                setRestaurants([...first, ...res.data.results]);
+              });
+          }, 3000);
+        }
+      });
+  };
+
+  // google places api request
+  const getBars = () => {
+    axios
+      .get(
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=bar&key=AIzaSyA-1QMLloTqCeRaeN2S3zliV317TzCn634`
+      )
+      .then((res) => {
+        let first = [...res.data.results];
+        setBars(first);
+        // setResults((prevResults) => [...prevResults, ...first]);
+        if (res.data.next_page_token) {
+          setTimeout(() => {
+            axios
+              .get(
+                `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+              )
+              .then((res) => {
+                setBars([...first, ...res.data.results]);
+              });
+          }, 3000);
+        }
+      });
+  };
+
+  // google places api request
+  const getCasinos = () => {
+    axios
+      .get(
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=casino&key=AIzaSyA-1QMLloTqCeRaeN2S3zliV317TzCn634`
+      )
+      .then((res) => {
+        let first = [...res.data.results];
+        setCasinos(first);
+        // setResults((prevResults) => [...prevResults, ...first]);
+        if (res.data.next_page_token) {
+          setTimeout(() => {
+            axios
+              .get(
+                `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+              )
+              .then((res) => {
+                setCasinos([...first, ...res.data.results]);
+              });
+          }, 3000);
+        }
+      });
+  };
 
   // google places api request
   const getAmusementPark = () => {
@@ -54,9 +129,9 @@ const SearchPage = (props) => {
         `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=amusement_park&key=${key}`
       )
       .then((res) => {
-        console.log(res.data.results);
         let first = [...res.data.results];
         setAmusementParks(first);
+        // setResults((prevResults) => [...prevResults, ...first]);
         if (res.data.next_page_token) {
           setTimeout(() => {
             axios
@@ -77,9 +152,9 @@ const SearchPage = (props) => {
         `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=art_gallery&key=${key}`
       )
       .then((res) => {
-        console.log(res.data);
         let first = [...res.data.results];
         setArts(first);
+        // setResults((prevResults) => [...prevResults, ...first]);
         if (res.data.next_page_token) {
           setTimeout(() => {
             axios
@@ -87,10 +162,7 @@ const SearchPage = (props) => {
                 `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
               )
               .then((response) => {
-                console.log(arts);
                 setArts([...first, ...response.data.results]);
-                console.log(response.data);
-                console.log(arts);
               });
           }, 3000);
         }
@@ -103,9 +175,9 @@ const SearchPage = (props) => {
         `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=museum&key=${key}`
       )
       .then((res) => {
-        console.log(res.data.results);
         let first = [...res.data.results];
         setMuseums(first);
+        // setResults((prevResults) => [...prevResults, ...first]);
         if (res.data.next_page_token) {
           setTimeout(() => {
             axios
@@ -119,20 +191,90 @@ const SearchPage = (props) => {
         }
       });
   };
+  // google places api request
+  const getSpa = () => {
+    axios
+      .get(
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=spa&key=AIzaSyA-1QMLloTqCeRaeN2S3zliV317TzCn634`
+      )
+      .then((res) => {
+        let first = [...res.data.results];
+        setSpas(first);
+        // setResults((prevResults) => [...prevResults, ...first]);
+        if (res.data.next_page_token) {
+          setTimeout(() => {
+            axios
+              .get(
+                `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+              )
+              .then((res) => {
+                setSpas([...first, ...res.data.results]);
+              });
+          }, 3000);
+        }
+      });
+  };
+  // google places api request
+  const getAquarium = () => {
+    axios
+      .get(
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=aquarium&key=AIzaSyA-1QMLloTqCeRaeN2S3zliV317TzCn634`
+      )
+      .then((res) => {
+        let first = [...res.data.results];
+        setAquariums(first);
+        // setResults((prevResults) => [...prevResults, ...first]);
+        if (res.data.next_page_token) {
+          setTimeout(() => {
+            axios
+              .get(
+                `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+              )
+              .then((res) => {
+                setAquariums([...first, ...res.data.results]);
+              });
+          }, 3000);
+        }
+      });
+  };
+  // google places api request
+  const getZoo = () => {
+    axios
+      .get(
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=zoo&key=AIzaSyA-1QMLloTqCeRaeN2S3zliV317TzCn634`
+      )
+      .then((res) => {
+        let first = [...res.data.results];
+        setZoos(first);
+        // setResults((prevResults) => [...prevResults, ...first]);
+        if (res.data.next_page_token) {
+          setTimeout(() => {
+            axios
+              .get(
+                `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+              )
+              .then((res) => {
+                setZoos([...first, ...res.data.results]);
+              });
+          }, 3000);
+        }
+      });
+  };
+
 
   useEffect(() => {
-    console.log("lat" + lat);
-    // console.log("latitude" + latitude )
+    getRestaurants();
+    getBars();
+    getCasinos();
     getAmusementPark();
     getArtGallery();
-    // getSpa();
-    // getAquarium();
-    // getZoo();
+    getSpa();
+    getAquarium();
+    getZoo();
     getMuseum();
   }, [lat]);
 
   useEffect(() => {
-    console.log(value);
     if (props.location.state.address.label) {
       setAddress(props.location.state.address.label);
     } else if (props.location.state.address) {
@@ -150,7 +292,6 @@ const SearchPage = (props) => {
           const { lat, lng } = response.results[0].geometry.location;
           setLat(lat);
           setLng(lng);
-          console.log(lat, lng);
           dispatch(updateLocation(lat, lng));
         },
         (error) => {
@@ -170,273 +311,51 @@ const SearchPage = (props) => {
   }, [isLoaded]);
 
   useEffect(() => {
-    mapList();
-  }, [artBtn, museumBtn]);
-
-  const mapList = () => {
     let arr = [];
-    if (museumBtn && artBtn && !standard) {
-      for (let i = 0; i < 40; i++) {
-        if (museums[i] !== undefined && museums[i].rating >= 5) {
-          arr.push(museums[i]);
-        }
-      }
-      for (let i = 0; i < 40; i++) {
-        if (arts[i] !== undefined && arts[i].rating >= 5) {
-          arr.push(arts[i]);
-        }
-      }
-      for (let i = 0; i < 40; i++) {
-        if (
-          museums[i] !== undefined &&
-          museums[i].rating >= 4 &&
-          museums[i].rating < 5
-        ) {
-          arr.push(museums[i]);
-        }
-      }
-      for (let i = 0; i < 40; i++) {
-        if (
-          arts[i] !== undefined &&
-          arts[i].rating >= 4 &&
-          arts[i].rating < 5
-        ) {
-          arr.push(arts[i]);
-        }
-      }
-      for (let i = 0; i < 40; i++) {
-        if (
-          museums[i] !== undefined &&
-          museums[i].rating >= 3 &&
-          museums[i].rating < 4
-        ) {
-          arr.push(museums[i]);
-        }
-      }
-      for (let i = 0; i < 40; i++) {
-        if (
-          arts[i] !== undefined &&
-          arts[i].rating >= 3 &&
-          arts[i].rating < 4
-        ) {
-          arr.push(arts[i]);
-        }
-      }
-      for (let i = 0; i < 40; i++) {
-        if (
-          museums[i] !== undefined &&
-          museums[i].rating >= 2 &&
-          museums[i].rating < 3
-        ) {
-          arr.push(museums[i]);
-        }
-      }
-      for (let i = 0; i < 40; i++) {
-        if (
-          arts[i] !== undefined &&
-          arts[i].rating >= 2 &&
-          arts[i].rating < 3
-        ) {
-          arr.push(arts[i]);
-        }
-      }
-      for (let i = 0; i < 40; i++) {
-        if (
-          museums[i] !== undefined &&
-          museums[i].rating >= 1 &&
-          museums[i].rating < 2
-        ) {
-          arr.push(museums[i]);
-        }
-      }
-      for (let i = 0; i < 40; i++) {
-        if (
-          arts[i] !== undefined &&
-          arts[i].rating >= 1 &&
-          arts[i].rating < 2
-        ) {
-          arr.push(arts[i]);
-        }
-      }
-    } else if (artBtn && !standard) {
-      for (let i = 0; i < 40; i++) {
-        if (arts[i] !== undefined && arts[i].rating >= 5) {
-          arr.push(arts[i]);
-        }
-      }
-      for (let i = 0; i < 40; i++) {
-        if (
-          arts[i] !== undefined &&
-          arts[i].rating >= 4 &&
-          arts[i].rating < 5
-        ) {
-          arr.push(arts[i]);
-        }
-      }
-      for (let i = 0; i < 40; i++) {
-        if (
-          arts[i] !== undefined &&
-          arts[i].rating >= 3 &&
-          arts[i].rating < 4
-        ) {
-          arr.push(arts[i]);
-        }
-      }
-      for (let i = 0; i < 40; i++) {
-        if (
-          arts[i] !== undefined &&
-          arts[i].rating >= 2 &&
-          arts[i].rating < 3
-        ) {
-          arr.push(arts[i]);
-        }
-      }
-      for (let i = 0; i < 40; i++) {
-        if (
-          arts[i] !== undefined &&
-          arts[i].rating >= 1 &&
-          arts[i].rating < 2
-        ) {
-          arr.push(arts[i]);
-        }
-      }
-    } else if (museumBtn && !standard) {
-      for (let i = 0; i < 40; i++) {
-        if (museums[i] !== undefined && museums[i].rating >= 5) {
-          arr.push(museums[i]);
-        }
-      }
-      for (let i = 0; i < 40; i++) {
-        if (
-          museums[i] !== undefined &&
-          museums[i].rating >= 4 &&
-          museums[i].rating < 5
-        ) {
-          arr.push(museums[i]);
-        }
-      }
-      for (let i = 0; i < 40; i++) {
-        if (
-          museums[i] !== undefined &&
-          museums[i].rating >= 3 &&
-          museums[i].rating < 4
-        ) {
-          arr.push(museums[i]);
-        }
-      }
-      for (let i = 0; i < 40; i++) {
-        if (
-          museums[i] !== undefined &&
-          museums[i].rating >= 2 &&
-          museums[i].rating < 3
-        ) {
-          arr.push(museums[i]);
-        }
-      }
-      for (let i = 0; i < 40; i++) {
-        if (
-          museums[i] !== undefined &&
-          museums[i].rating >= 1 &&
-          museums[i].rating < 2
-        ) {
-          arr.push(museums[i]);
-        }
-      }
+    if (artBtn){
+      arr= [...arr, ...arts]
     }
-    setList(arr);
-    console.log(arr);
-  };
+    if (museumBtn){
+      arr = [...arr, ...museums]
+    }
+    if (amusementBtn){
+      arr = [...arr, ...amusementParks]
+    }
+    if (restaurantBtn){
+      arr = [...arr, ...restaurants]
+    }
+    if (barBtn){
+      arr = [...arr, ...bars]
+    }
+    if (casinoBtn){
+      arr= [...arr, ...casinos]
+    }
+    if (spaBtn){
+      arr = [...arr, ...spas]
+    }
+    if (aquariumBtn) {
+      arr = [...arr, ...aquariums]
+    }
+    if (zooBtn) {
+      arr = [...arr, ...zoos]
+    }
+    setResults([...arr])
+    if(!artBtn && !museumBtn && !amusementBtn && !restaurantBtn && !barBtn && !casinoBtn && !spaBtn && !aquariumBtn && !zooBtn){
+      setResults([...arts, ...museums, ...amusementParks, ...aquariums, ...zoos])
+    }
+  }, [artBtn, museumBtn, amusementBtn, restaurantBtn, barBtn, casinoBtn, spaBtn, aquariumBtn, zooBtn, []]);
 
-  // const mapList = () => {
-  //   let arr = [];
-  //   if (artBtn && !museumBtn && !standard) {
-  //     for (let i = 0; i < arts.length; i++) {
-  //       if (arts[i].rating >= 5) {
-  //         arr.push(arts[i]);
-  //       }
-  //     }
-  //     for (let i = 0; i < arts.length; i++) {
-  //       if (arts[i].rating >= 4 && arts[i].rating < 5) {
-  //         arr.push(arts[i]);
-  //       }
-  //     }
-  //     for (let i = 0; i < arts.length; i++) {
-  //       if (arts[i].rating >= 3 && arts[i].rating < 4) {
-  //         arr.push(arts[i]);
-  //       }
-  //     }
-  //     for (let i = 0; i < arts.length; i++) {
-  //       if (arts[i].rating >= 2 && arts[i].rating < 3) {
-  //         arr.push(arts[i]);
-  //       }
-  //     }
-  //     for (let i = 0; i < arts.length; i++) {
-  //       if (arts[i].rating >= 1 && arts[i].rating < 2) {
-  //         arr.push(arts[i]);
-  //       }
-  //     }
-  //   } else if (museumBtn && !artBtn && !standard) {
-  //     for (let i = 0; i < museums.length; i++) {
-  //       if (museums[i].rating >= 5) {
-  //         arr.push(museums[i]);
-  //       }
-  //     }
-  //     for (let i = 0; i < museums.length; i++) {
-  //       if (museums[i].rating >= 4 && museums[i].rating < 5) {
-  //         arr.push(museums[i]);
-  //       }
-  //     }
-  //     for (let i = 0; i < museums.length; i++) {
-  //       if (museums[i].rating >= 3 && museums[i].rating < 4) {
-  //         arr.push(museums[i]);
-  //       }
-  //     }
-  //     for (let i = 0; i < museums.length; i++) {
-  //       if (museums[i].rating >= 2 && museums[i].rating < 3) {
-  //         arr.push(museums[i]);
-  //       }
-  //     }
-  //     for (let i = 0; i < museums.length; i++) {
-  //       if (museums[i].rating >= 1 && museums[i].rating < 2) {
-  //         arr.push(museums[i]);
-  //       }
-  //     }
-  //   } else if (museumBtn && artBtn && !standard) {
-  //     for (let i = 0; i < 40; i++) {
-  //       if (museums[i] !== undefined && museums[i].rating >= 5) {
-  //         arr.push(museums[i]);
-  //         arr.push(arts[i])
-  //       }
-  //     }
-  //     for (let i = 0; i < 40; i++) {
-  //       if (museums[i] !== undefined && museums[i].rating >= 4 && museums[i].rating < 5) {
-  //         arr.push(museums[i]);
-  //         arr.push(arts[i])
-  //       }
-  //     }
-  //     for (let i = 0; i < 40; i++) {
-  //       if (museums[i] !== undefined && museums[i].rating >= 3 && museums[i].rating < 4) {
-  //         arr.push(museums[i]);
-  //         arr.push(arts[i])
-  //       }
-  //     }
-  //     for (let i = 0; i < 40; i++) {
-  //       if (museums[i] !== undefined && museums[i].rating >= 2 && museums[i].rating < 3) {
-  //         arr.push(arts[i])
-  //         arr.push(museums[i]);
-  //       }
-  //     }
-  //     for (let i = 0; i < 40; i++) {
-  //       if (museums[i] !== undefined && museums[i].rating >= 1 && museums[i].rating < 2) {
-  //         arr.push(arts[i])
-  //         arr.push(museums[i]);
-  //       }
-  //     }
-  //   }
-  //   setList(arr);
-  //   console.log(arr);
+  useEffect(() => {
+    results.sort((a, b) => {
+      if (b.rating === undefined){
+        b.rating = 0
+      }
+      return b.rating - a.rating
+    })
+    setList([...results])
+  }, [results])
 
-  // };
+  // mapList();
 
   let mappedThings = results.map((places, index) => {
     return <IndividualPlaces key={index} places={places} />;
@@ -464,13 +383,11 @@ const SearchPage = (props) => {
                   position={[e.geometry.location.lat, e.geometry.location.lng]}
                   key={i}
                 >
-                  {console.log("HIT")}
                   <Popup>{e.name}</Popup>
                 </Marker>
               );
             })
           : null}
-
         {artBtn
           ? arts.map((e, i) => {
               return (
@@ -478,13 +395,11 @@ const SearchPage = (props) => {
                   position={[e.geometry.location.lat, e.geometry.location.lng]}
                   key={i}
                 >
-                  {/* {console.log(e)} */}
                   <Popup>{e.name}</Popup>
                 </Marker>
               );
             })
           : null}
-
         {museumBtn
           ? museums.map((e, i) => {
               return (
@@ -492,7 +407,78 @@ const SearchPage = (props) => {
                   position={[e.geometry.location.lat, e.geometry.location.lng]}
                   key={i}
                 >
-                  {/* {console.log(e)} */}
+                  <Popup>{e.name}</Popup>
+                </Marker>
+              );
+            })
+          : null}
+          {restaurantBtn
+          ? restaurants.map((e, i) => {
+              return (
+                <Marker
+                  position={[e.geometry.location.lat, e.geometry.location.lng]}
+                  key={i}
+                >
+                  <Popup>{e.name}</Popup>
+                </Marker>
+              );
+            })
+          : null}
+          {barBtn
+          ? bars.map((e, i) => {
+              return (
+                <Marker
+                  position={[e.geometry.location.lat, e.geometry.location.lng]}
+                  key={i}
+                >
+                  <Popup>{e.name}</Popup>
+                </Marker>
+              );
+            })
+          : null}
+          {casinoBtn
+          ? casinos.map((e, i) => {
+              return (
+                <Marker
+                  position={[e.geometry.location.lat, e.geometry.location.lng]}
+                  key={i}
+                >
+                  <Popup>{e.name}</Popup>
+                </Marker>
+              );
+            })
+          : null}
+          {aquariumBtn
+          ? aquariums.map((e, i) => {
+              return (
+                <Marker
+                  position={[e.geometry.location.lat, e.geometry.location.lng]}
+                  key={i}
+                >
+                  <Popup>{e.name}</Popup>
+                </Marker>
+              );
+            })
+          : null}
+          {zooBtn
+          ? zoos.map((e, i) => {
+              return (
+                <Marker
+                  position={[e.geometry.location.lat, e.geometry.location.lng]}
+                  key={i}
+                >
+                  <Popup>{e.name}</Popup>
+                </Marker>
+              );
+            })
+          : null}
+          {spaBtn
+          ? spas.map((e, i) => {
+              return (
+                <Marker
+                  position={[e.geometry.location.lat, e.geometry.location.lng]}
+                  key={i}
+                >
                   <Popup>{e.name}</Popup>
                 </Marker>
               );
@@ -502,7 +488,6 @@ const SearchPage = (props) => {
     );
   };
 
-  console.log("results", results);
   return (
     <div>
       
@@ -511,10 +496,6 @@ const SearchPage = (props) => {
         <section className='map-container'>
 
         <div className="google-places-autocomplete">
-          {/* {console.log(process.env.REACT_APP_GOOGLE_API)} */}
-          {console.log("start")}
-          {/* {console.log(latitude)} */}
-          {console.log(lat)}
           <GooglePlacesAutocomplete
             apiKey={`${key}`}
             selectProps={{
@@ -550,6 +531,60 @@ const SearchPage = (props) => {
             name="bike"
           />
           <label for="museumBtn">museumBtn</label>
+
+          <input
+            type="checkbox"
+            value="restaurantBtn"
+            id="restaurantBtn"
+            onChange={() => setRestaurantBtn(!restaurantBtn)}
+            name="bike"
+          />
+          <label for="restaurantBtn">restaurantBtn</label>
+
+          <input
+            type="checkbox"
+            value="barBtn"
+            id="barBtn"
+            onChange={() => setBarBtn(!barBtn)}
+            name="bike"
+          />
+          <label for="barBtn">barBtn</label>
+
+          <input
+            type="checkbox"
+            value="casinoBtn"
+            id="casinoBtn"
+            onChange={() => setCasinoBtn(!casinoBtn)}
+            name="bike"
+          />
+          <label for="casinoBtn">casinoBtn</label>
+
+          <input
+            type="checkbox"
+            value="zooBtn"
+            id="zooBtn"
+            onChange={() => setZooBtn(!zooBtn)}
+            name="bike"
+          />
+          <label for="zooBtn">zooBtn</label>
+
+          <input
+            type="checkbox"
+            value="aquariumBtn"
+            id="aquariumBtn"
+            onChange={() => setAquariumBtn(!aquariumBtn)}
+            name="bike"
+          />
+          <label for="aquariumBtn">aquariumBtn</label>
+
+          <input
+            type="checkbox"
+            value="spaBtn"
+            id="spaBtn"
+            onChange={() => setSpaBtn(!spaBtn)}
+            name="bike"
+          />
+          <label for="spaBtn">spaBtn</label>
         </form>
         {isLoaded ? renderMap() : <div></div>}
         </section>
@@ -557,7 +592,6 @@ const SearchPage = (props) => {
         <div className="mapped-things-container">
           <header className='check-out-these-places'>Check Out These Places!</header>
 
-          {console.log(list)}
 
           {list.map((places, index) => {
             return (
