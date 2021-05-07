@@ -44,4 +44,7 @@ li{
 .profilePic{
   position: relative;
   right: 20px;
+  height: 90px;
+  width: 90px;
+  object-fit: cover;
 }
