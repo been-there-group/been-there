@@ -2,7 +2,7 @@
 
 .exploreHeader{
     height: 10vh;
-    font-size: 50px;
+    font-size: 5vh;
     @include sass.flexCenterRelative(column);
     // border: solid black;
 }
@@ -17,9 +17,17 @@
     position: relative;
 }
 
+@media(min-width: 1200px){
+    .mapped-activities-container{
+        // height: 45vh;
+        border: 2px solid green;
+    }
+}
+
 // @media(min-width: 1200px){
 //     .mapped-activities-container{
 //         // height: 45vh;
 //         // border: 2px solid green;
 //     }
 // }
+

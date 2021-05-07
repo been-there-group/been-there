@@ -1,0 +1,18 @@
+@use '../../sass';
+
+.footerDivider{
+  width: 90%;
+  height: 1px;
+  background-color: rgb(187, 184, 184);
+  position: relative;
+  // left: 5vw;
+  margin-bottom: 2%;
+  margin-top: 2%;
+}
+
+.footer{
+  @include sass.flexCenterRelative(column);
+  // align-items: flex-start;
+  justify-content: space-around;
+  height: 7vh;
+}
