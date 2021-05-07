@@ -4,7 +4,7 @@ import {connect, useDispatch} from 'react-redux';
 import {updateUser, logout} from '../../redux/userReducer';
 import {useSelector} from "react-redux";
 import axios from 'axios';
-import newestLogo1 from '../../assets/newestLogo1.png'
+import bestLogo1 from '../../assets/bestLogo1.png'
 import './Nav.scss';
 
 
@@ -124,7 +124,7 @@ const Nav = (props) => {
         <div className="nav-body">
             <div>
                 <Link to={"/"}>
-                <img className="logo" alt="" src={newestLogo1}/>
+                <img className="logo" alt="" src={bestLogo1}/>
                 </Link>
             </div>
             <div className='profilePicHome'>
