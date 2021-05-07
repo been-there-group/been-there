@@ -122,7 +122,7 @@
 
 .modal{
     position: fixed;
-    // border: 5px solid hotpink;
+    border: 5px solid hotpink;
     background-color: white;
     height: 600px;
     width: 60vw;
@@ -143,21 +143,11 @@
     margin-left: -200%;
     opacity: (60%);
     z-index: 2;
-    // border: 5px solid hotpink;
+    top: -10vh;
+    border: 5px solid hotpink;
 
 }
-.overlay-2{
-    position: fixed;
-    height: 67.9%;
-    width: 500%;
-    background-color: gray;
-    margin-left: -200%;
-    opacity: (60%);
-    z-index: 2;
-    top: -50vh;
-    // border: 5px solid hotpink;
 
-}
 
 //containers
 .mapped-things-container {

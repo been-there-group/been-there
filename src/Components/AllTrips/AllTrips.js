@@ -10,6 +10,7 @@ const AllTrips = () => {
     const [trips, setTrips] = useState([]);
     const [editView, setEditView] = useState('hide');
     const [editingId, setEditingId] = useState(null);
+    const [currentItineraryName, setCurrentItineraryName] = useState('');
     const [itinerary_name, setItineraryName] = useState('');
 
     const user = useSelector((state) => state.userReducer);
@@ -24,6 +25,7 @@ const AllTrips = () => {
             .then(res => {
                 console.log("res.data", res.data);
                 setTrips(res.data)
+                setCurrentItineraryName(res.data.itinerary_name)
             })
         }
     }, [user_id])
@@ -69,9 +71,10 @@ const AllTrips = () => {
                 {user_id ?
                     trips.map((trip, index) => {
                         console.log(trip)
+                        
                         return(
                             <div className='trips-container'>
-                                <Link to={`/single-trip/${trip.itinerary_id}`} key={index} >
+                                <Link to={`/single-trip/${trip.itinerary_id}`} key={index} className='link'>
                                     <div className='mapped-trips' >
                                         
                                         <h2>{trip.itinerary_name}</h2>
@@ -81,9 +84,9 @@ const AllTrips = () => {
 
                                 {editView === 'show' ?
                                 null
-                                : <button onClick={() => toggleEditView(trip.itinerary_id)}>Edit</button>}
+                                : <button className='modal-button' onClick={() => toggleEditView(trip.itinerary_id)}>Edit</button>}
 
-                                <button onClick={() => deleteTrip(trip.itinerary_id)}>Delete Trip</button>
+                                <button className='modal-button' onClick={() => deleteTrip(trip.itinerary_id)}>Delete Trip</button>
 
                             </div>
                         )
@@ -93,9 +96,9 @@ const AllTrips = () => {
 
             <section className={editView === 'show' ? 'edit-view' : 'edit-view-hide'}>
                 <div>
-                    <input onChange={e => setItineraryName(e.target.value)}/>
-                    <button onClick={() => editTrip(editingId)}>Save Changes</button>
-                    <button onClick={() => toggleEditView()}>Cancel</button>
+                    <input className='modal-button' placeholder=' Rename Your Trip' value={currentItineraryName} onChange={e => setItineraryName(e.target.value)}/>
+                    <button className='modal-button' onClick={() => editTrip(editingId)}>Save Changes</button>
+                    <button className='modal-button' onClick={() => toggleEditView()}>Cancel</button>
                 </div>
             </section>
 
