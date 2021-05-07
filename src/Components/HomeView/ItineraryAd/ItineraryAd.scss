@@ -36,5 +36,22 @@
 }
 .myTripAd{
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 900;
 }
+
+@media (min-width: 700px){
+    .itineraryHeader{
+        font-size: 30px;
+    }
+    .itineraryText{
+        font-size: 22px;
+    }
+    .myTripAd{
+        font-size: 25px;
+    }
+}
+@media (min-width: 1200px){
+    .itineraryHeader{
+        font-size: 40px;
+    }
+  }

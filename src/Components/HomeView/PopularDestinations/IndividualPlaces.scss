@@ -2,7 +2,7 @@
 
 .mapped-place{
         @include sass.flexCenterRelative(column);
-        height: auto;
+        height: 200px;
         width: 150px;
         // border: 1px solid red;
     }
@@ -12,9 +12,12 @@
     height: 150px;
     width: 150px;
     object-fit: cover;
+    border-radius: 10px;
 }
 .destinationNames{
+    position: relative;
     @include sass.link();
+    top: 5px;
 }
 .destinationLink{
     @include sass.link();
@@ -34,7 +37,7 @@
 @media (min-width: 1200px){
     .mapped-place{
         width: 12vw;
-        height: 25vh;
+        height: 20vh;
     }
     .mapped-image{
         width: 9vw;

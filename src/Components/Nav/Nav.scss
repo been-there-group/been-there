@@ -9,8 +9,27 @@
   width: 20vw;
   position: fixed;
   right: 0;
-  top: 10vh;
+  top: 9.85vh;
   z-index: 3;
+  text-align: right;
+  animation-name: slide;
+  animation-duration: 1s;
+  // box-shadow: 0px 0px 9px -2px white, 0px 0px 9px -2px #000000, 0px 0px 9px -2px #000000, 0px 0px 9px -2px white;
+}
+
+.open-2{
+  background-color: red;
+  width: 20vw;
+  position: fixed;
+  height: 130px;
+  right: 0;
+  top: 11vh;
+  z-index: 2;
+  text-align: right;
+  animation-name: slide;
+  animation-duration: 1s;
+  box-shadow: -5px 5px 15px 6px #000000;
+  
 }
 
 li{
@@ -18,16 +37,12 @@ li{
   font-size: 18px;
 }
 
-.open {
-  position: fixed;
-  text-align: right;
-  animation-name: slide;
-  animation-duration: .5s;
-}
 
 .logo {
-  height: 70px;
-  width: 70px;
+  position: relative;
+  left: 15px;
+  height: 9vh;
+  width: 9vh;
 }
 
 .nav-body {
@@ -46,11 +61,39 @@ li{
 }
 .profilePic{
   position: relative;
-  right: 20px;
+  right: 15px;
   // border: solid rgb(104, 104, 104) 1px;
   border-radius: 50%;
-  height: 9vh;
-  width: 9vh;
+  height: 8vh;
+  width: 8vh;
   object-fit: cover;
   box-shadow: 0px 0px 5px 0px #414141;
+}
+.siteName{
+  font-size: 3.75vh;
+  letter-spacing: 5px;
+  color: #e66657;
+}
+
+.register-login{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.input{
+  height: 20px;
+  width: 200px;
+  margin-top: 15px;
+  border-radius: 8px;
+  border: 1px solid grey;
+}
+.-button{
+  position: relative;
+  height: 35px;
+  border-radius: 50px;
+  background-color: white;
+  border: 1px solid #e66657;
+  margin: 10px;
+  color: #e66657;
 }
