@@ -61,7 +61,7 @@ const AllTrips = () => {
         <div>
             <Nav />
             <div className='all-trips-body'>
-            <h1>My Trips</h1>
+            <header>My Trips</header>
                
             </div>
 

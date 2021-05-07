@@ -52,9 +52,9 @@
     font-size: 20px;
 }
 
-.name-and-rating{
-    // border: 1px solid fuchsia;
-}
+// .name-and-rating{
+//     // border: 1px solid fuchsia;
+// }
 
 .place-image{
     // border: 1px solid teal;
@@ -112,9 +112,9 @@
     padding: 3%;
 }
 
-.user-trips{
-    // border: 1px solid salmon;
-}
+// .user-trips{
+//     // border: 1px solid salmon;
+// }
 
 .itinerary-name:hover{
     cursor: pointer;
@@ -161,14 +161,6 @@
 
 //containers
 .mapped-things-container {
-//     @include sass.flexCenterRelative(column);
-    // p {
-    //     font-size: 40px;
-    // }
-    // h1 {
-    //     font-size: 20px;
-    // }
-    // border: 3px solid blueviolet;
     height: auto;
     width: 40vw;
     padding-right: 3%;
