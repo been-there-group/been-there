@@ -46,8 +46,11 @@ const SingleTrip = (props) => {
         <div className='home'>
             <Nav />
             <div className="single-trip-body">
+
             <p>calendar, react date picker</p>
-            <h1>{itineraryName}</h1>
+           
+            <header>{itineraryName}</header>
+
             </div>
             <section>
                 {user_id ?
