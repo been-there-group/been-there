@@ -1,12 +1,13 @@
 @media (min-width: 100px){
     .edit-view{
         position: relative;
-        width: 80vw;
-        height: 40vh;
-        left: 10vw;
-        bottom: 5vh;
+        width: 50vw;
+        height: auto;
+        left: 25vw;
+        // bottom: 15vh;
         // background-color: azure;
-        top: 10vh;
+        // border: 3px solid hotpink;
+        // top: 10vh;
     }
     .edit-view-hide{
         display: none;
@@ -14,23 +15,32 @@
     .trips-container{
         position: relative;
         top: 25vh;
+        // border: 3px solid hotpink;
+        display: flex;
+        justify-content: space-between;
+        width: 60vw;
+        left: 20vw;
     }
     .mapped-trips{
-        background-color:rgb(176, 210, 226);
-        width: 80vw;
+        // background-color:rgb(176, 210, 226);
+        // width: 60vw;
         height: auto;
-        left: 10vw;
+        ;
         position: relative;
         color: black;
-        text-decoration: none;
+        text-decoration-color: white;
         font-size: 30px;
         display: flex;
-        justify-content: center;
+        // justify-content: center;
         align-items: center;
+        // border: 3px solid palevioletred;
     }
+    
 }
 
-
+.link{
+    text-decoration: none;
+}
 
 .all-trips-body {
     position: relative;

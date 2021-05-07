@@ -34,12 +34,19 @@ const SingleTrip = (props) => {
             setItems(res.data)
         })
     }
+    function editItem(id){
+        axios.put(`/api/singletrip/${id}`)
+        .then(res => {
+            setItems(res.data)
+        })
+    }
 
 
     return(
         <div className='home'>
             <Nav />
             <div className="single-trip-body">
+            <p>calendar, react date picker</p>
             <h1>{itineraryName}</h1>
             </div>
             <section>
@@ -50,8 +57,8 @@ const SingleTrip = (props) => {
                         return(
                             <div className='single-trip-container'>
                                 <SingleTripDisplay key={index} item={item}/>
-                                <button className='delete-item' onClick={() => deleteItem(props.item.itinerary_item_id)}>Delete</button>
-
+                                <button className='modal-button' onClick={() => deleteItem(props.item.itinerary_item_id)}>Delete</button>
+                                <button className='modal-button' onClick={() => editItem(props.item.itinerary_item_id)}>Edit</button>
                             </div>
                         )
                     })
