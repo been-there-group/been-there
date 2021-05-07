@@ -127,8 +127,11 @@ const Nav = (props) => {
                 <img className="logo" alt="" src={logo}/>
                 </Link>
             </div>
-            <div className='profilePic'>
-                <img src={profile_pic} className='profilePic' alt='profile pic' onClick={handleClick} />
+            <div className='profilePicHome'>
+                <img src={profile_pic
+                    ? profile_pic
+                    : 'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png'
+                } className='profilePic' alt='profile pic' onClick={handleClick} />
             </div>
 
             <ul className={authMenu === 'authClosed' ? 'closed' : 'open'}>
