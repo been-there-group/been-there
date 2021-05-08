@@ -52,7 +52,7 @@ const SearchPage = (props) => {
 
   // google places api request
   const getRestaurants = () => {
-    axios
+   return axios
       .get(
         `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=restaurants&key=AIzaSyA-1QMLloTqCeRaeN2S3zliV317TzCn634`
       )
@@ -62,7 +62,7 @@ const SearchPage = (props) => {
         // setResults((prevResults) => [...prevResults, ...first]);
         if (res.data.next_page_token) {
           setTimeout(() => {
-            axios
+           return axios
               .get(
                 `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
               )
@@ -76,7 +76,7 @@ const SearchPage = (props) => {
 
   // google places api request
   const getBars = () => {
-    axios
+   return axios
       .get(
         `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=bar&key=AIzaSyA-1QMLloTqCeRaeN2S3zliV317TzCn634`
       )
@@ -86,7 +86,7 @@ const SearchPage = (props) => {
         // setResults((prevResults) => [...prevResults, ...first]);
         if (res.data.next_page_token) {
           setTimeout(() => {
-            axios
+           return axios
               .get(
                 `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
               )
@@ -100,7 +100,7 @@ const SearchPage = (props) => {
 
   // google places api request
   const getCasinos = () => {
-    axios
+   return axios
       .get(
         `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=casino&key=AIzaSyA-1QMLloTqCeRaeN2S3zliV317TzCn634`
       )
@@ -110,7 +110,7 @@ const SearchPage = (props) => {
         // setResults((prevResults) => [...prevResults, ...first]);
         if (res.data.next_page_token) {
           setTimeout(() => {
-            axios
+           return axios
               .get(
                 `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
               )
@@ -124,154 +124,201 @@ const SearchPage = (props) => {
 
   // google places api request
   const getAmusementPark = () => {
-    axios
-      .get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=amusement_park&key=${key}`
-      )
-      .then((res) => {
+   return new Promise((resolve, reject) => {
+
+     axios
+     .get(
+       `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=amusement_park&key=${key}`
+       )
+       .then((res) => {
         let first = [...res.data.results];
-        setAmusementParks(first);
         // setResults((prevResults) => [...prevResults, ...first]);
         if (res.data.next_page_token) {
           setTimeout(() => {
-            axios
-              .get(
+           return axios
+           .get(
                 `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
-              )
-              .then((res) => {
-                setAmusementParks([...first, ...res.data.results]);
-              });
-          }, 3000);
-        }
-      });
-  };
+                )
+                .then((res) => {
+                  setAmusementParks([...first, ...res.data.results]);
+                });
+              }, 3000);
+            }else {
+            setAmusementParks(first);
+            resolve(first)
+          }
+        })
+        });
+      };
   // google places api request
   const getArtGallery = () => {
-    axios
+    return new Promise((resolve, reject) => {
+      axios
       .get(
         `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=art_gallery&key=${key}`
       )
       .then((res) => {
         let first = [...res.data.results];
-        setArts(first);
         // setResults((prevResults) => [...prevResults, ...first]);
         if (res.data.next_page_token) {
           setTimeout(() => {
             axios
-              .get(
+            .get(
                 `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
-              )
-              .then((response) => {
-                setArts([...first, ...response.data.results]);
-              });
-          }, 3000);
+                )
+                .then((res) => {
+                  setArts([...first, ...res.data.results]);
+                  resolve([...first, ...res.data.results]);
+                });
+              }, 3000);
+            } else {
+          setArts(first);
+          resolve(first)
         }
       });
+    })
   };
   // google places api request
   const getMuseum = () => {
-    axios
-      .get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=museum&key=${key}`
-      )
-      .then((res) => {
-        let first = [...res.data.results];
-        setMuseums(first);
-        // setResults((prevResults) => [...prevResults, ...first]);
-        if (res.data.next_page_token) {
-          setTimeout(() => {
-            axios
-              .get(
-                `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
-              )
-              .then((res) => {
-                setMuseums([...first, ...res.data.results]);
-              });
-          }, 3000);
-        }
-      });
-  };
+   return new Promise((resolve, reject) => {
+     axios
+     .get(
+       `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=museum&key=${key}`
+       )
+       .then((res) => {
+         let first = [...res.data.results];
+         // setResults((prevResults) => [...prevResults, ...first]);
+         if (res.data.next_page_token) {
+           setTimeout(() => {
+              axios
+             .get(
+               `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+               )
+               .then((res) => {
+                 setMuseums([...first, ...res.data.results]);
+                 resolve([...first, ...res.data.results]);
+                });
+              }, 3000);
+            }else {
+              setMuseums(first);
+              resolve(first)
+            }
+          });
+        })
+        };
   // google places api request
   const getSpa = () => {
-    axios
-      .get(
+   return new Promise((resolve, reject) => {
+     axios
+     .get(
         `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=spa&key=AIzaSyA-1QMLloTqCeRaeN2S3zliV317TzCn634`
-      )
+        )
       .then((res) => {
         let first = [...res.data.results];
-        setSpas(first);
         // setResults((prevResults) => [...prevResults, ...first]);
         if (res.data.next_page_token) {
           setTimeout(() => {
             axios
-              .get(
-                `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+            .get(
+              `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
               )
               .then((res) => {
                 setSpas([...first, ...res.data.results]);
+                resolve([...first, ...res.data.results]);
               });
-          }, 3000);
-        }
-      });
-  };
+            }, 3000);
+          }else {
+            setSpas(first);
+            resolve(first)
+          }
+        });
+      })
+    };
   // google places api request
   const getAquarium = () => {
-    axios
-      .get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=aquarium&key=AIzaSyA-1QMLloTqCeRaeN2S3zliV317TzCn634`
-      )
-      .then((res) => {
-        let first = [...res.data.results];
-        setAquariums(first);
-        // setResults((prevResults) => [...prevResults, ...first]);
-        if (res.data.next_page_token) {
-          setTimeout(() => {
-            axios
-              .get(
-                `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
-              )
-              .then((res) => {
-                setAquariums([...first, ...res.data.results]);
-              });
-          }, 3000);
+   return new Promise((resolve, reject) => {
+     axios
+     .get(
+       `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=aquarium&key=AIzaSyA-1QMLloTqCeRaeN2S3zliV317TzCn634`
+       )
+       .then((res) => {
+         let first = [...res.data.results];
+         // setResults((prevResults) => [...prevResults, ...first]);
+         if (res.data.next_page_token) {
+           setTimeout(() => {
+             axios
+             .get(
+               `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+                )
+                .then((res) => {
+                  setAquariums([...first, ...res.data.results]);
+                  resolve([...first, ...res.data.results]);
+                });
+              }, 3000);
+            }else {
+              resolve(first)
+              setAquariums(first);
         }
       });
+    })
   };
   // google places api request
   const getZoo = () => {
-    axios
+    return new Promise((resolve, reject) => {
+      axios
       .get(
         `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=zoo&key=AIzaSyA-1QMLloTqCeRaeN2S3zliV317TzCn634`
-      )
+        )
       .then((res) => {
         let first = [...res.data.results];
-        setZoos(first);
         // setResults((prevResults) => [...prevResults, ...first]);
         if (res.data.next_page_token) {
           setTimeout(() => {
             axios
-              .get(
-                `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+            .get(
+              `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
               )
               .then((res) => {
                 setZoos([...first, ...res.data.results]);
+                resolve(...first, ...res.data.results)
               });
-          }, 3000);
-        }
-      });
-  };
+            }, 3000);
+          } else {
+            setZoos(first);
+            resolve(first)
+          }
+        });
+      })
+      };
 
 
   useEffect(() => {
-    getRestaurants();
-    getBars();
-    getCasinos();
-    getAmusementPark();
-    getArtGallery();
-    getSpa();
-    getAquarium();
-    getZoo();
-    getMuseum();
+   if (latitude){ Promise.all([
+     getAmusementPark(),
+     getArtGallery(),
+     getSpa(),
+     getAquarium(),
+     getZoo(),
+     getMuseum()
+    ]
+    ).then((res)=> {
+      console.log(res)
+      let spread = []
+      for (let i = 0; i < res.length; i++){
+        if(res[i].length > 0){
+          spread = [...spread, ...res[i]]
+        }
+      }
+      if(!artBtn && !museumBtn && !amusementBtn && !restaurantBtn && !barBtn && !casinoBtn && !spaBtn && !aquariumBtn && !zooBtn){
+        console.log(spread)
+        setResults(spread)
+      }
+    })
+    .catch(err => console.log(err))
+  }
+    getRestaurants()
+    getBars()
+    getCasinos()
   }, [lat]);
 
   useEffect(() => {
@@ -312,6 +359,7 @@ const SearchPage = (props) => {
 
   useEffect(() => {
     let arr = [];
+    console.log("HIT!")
     if (artBtn){
       arr= [...arr, ...arts]
     }
@@ -343,23 +391,22 @@ const SearchPage = (props) => {
     if(!artBtn && !museumBtn && !amusementBtn && !restaurantBtn && !barBtn && !casinoBtn && !spaBtn && !aquariumBtn && !zooBtn){
       setResults([...arts, ...museums, ...amusementParks, ...aquariums, ...zoos])
     }
-  }, [artBtn, museumBtn, amusementBtn, restaurantBtn, barBtn, casinoBtn, spaBtn, aquariumBtn, zooBtn, []]);
+  }, [artBtn, museumBtn, amusementBtn, restaurantBtn, barBtn, casinoBtn, spaBtn, aquariumBtn, zooBtn]);
 
-  useEffect(() => {
-    results.sort((a, b) => {
-      if (b.rating === undefined){
-        b.rating = 0
-      }
-      return b.rating - a.rating
-    })
-    setList([...results])
-  }, [results])
+  // useEffect(() => {
+  //   results.sort((a, b) => {
+  //     if (b.rating === undefined){
+  //       b.rating = 0
+  //     }
+  //     return b.rating - a.rating
+  //   })
+  //   console.log(results)
+  //   setList([...results])
+  // }, [results])
 
   // mapList();
 
-  let mappedThings = results.map((places, index) => {
-    return <IndividualPlaces key={index} places={places} />;
-  });
+
 
   const renderMap = () => {
     return (
@@ -490,7 +537,8 @@ const SearchPage = (props) => {
 
   return (
     <div>
-      
+      {console.log(results)}
+
       <Nav />
       <div className="search-page">
         <section className='map-container'>
@@ -593,7 +641,12 @@ const SearchPage = (props) => {
           <header className='check-out-these-places'>Check Out These Places!</header>
 
 
-          {list.map((places, index) => {
+          {results.sort((a, b) => {
+      if (b.rating === undefined){
+        b.rating = 0
+      }
+      return b.rating - a.rating
+    }).map((places, index) => {
             return (
               <div>
                 <IndividualPlaces key={index} places={places} list={list}/>
