@@ -1,3 +1,5 @@
+@use "../../sass";
+
 @media (min-width: 100px){
     .edit-view{
         position: relative;
@@ -15,39 +17,64 @@
     .trips-container{
         position: relative;
         top: 25vh;
-        // border: 3px solid hotpink;
+        border-radius: 20px;
         display: flex;
         justify-content: space-between;
         width: 60vw;
         left: 20vw;
+        background: rgba(255, 255, 255, 0.6);
+        margin-bottom: 10px;
+        padding: 5px;
+
     }
     .mapped-trips{
         // background-color:rgb(176, 210, 226);
         // width: 60vw;
         height: auto;
         ;
-        position: relative;
+        // position: relative;
         color: black;
         text-decoration-color: white;
         font-size: 30px;
         display: flex;
         // justify-content: center;
         align-items: center;
-        // border: 3px solid palevioletred;
+        // border: 3px solid rgb(117, 50, 73);
     }
     
-}
+    
+    .link{
+        text-decoration: none;
+    }
+    
+    .all-trips-body {
+        @include sass.flexCenterRelative(column);   
+        position: relative;
+        top: 5vh;
+    }
+    
+    .all-trips-body > header {
+        position: relative;
+        font-size: 30px;
+        top: 10vh;
+        // border: 3px solid rgb(104, 59, 74);
+        
+    }
+    
+    .all-trips-background {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+    }
+    
+    .all-trips-container {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        bottom: 500px;
+        
+    }
 
-.link{
-    text-decoration: none;
-}
-
-.all-trips-body {
-    position: relative;
-    top: 10vh;
-    // background-color: blue;
-}
-
-.all-trips-body > header {
-    font-size: 30px;
-}
+    }

@@ -3,6 +3,7 @@ import Nav from '../Nav/Nav';
 import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import allTripsBackground from '../../assets/allTripsBackground.png'
 import './AllTrips.scss';
 
 const AllTrips = () => {
@@ -64,9 +65,11 @@ const AllTrips = () => {
             <Nav />
             <div className='all-trips-body'>
             <header>My Trips</header>
+                <img className="all-trips-background" src={allTripsBackground} />
                
             </div>
 
+            <div className="all-trips-container">
             <section>
                 {user_id ?
                     trips.map((trip, index) => {
@@ -76,23 +79,25 @@ const AllTrips = () => {
                             <div className='trips-container'>
                                 <Link to={`/single-trip/${trip.itinerary_id}`} key={index} className='link'>
                                     <div className='mapped-trips' >
-                                        
+                                    
                                         <h2>{trip.itinerary_name}</h2>
                                         
                                     </div>
                                 </Link>
 
+                                <div>
                                 {editView === 'show' ?
                                 null
-                                : <button className='modal-button' onClick={() => toggleEditView(trip.itinerary_id)}>Edit</button>}
+                                :  <button className='modal-button' onClick={() => toggleEditView(trip.itinerary_id)}>Edit</button>}
 
                                 <button className='modal-button' onClick={() => deleteTrip(trip.itinerary_id)}>Delete Trip</button>
-
+                                </div>
                             </div>
                         )
                     })
-                : null}
+                    : null}
             </section>
+                    </div>
 
             <section className={editView === 'show' ? 'edit-view' : 'edit-view-hide'}>
                 <div>

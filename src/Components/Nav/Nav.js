@@ -127,6 +127,7 @@ const Nav = (props) => {
                 <img className="logo" alt="" src={bestLogo1}/>
                 </Link>
             </div>
+            <header className='siteName'>Been There</header>
             <div className='profilePicHome'>
                 <img src={profile_pic
                     ? profile_pic
@@ -134,24 +135,33 @@ const Nav = (props) => {
                 } className='profilePic' alt='profile pic' onClick={handleClick} />
             </div>
 
+            <div className={
+                authMenu === 'authOpen' || 
+                loginMenu === 'loginOpen' ||
+                registerMenu === 'registerMenuOpen' ? 'open-2' : 'closed'}></div>
+
             <ul className={authMenu === 'authClosed' ? 'closed' : 'open'}>
                 <li onClick={registerView}>Sign Up</li>
                 <li onClick={loginView}>Login</li>
             </ul>
 
             <div className={loginMenu === 'loginClosed' ? 'closed' : 'open'}>
-                {errorMsg && <h3>{errorMsg}<span onClick= {removeErrorMsg}>X</span></h3>}
-                <input placeholder='Username' onChange={e => setUsername(e.target.value)}/>
-                <input placeholder='Password' type='password' onChange={e => setPassword (e.target.value)}/>
-                <button onClick={() => login()}>Login</button>
+                <div className='register-login'>
+                    {errorMsg && <h3>{errorMsg}<span onClick= {removeErrorMsg}>X</span></h3>}
+                    <input className='input' placeholder='Username' onChange={e => setUsername(e.target.value)}/>
+                    <input className='input' placeholder='Password' type='password' onChange={e => setPassword (e.target.value)}/>
+                    <button onClick={() => login()} className='-button'>Login</button>
+                </div>
             </div>
 
             <div className={registerMenu === 'registerClosed' ? 'closed' : 'open'}>
-                {errorMsg && <h3>{errorMsg}<span onClick= {removeErrorMsg}>X</span></h3>}
-                <input placeholder='Username' onChange={e => setUsername(e.target.value)}/>
-                <input placeholder='Email' onChange={e => setEmail(e.target.value)}/>
-                <input placeholder='Password' onChange={e => setPassword (e.target.value)}/>
-                <button onClick={register}>Register</button>
+                <div className='register-login'>
+                    {errorMsg && <h3>{errorMsg}<span onClick= {removeErrorMsg}>X</span></h3>}
+                    <input className='input' placeholder='Username' onChange={e => setUsername(e.target.value)}/>
+                    <input className='input' placeholder='Email' onChange={e => setEmail(e.target.value)}/>
+                    <input className='input' placeholder='Password' onChange={e => setPassword (e.target.value)}/>
+                    <button onClick={register} className='-button'>Register</button>
+                </div>
             </div>
 
             <ul className={menu === 'closed' ? 'closed' : 'open'}>
