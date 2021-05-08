@@ -69,6 +69,7 @@ const AllTrips = () => {
                
             </div>
 
+            <div className="all-trips-container">
             <section>
                 {user_id ?
                     trips.map((trip, index) => {
@@ -84,17 +85,19 @@ const AllTrips = () => {
                                     </div>
                                 </Link>
 
+                                <div>
                                 {editView === 'show' ?
                                 null
-                                : <button className='modal-button' onClick={() => toggleEditView(trip.itinerary_id)}>Edit</button>}
+                                :  <button className='modal-button' onClick={() => toggleEditView(trip.itinerary_id)}>Edit</button>}
 
                                 <button className='modal-button' onClick={() => deleteTrip(trip.itinerary_id)}>Delete Trip</button>
-
+                                </div>
                             </div>
                         )
                     })
-                : null}
+                    : null}
             </section>
+                    </div>
 
             <section className={editView === 'show' ? 'edit-view' : 'edit-view-hide'}>
                 <div>
