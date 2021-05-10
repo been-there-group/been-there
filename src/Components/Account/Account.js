@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Nav from '../Nav/Nav';
-import './Account.scss';
 import { v4 as randomString } from 'uuid';
 import Dropzone from 'react-dropzone';
 import { GridLoader } from 'react-spinners';
+import blueMountains from '../../assets/blueMountains.png'
+import './Account.scss';
 
 const Account = (props) => {
     const [username, setUsername] = useState('');
@@ -112,49 +113,51 @@ const Account = (props) => {
     }
 
     return(
-        <div>
-            {console.log('profilePic=', profilePic)}
+        <div className="outermost-container">
             <Nav />
+          <img className="account-background" alt="" src={blueMountains} />
             <div className="account-body">
-            <body>
+              <div className="other-container">
+
                 <header>Your Account</header>
                 <section className={edit === "noEdit" ? "noEdit" : "edit"}>
-                    <main>Username: {username}</main>
-                    <div>Email: {email}</div>
-                    <div>Profile Picture: {profilePic}</div>
-                    <button onClick={handleClick}>Edit Account</button>
+                    <main className="username">Username: {username}</main>
+                    <div className="email">Email: {email}</div>
+                    <div className="profile-pic">Profile Picture: {profilePic}</div>
+                    <button className="modal-button" onClick={handleClick}>Edit Account</button>
                 </section>
                 <section className={edit === "noEdit" ? "edit" : "noEdit"}>
-                    <input value={username} onChange={(e) => editUsername(e.target.value)}></input>
-                    <input value={email} onChange={(e) => editEmail(e.target.value)}></input>
+                    <input className="user-input" value={username} onChange={(e) => editUsername(e.target.value)}></input>
+                    <br />
+                    <input className="user-input" value={email} onChange={(e) => editEmail(e.target.value)}></input>
                     <Dropzone
                         onDropAccepted={getSignedRequest}
                         accept="image/*"
                         multiple={false}>
                     {({getRootProps, getInputProps}) => (
-                        <div
-                        style = {{
-                            position: 'relative',
-                            width: 160,
-                            height: 80,
-                            borderWidth: 5,
-                            marginTop: 25,
-                            borderColor: 'gray',
-                            borderStyle: 'dashed',
-                            borderRadius: 5,
-                            display: 'inline-block',
-                            fontSize: 17,}}
-                            {...getRootProps()}>
+                      <div
+                      style = {{
+                        position: 'relative',
+                        width: 160,
+                        height: 80,
+                        borderWidth: 5,
+                        marginTop: 25,
+                        borderColor: 'gray',
+                        borderStyle: 'dashed',
+                        borderRadius: 5,
+                        display: 'inline-block',
+                        fontSize: 17,}}
+                        {...getRootProps()}>
                         <input {...getInputProps()} />
                         {isUploading ? <GridLoader /> : <p>Drop files here, or click to select files</p>}
                         </div>
                     )}
                     </Dropzone>
-                    <button onClick={() => editUser()}>Save Changes</button>
+                    <button className="modal-button" onClick={() => editUser()}>Save Changes</button>
                 </section>
-            </body>
             </div>
         </div>
+    </div>
     )
 }
 export default Account;

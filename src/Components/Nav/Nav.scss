@@ -18,7 +18,7 @@
 }
 
 .open-2{
-  background-color: red;
+  background-color: white;
   width: 20vw;
   position: fixed;
   height: 130px;
@@ -97,3 +97,14 @@ li{
   margin: 10px;
   color: #e66657;
 }
+
+//media query not working as expected, changing the drop down even when outside of the 376 px breakpoint. //
+
+// @media (max-width: 376px){
+//   .open{
+//     width: 55vw;
+//   }
+//   .open-2{
+//     width: 55vw;
+//   }
+// }

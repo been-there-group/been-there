@@ -1,16 +1,82 @@
+@use "../../sass";
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 
+//THIS IS SETTING THE HEADERS FOR THE WHOLE SITE.//
+header {
+  font-family: 'Pacifico', cursive;
+}
+
+///////////////////////////////////////////////
 .account-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  top: 10vh;
+}
+
+.account-body {
+  header {
+    font-size: 40px;
+    // bottom: 400px;
+    // position: relative;
+  }
 }
 
 .edit{
   display: none;
 }
 
-header {
-  font-family: 'Pacifico', cursive;
+.user-input {
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.623);
+  height: 20px;
+  border: 1px solid grey;
+}
+
+.noEdit {
+  @include sass.flexCenterRelative(column);
+  justify-content: space-between;
+  height: 25vh;
+  top: 100px;
+}
+
+.username {
+  background: rgba(255, 255, 255, 0.623);
+  font-size: 20px;
+  border-radius: 20px;
+  height: 25px;
+  padding: 5px;
+}
+
+.email {
+  background: rgba(255, 255, 255, 0.623);
+  font-size: 20px;
+  border-radius: 20px;
+  height: 25px;
+  padding: 5px;
+}
+
+.profile-pic {
+  background: rgba(255, 255, 255, 0.623);
+  font-size: 20px;
+  border-radius: 20px;
+  height: 38px;
+  padding: 5px;
+}
+
+.other-container {
+  // border: 1px solid hotpink;
+  height: 45vh;
+  width: 75vw;
+  position: absolute;
+  bottom: 260px;
+}
+
+
+.account-background {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
 }
