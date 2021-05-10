@@ -1,9 +1,9 @@
 import React from 'react'
 
 const ExploreResultsDisplay = (props) => {
-    console.log(props.places)
+    // console.log(props)
     return(
-        <div>Results Display</div>
+        <div>{props.places.name}</div>
     )
 }
 export default ExploreResultsDisplay;
