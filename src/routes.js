@@ -6,6 +6,7 @@ import BucketList from './Components/BucketList/BucketList';
 import AllTrips from './Components/AllTrips/AllTrips';
 import SearchPage from './Components/SearchPage/SearchPage';
 import SingleTrip from './Components/SingleTrip/SingleTrip';
+import ExploreResults from './Components/HomeView/Explore/ExploreResults';
 
 export default (
   <Switch>
@@ -15,5 +16,6 @@ export default (
     <Route path="/all-trips/:id" component={AllTrips} />
     <Route path="/search-page" component={SearchPage} />
     <Route path="/single-trip/:id" component={SingleTrip} />
+    <Route path="/explore-results/:name" component={ExploreResults} />
   </Switch>
 )

@@ -3,14 +3,16 @@ import {Link} from 'react-router-dom';
 import './IndividualActivity.scss';
 
 const IndividualActivity = (props) => {
+  
+  let activity = props.activity;
 
   return(
     <div className='mapped-activity'>
-        <Link to='/search-page'>
+        <Link to={`/explore-results/${activity.thing}`} params={{activity:'Hello'}}>
           <div className='nameHome'>
-            <div className='activity-name'>{props.activity.thing}</div>
+            <div className='activity-name'>{activity.thing}</div>
           </div>
-          <img className='mapped-activity-image' src={props.activity.url} alt={props.activity.thing} />
+          <img className='mapped-activity-image' src={activity.url} alt={activity.thing} />
         </Link>
     </div>
   )
