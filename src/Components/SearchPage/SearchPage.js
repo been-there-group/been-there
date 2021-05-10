@@ -546,11 +546,11 @@ const SearchPage = (props) => {
 
 
           {results.sort((a, b) => {
-      if (b.rating === undefined){
-        b.rating = 0
-      }
-      return b.rating - a.rating
-    }).map((places, index) => {
+            if (b.rating === undefined){
+              b.rating = 0
+            }
+            return b.rating - a.rating
+          }).map((places, index) => {
             return (
               <div>
                 <IndividualPlaces key={index} places={places} list={list}/>

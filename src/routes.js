@@ -6,7 +6,7 @@ import BucketList from './Components/BucketList/BucketList';
 import AllTrips from './Components/AllTrips/AllTrips';
 import SearchPage from './Components/SearchPage/SearchPage';
 import SingleTrip from './Components/SingleTrip/SingleTrip';
-import ExploreResults from './Components/HomeView/Explore/ExploreResults';
+import ExploreResults from './Components/HomeView/Explore/ExploreResults/ExploreResults';
 
 export default (
   <Switch>
