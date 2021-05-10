@@ -44,9 +44,9 @@ const SearchPage = (props) => {
   const [spaBtn, setSpaBtn] = useState(false);
   const [aquariumBtn, setAquariumBtn] = useState(false);
   const [zooBtn, setZooBtn] = useState(false);
-  const [museumBtn, setMuseumBtn] = useState(false); 
+  const [museumBtn, setMuseumBtn] = useState(false);
 
-  //state of loading animation 
+  //state of loading animation
   const [loading, setLoading] = useState(true);
 
 
@@ -553,7 +553,7 @@ const SearchPage = (props) => {
 
         <div className="mapped-things-container">
           <header className='check-out-these-places'>Check Out These Places!</header>
-          {loading 
+          {loading
           ? <div className="loading-animation">
             <img className="airplane" alt="" src={loadingAirplane}/>
             <p>Getting You There...</p>
