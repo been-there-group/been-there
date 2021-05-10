@@ -4,6 +4,7 @@ import axios from 'axios';
 import './SingleTrip.scss';
 import Nav from '../Nav/Nav';
 import SingleTripDisplay from '../SingleTrip/SingleTripDisplay';
+import DatePicker from 'react-datepicker';
 
 const SingleTrip = (props) => {
 
@@ -47,7 +48,7 @@ const SingleTrip = (props) => {
             <Nav />
             <div className="single-trip-body">
 
-            <p>calendar, react date picker</p>
+            <DatePicker />
            
             <header>{itineraryName}</header>
 
