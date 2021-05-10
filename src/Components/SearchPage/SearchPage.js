@@ -8,6 +8,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { ReactReduxContext } from "react-redux";
 import IndividualPlaces from "./IndividualPlaces";
 import Nav from "../Nav/Nav";
+import loadingAirplane from '../../assets/loadingAirplane.png'
 import "./SearchPage.scss";
 
 const SearchPage = (props) => {
@@ -43,7 +44,11 @@ const SearchPage = (props) => {
   const [spaBtn, setSpaBtn] = useState(false);
   const [aquariumBtn, setAquariumBtn] = useState(false);
   const [zooBtn, setZooBtn] = useState(false);
-  const [museumBtn, setMuseumBtn] = useState(false);
+  const [museumBtn, setMuseumBtn] = useState(false); 
+
+  //state of loading animation 
+  const [loading, setLoading] = useState(true);
+
 
   Geocode.setApiKey(key);
   Geocode.setLanguage("en");
@@ -312,6 +317,7 @@ const SearchPage = (props) => {
       if(!artBtn && !museumBtn && !amusementBtn && !restaurantBtn && !barBtn && !casinoBtn && !spaBtn && !aquariumBtn && !zooBtn){
         console.log(spread)
         setResults(spread)
+        setLoading(false)
       }
     })
     .catch(err => console.log(err))
@@ -445,6 +451,10 @@ const SearchPage = (props) => {
 
       <Nav />
       <div className="search-page">
+      {/* <div className="loading-animation">
+        <img className="airplane" alt="" src={loadingAirplane}/>
+        <p>Getting You There...</p>
+      </div> */}
         <section className='map-container'>
 
         <div className="google-places-autocomplete">
@@ -543,6 +553,12 @@ const SearchPage = (props) => {
 
         <div className="mapped-things-container">
           <header className='check-out-these-places'>Check Out These Places!</header>
+          {loading 
+          ? <div className="loading-animation">
+            <img className="airplane" alt="" src={loadingAirplane}/>
+            <p>Getting You There...</p>
+            </div>
+        : null}
 
 
           {results.sort((a, b) => {

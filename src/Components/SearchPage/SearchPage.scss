@@ -214,3 +214,36 @@
      position: relative;
      top: 2vh;
  }
+
+ // LOADING ANIMATION //
+.loading-animation {
+    position: fixed;
+    top: 25px;
+    width: 45vw;
+    height: 100vh;
+    // background: lightpink;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.airplane {
+    height: 200px;
+    animation: airplane 1s ease infinite alternate;
+}
+.loading-animation p {
+    position: relative;
+    top: 30%;
+    right: 300px;
+    transform: translateY(-75%);
+    // color: white;
+    font-size: 20px;
+}
+
+@keyframes airplane {
+    from{
+        transform: translateY(100px);
+    }
+    to{
+        tranform: translateY(300px);
+    }
+}
