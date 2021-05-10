@@ -423,104 +423,8 @@ const SearchPage = (props) => {
         <Marker position={[lat, lng]}>
           <Popup>This is {address}</Popup>
         </Marker>
-        {amusementBtn
-          ? amusementParks.map((e, i) => {
-              return (
-                <Marker
-                  position={[e.geometry.location.lat, e.geometry.location.lng]}
-                  key={i}
-                >
-                  <Popup>{e.name}</Popup>
-                </Marker>
-              );
-            })
-          : null}
-        {artBtn
-          ? arts.map((e, i) => {
-              return (
-                <Marker
-                  position={[e.geometry.location.lat, e.geometry.location.lng]}
-                  key={i}
-                >
-                  <Popup>{e.name}</Popup>
-                </Marker>
-              );
-            })
-          : null}
-        {museumBtn
-          ? museums.map((e, i) => {
-              return (
-                <Marker
-                  position={[e.geometry.location.lat, e.geometry.location.lng]}
-                  key={i}
-                >
-                  <Popup>{e.name}</Popup>
-                </Marker>
-              );
-            })
-          : null}
-          {restaurantBtn
-          ? restaurants.map((e, i) => {
-              return (
-                <Marker
-                  position={[e.geometry.location.lat, e.geometry.location.lng]}
-                  key={i}
-                >
-                  <Popup>{e.name}</Popup>
-                </Marker>
-              );
-            })
-          : null}
-          {barBtn
-          ? bars.map((e, i) => {
-              return (
-                <Marker
-                  position={[e.geometry.location.lat, e.geometry.location.lng]}
-                  key={i}
-                >
-                  <Popup>{e.name}</Popup>
-                </Marker>
-              );
-            })
-          : null}
-          {casinoBtn
-          ? casinos.map((e, i) => {
-              return (
-                <Marker
-                  position={[e.geometry.location.lat, e.geometry.location.lng]}
-                  key={i}
-                >
-                  <Popup>{e.name}</Popup>
-                </Marker>
-              );
-            })
-          : null}
-          {aquariumBtn
-          ? aquariums.map((e, i) => {
-              return (
-                <Marker
-                  position={[e.geometry.location.lat, e.geometry.location.lng]}
-                  key={i}
-                >
-                  <Popup>{e.name}</Popup>
-                </Marker>
-              );
-            })
-          : null}
-          {zooBtn
-          ? zoos.map((e, i) => {
-              return (
-                <Marker
-                  position={[e.geometry.location.lat, e.geometry.location.lng]}
-                  key={i}
-                >
-                  <Popup>{e.name}</Popup>
-                </Marker>
-              );
-            })
-          : null}
-          {spaBtn
-          ? spas.map((e, i) => {
+        {results
+          ? results.map((e, i) => {
               return (
                 <Marker
                   position={[e.geometry.location.lat, e.geometry.location.lng]}
@@ -560,7 +464,7 @@ const SearchPage = (props) => {
             onChange={() => setAmusementBtn(!amusementBtn)}
             name="bike"
           />
-          <label for="amusementBtn">amusementBtn</label>
+          <label for="amusementBtn">Amusement Parks</label>
 
           <input
             type="checkbox"
@@ -569,7 +473,7 @@ const SearchPage = (props) => {
             onChange={() => setArtBtn(!artBtn)}
             name="bike"
           />
-          <label for="artBtn">artBtn</label>
+          <label for="artBtn">Art Galleries</label>
 
           <input
             type="checkbox"
@@ -578,7 +482,7 @@ const SearchPage = (props) => {
             onChange={() => setMuseumBtn(!museumBtn)}
             name="bike"
           />
-          <label for="museumBtn">museumBtn</label>
+          <label for="museumBtn">Museums</label>
 
           <input
             type="checkbox"
@@ -587,7 +491,7 @@ const SearchPage = (props) => {
             onChange={() => setRestaurantBtn(!restaurantBtn)}
             name="bike"
           />
-          <label for="restaurantBtn">restaurantBtn</label>
+          <label for="restaurantBtn">Restaurants</label>
 
           <input
             type="checkbox"
@@ -596,7 +500,7 @@ const SearchPage = (props) => {
             onChange={() => setBarBtn(!barBtn)}
             name="bike"
           />
-          <label for="barBtn">barBtn</label>
+          <label for="barBtn">Bars</label>
 
           <input
             type="checkbox"
@@ -605,7 +509,7 @@ const SearchPage = (props) => {
             onChange={() => setCasinoBtn(!casinoBtn)}
             name="bike"
           />
-          <label for="casinoBtn">casinoBtn</label>
+          <label for="casinoBtn">Casinos</label>
 
           <input
             type="checkbox"
@@ -614,7 +518,7 @@ const SearchPage = (props) => {
             onChange={() => setZooBtn(!zooBtn)}
             name="bike"
           />
-          <label for="zooBtn">zooBtn</label>
+          <label for="zooBtn">Zoos</label>
 
           <input
             type="checkbox"
@@ -623,7 +527,7 @@ const SearchPage = (props) => {
             onChange={() => setAquariumBtn(!aquariumBtn)}
             name="bike"
           />
-          <label for="aquariumBtn">aquariumBtn</label>
+          <label for="aquariumBtn">Aquaruims</label>
 
           <input
             type="checkbox"
@@ -632,7 +536,7 @@ const SearchPage = (props) => {
             onChange={() => setSpaBtn(!spaBtn)}
             name="bike"
           />
-          <label for="spaBtn">spaBtn</label>
+          <label for="spaBtn">Spas</label>
         </form>
         {isLoaded ? renderMap() : <div></div>}
         </section>
