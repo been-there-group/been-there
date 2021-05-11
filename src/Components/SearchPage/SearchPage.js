@@ -474,88 +474,109 @@ const SearchPage = (props) => {
           <button className='search-button' onClick={() => handleClick()}>Search</button>
         </div>
         <form className="checkboxes">
-          <input
+          <div className='checkboxes-input'>
+            <input
             type="checkbox"
             value="amusementBtn"
             id="amusementBtn"
             onChange={() => setAmusementBtn(!amusementBtn)}
             name="bike"
-          />
-          <label for="amusementBtn">Amusement Parks</label>
+            />
+            <label for="amusementBtn">Amusement Parks</label>
+          </div>
+          
+          <div className='checkboxes-input'>
+            <input
+              type="checkbox"
+              value="artBtn"
+              id="artBtn"
+              onChange={() => setArtBtn(!artBtn)}
+              name="bike"
+            />
+            <label for="artBtn">Art Galleries</label>
+          </div>
+          
+          <div className='checkboxes-input'>
+            <input
+              type="checkbox"
+              value="museumBtn"
+              id="museumBtn"
+              onChange={() => setMuseumBtn(!museumBtn)}
+              name="bike"
+            />
+            <label for="museumBtn">Museums</label>
+          </div>
 
-          <input
-            type="checkbox"
-            value="artBtn"
-            id="artBtn"
-            onChange={() => setArtBtn(!artBtn)}
-            name="bike"
-          />
-          <label for="artBtn">Art Galleries</label>
+          <div className='checkboxes-input'>
+            <input
+              
+              type="checkbox"
+              value="restaurantBtn"
+              id="restaurantBtn"
+              onChange={() => setRestaurantBtn(!restaurantBtn)}
+              name="bike"
+            />
+            <label for="restaurantBtn">Restaurants</label>
+          </div>
 
-          <input
-            type="checkbox"
-            value="museumBtn"
-            id="museumBtn"
-            onChange={() => setMuseumBtn(!museumBtn)}
-            name="bike"
-          />
-          <label for="museumBtn">Museums</label>
+          <div className='checkboxes-input'>
+            <input
+              type="checkbox"
+              value="barBtn"
+              id="barBtn"
+              onChange={() => setBarBtn(!barBtn)}
+              name="bike"
+            />
+            <label for="barBtn">Bars</label>
+          </div>
 
-          <input
-            type="checkbox"
-            value="restaurantBtn"
-            id="restaurantBtn"
-            onChange={() => setRestaurantBtn(!restaurantBtn)}
-            name="bike"
-          />
-          <label for="restaurantBtn">Restaurants</label>
+          <div className='checkboxes-input'>
+            <input
+              type="checkbox"
+              value="casinoBtn"
+              id="casinoBtn"
+              onChange={() => setCasinoBtn(!casinoBtn)}
+              name="bike"
+            />
+            <label for="casinoBtn">Casinos</label>
+          </div>
 
-          <input
-            type="checkbox"
-            value="barBtn"
-            id="barBtn"
-            onChange={() => setBarBtn(!barBtn)}
-            name="bike"
-          />
-          <label for="barBtn">Bars</label>
+          <div className='checkboxes-input'>
+            <input
+              type="checkbox"
+              value="zooBtn"
+              id="zooBtn"
+              onChange={() => setZooBtn(!zooBtn)}
+              name="bike"
+            />
+            <label for="zooBtn">Zoos</label>
+          </div>
 
-          <input
-            type="checkbox"
-            value="casinoBtn"
-            id="casinoBtn"
-            onChange={() => setCasinoBtn(!casinoBtn)}
-            name="bike"
-          />
-          <label for="casinoBtn">Casinos</label>
+          <div className='checkboxes-input'>
+            <input
+              type="checkbox"
+              value="aquariumBtn"
+              id="aquariumBtn"
+              onChange={() => setAquariumBtn(!aquariumBtn)}
+              name="bike"
+            />
+            <label for="aquariumBtn">Aquaruims</label>
+          </div>
 
-          <input
-            type="checkbox"
-            value="zooBtn"
-            id="zooBtn"
-            onChange={() => setZooBtn(!zooBtn)}
-            name="bike"
-          />
-          <label for="zooBtn">Zoos</label>
-
-          <input
-            type="checkbox"
-            value="aquariumBtn"
-            id="aquariumBtn"
-            onChange={() => setAquariumBtn(!aquariumBtn)}
-            name="bike"
-          />
-          <label for="aquariumBtn">Aquaruims</label>
-
-          <input
-            type="checkbox"
-            value="spaBtn"
-            id="spaBtn"
-            onChange={() => setSpaBtn(!spaBtn)}
-            name="bike"
-          />
-          <label for="spaBtn">Spas</label>
+          <div className='checkboxes-input'>
+            <input
+              type="checkbox"
+              value="spaBtn"
+              id="spaBtn"
+              onChange={() => setSpaBtn(!spaBtn)}
+              name="bike"
+            />
+            <label for="spaBtn">Spas</label>
+          </div>
         </form>
+
         {isLoaded ? renderMap() : <div></div>}
+
         </section>
 
         <div className="mapped-things-container">

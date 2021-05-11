@@ -8,7 +8,7 @@ const places = [
     {place: 'Sydney', url: 'https://images.unsplash.com/photo-1506374322094-6021fc3926f1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8c3lkbmV5fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60'},
     {place: 'Barcelona', url: 'https://images.unsplash.com/photo-1511527661048-7fe73d85e9a4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmFyY2Vsb25hfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60'},
     {place: 'Berlin', url: 'https://images.unsplash.com/photo-1560969184-10fe8719e047?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmVybGlufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60'},
-    {place: 'Rio', url: 'https://images.unsplash.com/photo-1548533701-a1e8bd19f9ce?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=645&q=80'},
+    {place: 'Rio De Janeiro', url: 'https://images.unsplash.com/photo-1548533701-a1e8bd19f9ce?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=645&q=80'},
     {place: 'Florence', url: 'https://images.unsplash.com/photo-1616444416144-700a2c4ee8d3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fGZsb3JlbmNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60'},
     {place: 'Copenhagen', url: 'https://images.unsplash.com/photo-1561113500-8f4ad4f80a93?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGNvcGVuaGFnZW58ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60 '},
     {place: 'Prague', url: 'https://images.unsplash.com/photo-1503410781609-75b1d892dd28?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJhZ3VlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60'},
