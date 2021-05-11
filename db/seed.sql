@@ -39,7 +39,7 @@
 
 -- CREATE TABLE itinerary_items (
 -- itinerary_item_id SERIAL PRIMARY KEY,
--- day VARCHAR(10) NOT NULL,
+-- day DATE,
 -- place_id TEXT NOT NULL,
 -- itinerary_id INTEGER references itinerary(itinerary_id) NOT NULL,
 -- duration numeric(3, 1)

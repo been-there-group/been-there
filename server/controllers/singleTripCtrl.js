@@ -17,6 +17,9 @@ module.exports = {
         const db = await req.app.get('db');
         const {itineraryItemId} = req.params;
         const {day, duration} = req.body;
+        console.log('itineraryItemId=', itineraryItemId)
+        console.log('day=', day);
+        console.log('duration=', duration);
         db.itinerary.update_itinerary_items(day, duration, itineraryItemId)
         .then(items => res.status(200).send(items))
     },

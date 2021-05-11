@@ -64,9 +64,8 @@ const AllTrips = () => {
         <div>
             <Nav />
             <div className='all-trips-body'>
-            <header>My Trips</header>
+                <header>My Trips</header>
                 <img className="all-trips-background" src={allTripsBackground} />
-               
             </div>
 
             <div className="all-trips-container">
