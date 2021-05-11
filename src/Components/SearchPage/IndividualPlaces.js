@@ -89,14 +89,14 @@ const IndividualPlaces = (props) => {
 
   return(
     <div className='single-result'>
-      {modal === 'show' ?
+      {/* {modal === 'show' ?
         <div>
           <div className='overlay'></div>
-          {/* <div className='overlay-2'></div> */}
+          <div className='overlay-2'></div> 
           <Modal places={props.places} list={props.list}/>
           <button className='modal-button' className='close-modal' onClick={() => toggleModal()}>X</button>
         </div>
-      : null}
+      : null} */}
       
       <div className="divider"></div>
 
@@ -110,13 +110,13 @@ const IndividualPlaces = (props) => {
             <h1 className="rating">Rating: {props.places.rating}</h1>
           </section>
           <section className='button-container'>
-            <button className="modal-button" onClick={() => toggleDropdown()}>+</button> 
-            <button className="modal-button" onClick={() => saveToBucketList()}>♡</button>
+            <button className="modal-button" onClick={() => toggleDropdown()}>Add to a Trip</button> 
+            <button className="modal-button-2" onClick={() => saveToBucketList()}>♡</button>
           </section>
 
           {dropdown === 'show' ?
       <section className='dropdown'>
-        <p className='modal-button-2' onClick={() => toggleNewTrip()}>Create a New Trip +</p>
+        <p className='modal-button' onClick={() => toggleNewTrip()}>Create a New Trip +</p>
         
         {newTrip === 'show' ?
           <section>

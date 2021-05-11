@@ -7,6 +7,7 @@
 .open {
   background-color: white;
   width: 100vw;
+  // height: 150px;
   position: fixed;
   right: 0;
   top: 9.85vh;
@@ -17,23 +18,24 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  border-bottom: solid rgb(46, 46, 46) .5px;
   // box-shadow: 0px 0px 9px -2px white, 0px 0px 9px -2px #000000, 0px 0px 9px -2px #000000, 0px 0px 9px -2px white;
 }
 
-.open-2{
-  background-color: white;
-  width: 100vw;
-  position: fixed;
-  height: 130px;
-  right: 0;
-  top: 11vh;
-  z-index: 2;
-  text-align: right;
-  animation-name: slide;
-  animation-duration: 1s;
-  box-shadow: 5px 10px 15px 5px #292828;
+// .open-2{
+//   background-color: white;
+//   width: 100vw;
+//   position: fixed;
+//   height: 130px;
+//   right: 0;
+//   top: 11vh;
+//   z-index: 2;
+//   text-align: right;
+//   animation-name: slide;
+//   animation-duration: 1s;
+//   box-shadow: 0px 0px 9px -2px #000000;
   
-}
+// }
 
 li{
   margin: 15px;
@@ -105,22 +107,25 @@ li{
   margin: 10px;
   color: #e66657;
 }
-
-@media (min-width: 768px) {
-  .open-2 {
-    box-shadow: 5px 10px 10px 5px #292828;
-
-  }
+input:focus, textarea:focus, select:focus{
+  outline: none;
 }
 
+// @media (min-width: 768px) {
+//   .open-2 {
+//     // box-shadow: 5px 10px 10px 5px #292828;
 
-
+//   }
+// }
 
 
 
 @media (min-width: 700px){
   .siteName{
     font-size: 30px;
+  }
+  .open{
+    justify-content: flex-end;
   }
 }
 @media (min-width: 1200px){

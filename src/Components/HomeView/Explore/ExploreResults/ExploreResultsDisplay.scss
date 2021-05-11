@@ -63,22 +63,38 @@
   margin-bottom: 5px;
 }
 .explore-modal-button{
-  position: relative;
+  @include sass.flexCenterRelative(column);
   height: 28px;
   border-radius: 50px;
   background-color: white;
   border: 1px solid grey;
   color: rgb(230, 102, 87);
 }
+.explore-modal-button:hover{
+  background-color: grey;
+  border: 1px solid grey;
+  color: white;
+}
+.explore-modal-button-3:hover{
+  background-color: grey;
+  border: 1px solid grey;
+  color: white;
+}
+.explore-modal-button-2:hover{
+  background-color: grey;
+  border: 1px solid grey;
+  color: white;
+}
 .explore-modal-button-2{
-  position: relative;
-  height: 28px;
+  @include sass.flexCenterRelative(column);
+  margin-top: 5px;
+  padding: 3px;
   border-radius: 50px;
   background-color: white;
   border: 1px solid grey;
 }
 .explore-modal-button-3{
-  position: relative;
+  @include sass.flexCenterRelative(column);
   height: 28px;
   border-radius: 50px;
   background-color: rgb(230, 102, 87);
@@ -89,6 +105,18 @@
   width: 45vw;
   display: flex;
   justify-content: space-around;
+}
+.newTrip{
+  @include sass.flexCenterRelative(row);
+  justify-content: flex-start;
+  align-items: center;
+  margin: 5px;
+  width: 50vw;
+}
+input{
+  height: 25px;
+  border-radius: 20px;
+  border: 1px solid grey;
 }
 
 @media (min-width: 700px){
