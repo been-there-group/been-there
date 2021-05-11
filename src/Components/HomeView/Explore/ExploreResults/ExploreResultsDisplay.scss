@@ -1,0 +1,142 @@
+@use '../../../../sass';
+
+.explore-results-container{
+  @include sass.flexCenterRelative(column);
+  width: 100vw;
+  text-align: left;
+}
+
+.divider-explore{
+  width: 90vw;
+  height: 1px;
+  background-color: rgb(187, 184, 184);
+  position: relative;
+  // left: 10%;
+  margin-bottom: 2vh;
+  margin-top: 2vh;
+}
+
+.explore-single-result-bottom{
+  @include sass.flexCenterRelative(row);
+  width: 90vw;
+  justify-content: space-between;
+  // align-items: stretch;
+}
+
+.explore-single-result-bottom-left{
+  // border: solid black 1px;
+  @include sass.flexCenterRelative(column);
+  width: 45vw;
+  // justify-content: start;
+  align-items: flex-start;
+  // border: solid pink 1px;
+}
+
+.explore-place-image{
+  height: 15vh;
+  width: 15vh;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.explore-name-and-rating{
+  @include sass.flexCenterRelative(column);
+  justify-content: start;
+  // border: solid black 1px;
+  align-items: flex-start;
+  height: 15vh;
+}
+.explore-place-name{
+  text-align: left;
+  font-size: 18.5px;
+  margin-bottom: 5px;
+}
+.explore-place-type{
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.explore-place-status{
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.explore-rating{
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.explore-modal-button{
+  position: relative;
+  height: 28px;
+  border-radius: 50px;
+  background-color: white;
+  border: 1px solid grey;
+  color: rgb(230, 102, 87);
+}
+.explore-modal-button-2{
+  position: relative;
+  height: 28px;
+  border-radius: 50px;
+  background-color: white;
+  border: 1px solid grey;
+}
+.explore-modal-button-3{
+  position: relative;
+  height: 28px;
+  border-radius: 50px;
+  background-color: rgb(230, 102, 87);
+  border: 1px solid grey;
+  color: white;
+}
+.explore-button-container{
+  width: 45vw;
+  display: flex;
+  justify-content: space-around;
+}
+
+@media (min-width: 700px){
+  .explore-single-result-bottom{
+    width: 90vw;
+  }
+  .explore-place-name{
+    font-size: 25px;
+    margin-bottom: 7px;
+  }
+  .explore-name-and-rating{
+    height: 17vh;
+  }
+  .explore-place-image{
+    height: 17vh;
+    width: 17vh;
+  }
+  .explore-button-container{
+    width: 20vw;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+@media (min-width: 1200px){
+  .explore-single-result-bottom{
+    width: 92vw;
+  }
+  .explore-place-name{
+    font-size: 25px;
+    margin-bottom: 8px;
+  }
+  .explore-name-and-rating{
+    height: 17vh;
+  }
+  .explore-place-type{
+    font-size: 18px;
+  }
+  .explore-place-status{
+    font-size: 18px;
+  }
+  .explore-rating{
+    font-size: 18px;
+  }
+  .explore-button-container{
+    width: 10vw;
+  }
+  .explore-place-image{
+    height: 20vh;
+    width: 20vh;
+  }
+}

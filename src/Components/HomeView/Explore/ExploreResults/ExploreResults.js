@@ -34,7 +34,7 @@ const ExploreResults = (props) => {
         <div>
           <Nav />
           <div className='mappedExplore'>
-            <header>These are mapped explore</header>
+            <header className='explore-header'>Explore Places Near You!</header>
             {places.map((places, index) => {
               return (
                 <div>
