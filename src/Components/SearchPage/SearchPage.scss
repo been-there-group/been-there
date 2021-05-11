@@ -6,33 +6,33 @@
     flex-direction: row;
     top: 10vh;
     height: auto;
-    // border: 5px solid darkcyan;
     overflow: hidden;
-    // filter: brightness(50%)
+
 }
 
+//this is the literal interactive map
 #mapId {
     width: 50vw;
     height: 350px;
     position: fixed;
     top: 25vh;
-    // border: 3px solid orange;
     z-index: 1;
 }
 
+//this is nothing????
 .map-container{
-    // border: 3px solid mediumseagreen;
+    border: 3px solid red;
     width: 60vw;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     top: 3vh;
-    // filter: brightness(50%)
 }
 
+//this is the search input?
 .google-places-autocomplete{
-    // width: 100vw;
+
     position: fixed;
     z-index: 1;
     top: 13vh;
@@ -41,6 +41,12 @@
 .checkboxes{
     position: fixed;
     top: 20vh;
+}
+
+.check-out-these-places {
+        font-size: 40px;
+        position: relative;
+        top: 2vh;
 }
 
 //IndividualPlace.js
@@ -62,16 +68,16 @@
     margin-bottom: 1%;
 }
 
-// .name-and-rating{
-//     // border: 1px solid fuchsia;
-// }
-
 .place-image{
-    // border: 1px solid teal;
     height: 200px;
     width: 300px;
     object-fit: cover;
     border-radius: 10px;
+}
+
+.no-image{
+    height: 200px;
+    width: 300px;
 }
 
 .divider{
@@ -84,47 +90,33 @@
     margin-top: 2%;
 }
 
+//what is a single result? 
 .single-result{
-    // border: 1px solid rgb(66, 63, 64);
-    // display: flex;
     height: auto;
     margin-top: 7%;
     margin-bottom: 7%;
 }
 
 .single-result-bottom{
-    // border: 3px solid mediumseagreen;
     display: flex;
-    // flex-direction: row;
     justify-content: flex-end;
-    // align-items: flex-end;
 }
 
 .single-result-bottom-left{
-    // border: 2px solid chartreuse;
-    // height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+//// end of single result stuff
 
-.button-container{
-    // border: 2px solid orangered;
-    display: flex;
-    justify-content: space-evenly;
-}
 
+// modal stuff
 .dropdown{
-    // border: 1px solid salmon;
     margin-top: 10%;
     margin-right: 3%;
     padding: 3%;
 }
-
-// .user-trips{
-//     // border: 1px solid salmon;
-// }
 
 .itinerary-name:hover{
     cursor: pointer;
@@ -155,9 +147,14 @@
     z-index: 2;
     top: -10vh;
     border: 5px solid hotpink;
-
+    
 }
 
+.modal-body {
+    @include sass.flexCenterRelative(column);
+    border: 1px solid rgb(230, 101, 87);
+    
+}
 
 //containers
 .mapped-things-container {
@@ -166,14 +163,9 @@
     padding-right: 3%;
 }
 
-.modal-body {
-    @include sass.flexCenterRelative(column);
-    border: 1px solid rgb(230, 101, 87);
-
-}
-.no-image{
-    height: 150px;
-    width: 150px;
+.button-container{
+    display: flex;
+    justify-content: space-evenly;
 }
 
 // //various buttons
@@ -205,15 +197,8 @@
      @extend .modal-button;
      bottom: 0px;
      height: 20px;
-    //  right: 35vw;
-
  }
 
- .check-out-these-places{
-     font-size: 40px;
-     position: relative;
-     top: 2vh;
- }
 
  // LOADING ANIMATION //
 .loading-animation {
@@ -221,7 +206,6 @@
     top: 25px;
     width: 45vw;
     height: 100vh;
-    // background: lightpink;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -235,7 +219,6 @@
     top: 30%;
     right: 300px;
     transform: translateY(-75%);
-    // color: white;
     font-size: 20px;
 }
 
@@ -247,3 +230,31 @@
         tranform: translateY(300px);
     }
 }
+
+//media queries
+// @media (max-width: 376px) {
+//     .search-page {
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: center;
+//         align-items: center;
+//         width: 100vw;
+
+//     }
+
+//     #mapId{
+//         height: 150px;
+//         width: 200px;
+//     }
+//     .check-out-these-places {
+//         top: 35vh;
+//         width: 50vw;
+//     }
+//     .individual-places-container {
+//         // top: 60vh;
+//         width: 75vw;
+//     }
+//     .single-result {
+//         top: 60vh;
+//     }
+// }
