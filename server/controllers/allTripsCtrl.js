@@ -23,6 +23,20 @@ module.exports = {
         db.itinerary.update_itinerary(itinerary_name, itineraryId, user_id)
         .then(itineraries => res.status(200).send(itineraries))
     },
+    editItineraryStartDate: async (req, res) => {
+        const db = await req.app.get('db');
+        const {user_id} = req.session.user;
+        const {itinerary_id, start_date} = req.body;
+        db.itinerary.update_itinerary_start_date(start_date, itinerary_id, user_id)
+        .then(itineraries => res.status(200).send(itineraries))
+    },
+    editItineraryEndDate: async (req, res) => {
+        const db = await req.app.get('db');
+        const {user_id} = req.session.user;
+        const {itinerary_id, end_date} = req.body;
+        db.itinerary.update_itinerary_end_date(end_date, itinerary_id, user_id)
+        .then(itineraries => res.status(200).send(itineraries))
+    },
     deleteItinerary: async (req, res) => {
         const db = await req.app.get('db');
         const {user_id} = req.session.user;

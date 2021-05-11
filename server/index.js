@@ -77,6 +77,8 @@ app.put('/api/edit', authCtrl.edit);
 app.get('/api/alltrips', allTripsCtrl.getItineraries);
 app.post('/api/alltrips', allTripsCtrl.addItinerary);
 app.put('/api/alltrips/:itineraryId', allTripsCtrl.editItinerary);
+app.put('/api/editstart', allTripsCtrl.editItineraryStartDate);
+app.put('/api/alltrips/end', allTripsCtrl.editItineraryEndDate);
 app.delete('/api/alltrips/:itineraryId', allTripsCtrl.deleteItinerary);
 
 //Single Trip (Itinerary Items) Endpoints
