@@ -141,8 +141,8 @@ const Nav = (props) => {
                 registerMenu === 'registerMenuOpen' ? 'open-2' : 'closed'}></div>
 
             <ul className={authMenu === 'authClosed' ? 'closed' : 'open'}>
-                <li onClick={registerView}>Sign Up</li>
-                <li onClick={loginView}>Login</li>
+                <button className="modal-button" onClick={registerView}>Sign Up</button>
+                <button className="modal-button" onClick={loginView}>Login</button>
             </ul>
 
             <div className={loginMenu === 'loginClosed' ? 'closed' : 'open'}>
@@ -165,9 +165,9 @@ const Nav = (props) => {
             </div>
 
             <ul className={menu === 'closed' ? 'closed' : 'open'}>
-                <Link to={`/all-trips/${user_id}`} ><li>Your Trips</li></Link>
-                <Link to={`/bucketlist/${user_id}`}><li>Bucket List</li></Link>
-                <Link to={`/account/${user_id}`}><li>Your Account</li></Link> 
+                <li><Link to={`/all-trips/${user_id}`} className="nav-link">Your Trips</Link></li>
+                <li><Link to={`/bucketlist/${user_id}`} className="nav-link" >Bucket List</Link></li>
+                <li><Link to={`/account/${user_id}`} className="nav-link" >Your Account</Link></li>
                 <li onClick={logout}>Logout</li>
             </ul>
         </div>
