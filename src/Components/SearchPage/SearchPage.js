@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import axios from "axios";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet"
 import { ReactReduxContext } from "react-redux";
 import IndividualPlaces from "./IndividualPlaces";
 import Nav from "../Nav/Nav";
@@ -59,7 +60,7 @@ const SearchPage = (props) => {
   const getRestaurants = () => {
    return axios
       .get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=restaurants&key=AIzaSyA-1QMLloTqCeRaeN2S3zliV317TzCn634`
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=restaurants&key=${key}`
       )
       .then((res) => {
         let first = [...res.data.results];
@@ -83,7 +84,7 @@ const SearchPage = (props) => {
   const getBars = () => {
    return axios
       .get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=bar&key=AIzaSyA-1QMLloTqCeRaeN2S3zliV317TzCn634`
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=bar&key=${key}`
       )
       .then((res) => {
         let first = [...res.data.results];
@@ -107,7 +108,7 @@ const SearchPage = (props) => {
   const getCasinos = () => {
    return axios
       .get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=casino&key=AIzaSyA-1QMLloTqCeRaeN2S3zliV317TzCn634`
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=casino&key=${key}`
       )
       .then((res) => {
         let first = [...res.data.results];
@@ -216,7 +217,7 @@ const SearchPage = (props) => {
    return new Promise((resolve, reject) => {
      axios
      .get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=spa&key=AIzaSyA-1QMLloTqCeRaeN2S3zliV317TzCn634`
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=spa&key=${key}`
         )
       .then((res) => {
         let first = [...res.data.results];
@@ -244,7 +245,7 @@ const SearchPage = (props) => {
    return new Promise((resolve, reject) => {
      axios
      .get(
-       `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=aquarium&key=AIzaSyA-1QMLloTqCeRaeN2S3zliV317TzCn634`
+       `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=aquarium&key=${key}`
        )
        .then((res) => {
          let first = [...res.data.results];
@@ -272,7 +273,7 @@ const SearchPage = (props) => {
     return new Promise((resolve, reject) => {
       axios
       .get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=zoo&key=AIzaSyA-1QMLloTqCeRaeN2S3zliV317TzCn634`
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=zoo&key=${key}`
         )
       .then((res) => {
         let first = [...res.data.results];
@@ -336,13 +337,13 @@ const SearchPage = (props) => {
   //     setAddress(value.label);
   //   }
   // }, [value]);
-  
+
   // console.log(address)
 
   useEffect(() => {
     setAddress(props.match.params.value)
   }, [props.match.params.value])
-  
+
 
   useEffect(() => {
     // setAddress(value.label)
@@ -405,19 +406,17 @@ const SearchPage = (props) => {
     }
   }, [artBtn, museumBtn, amusementBtn, restaurantBtn, barBtn, casinoBtn, spaBtn, aquariumBtn, zooBtn]);
 
-  // useEffect(() => {
-  //   results.sort((a, b) => {
-  //     if (b.rating === undefined){
-  //       b.rating = 0
-  //     }
-  //     return b.rating - a.rating
-  //   })
-  //   console.log(results)
-  //   setList([...results])
-  // }, [results])
-
-  // mapList();
-
+// const getIcon = (e) => {
+//   for (let j = 0; j < e.types; j++){
+//     if(e.types[j] = 'restaurant'){
+//       return restaurantIcon
+//     } else if(e.types[j] = 'zoo'){
+//       return zooIcon
+//     } else{
+//       return
+//     }
+//   }
+// }
 
 
   const renderMap = () => {
@@ -441,6 +440,9 @@ const SearchPage = (props) => {
                 <Marker
                   position={[e.geometry.location.lat, e.geometry.location.lng]}
                   key={i}
+                  // icon ={()=>{
+                  //   getIcon(e)
+                  // }}
                 >
                   <Popup>{e.name}</Popup>
                 </Marker>
