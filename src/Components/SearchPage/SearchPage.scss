@@ -31,10 +31,10 @@
 
 //this is the search input
 .google-places-autocomplete{
-
     position: fixed;
     z-index: 1;
     top: 13vh;
+    display: flex;
 }
 
 .checkboxes{
@@ -198,6 +198,14 @@
      height: 20px;
  }
 
+ .search-button {
+    border: none;
+    height: 33px;
+    border-radius: 50%;
+    background: rgb(230, 102, 87);
+    color: white;
+ }
+
 
  // LOADING ANIMATION //
 .loading-animation {
@@ -216,7 +224,7 @@
 .loading-animation p {
     position: relative;
     top: 30%;
-    right: 300px;
+    right: 350px;
     transform: translateY(-75%);
     font-size: 20px;
 }

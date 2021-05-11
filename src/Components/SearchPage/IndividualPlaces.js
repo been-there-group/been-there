@@ -17,13 +17,13 @@ const IndividualPlaces = (props) => {
   const user = useSelector((state) => state.userReducer);
   const {user_id} = user;
 
-  console.log("props=", props)
+  // console.log("props=", props)
 
   useEffect(() => {
     if(user_id){
         axios.get('/api/alltrips')
         .then(res => {
-            console.log("res.data", res.data);
+            // console.log("res.data", res.data);
             setTrips(res.data)
         })
     }

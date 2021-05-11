@@ -307,7 +307,7 @@ const SearchPage = (props) => {
      getMuseum()
     ]
     ).then((res)=> {
-      console.log(res)
+      // console.log(res)
       let spread = []
       for (let i = 0; i < res.length; i++){
         if(res[i].length > 0){
@@ -315,7 +315,7 @@ const SearchPage = (props) => {
         }
       }
       if(!artBtn && !museumBtn && !amusementBtn && !restaurantBtn && !barBtn && !casinoBtn && !spaBtn && !aquariumBtn && !zooBtn){
-        console.log(spread)
+        // console.log(spread)
         setResults(spread)
         setLoading(false)
       }
@@ -341,7 +341,7 @@ const SearchPage = (props) => {
 
   useEffect(() => {
     setAddress(props.match.params.value)
-  }, [])
+  }, [props.match.params.value])
   
 
   useEffect(() => {
@@ -372,7 +372,6 @@ const SearchPage = (props) => {
 
   useEffect(() => {
     let arr = [];
-    console.log("HIT!")
     if (artBtn){
       arr= [...arr, ...arts]
     }
@@ -434,7 +433,7 @@ const SearchPage = (props) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker position={[lat, lng]}>
-          <Popup>This is {address}</Popup>
+          <Popup>{address}</Popup>
         </Marker>
         {results
           ? results.map((e, i) => {
@@ -452,10 +451,14 @@ const SearchPage = (props) => {
     );
   };
 
+
+  const handleClick = () => {
+    props.history.push({pathname: `/search-page/${value.label}`, state: {address: value}})
+  }
+  console.log(value)
+
   return (
     <div>
-      {console.log(results)}
-
       <Nav />
       <div className="search-page">
         <section className='map-container'>
@@ -468,6 +471,7 @@ const SearchPage = (props) => {
               onChange: setValue,
             }}
           />
+          <button className='search-button' onClick={() => handleClick()}>Search</button>
         </div>
         <form className="checkboxes">
           <input
