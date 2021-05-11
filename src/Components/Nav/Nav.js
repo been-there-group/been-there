@@ -10,7 +10,7 @@ import './Nav.scss';
 
 //add profile pic to redux state so that it will update automatically
 const Nav = (props) => {
-    console.log(props)
+    // console.log(props)
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
@@ -28,8 +28,9 @@ const Nav = (props) => {
         axios.get(`/api/get-me`)
         .then((res) => {
           dispatch(updateUser(res.data))
-          console.log(res.data)
+        //   console.log(res.data)
         })
+        .catch(err => console.log(err));
       }, [])
 
     function login(){
@@ -37,7 +38,7 @@ const Nav = (props) => {
         .then(res => {
             const {user_id, username, profile_pic} = res.data;
             //Update redux
-            console.log(props)
+            // console.log(props)
             props.updateUser({username, user_id, profile_pic})
             setLoginMenu('loginClosed')
         })
@@ -51,7 +52,7 @@ const Nav = (props) => {
         const profilePic = `https://robohash.org/${username}.png`;
         axios.post('/api/register', {username, password, email, profilePic})
             .then(res => {
-                console.log('.then')
+                // console.log('.then')
                 const {user_id} = res.data;
                 //Update redux
                 props.updateUser({username, user_id})
@@ -78,7 +79,7 @@ const Nav = (props) => {
     };
     
     function handleClick(){
-        console.log(props);
+        // console.log(props);
         // const {user_id} = false;
         setLoginMenu('loginClosed');
         setRegisterMenu('registerClosed');
@@ -88,7 +89,7 @@ const Nav = (props) => {
             } else {
                 setAuthMenu('authClosed');
             };
-            console.log('clicked!')
+            // console.log('clicked!')
         } else {
             if(menu === 'closed'){
                 setMenu('open');

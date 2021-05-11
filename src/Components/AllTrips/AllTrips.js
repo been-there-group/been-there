@@ -13,6 +13,8 @@ const AllTrips = () => {
     const [editingId, setEditingId] = useState(null);
     const [currentItineraryName, setCurrentItineraryName] = useState('');
     const [itinerary_name, setItineraryName] = useState('');
+    const [newItineraryName, setNewItineraryName] = useState('');
+    const [dropdown, setDropdown] = useState('hide');
 
     const user = useSelector((state) => state.userReducer);
     const {user_id} = user;
@@ -28,8 +30,9 @@ const AllTrips = () => {
                 setTrips(res.data)
                 setCurrentItineraryName(res.data.itinerary_name)
             })
+            .catch(err => console.log(err));
         }
-    }, [user_id])
+    }, [trips])
 
     function editTrip(id){
         console.log("itinerary name=", itinerary_name)
@@ -53,6 +56,24 @@ const AllTrips = () => {
             setEditingId(itinerary_id)
         } else {
             setEditView('hide')
+        }
+    }
+
+    const createNewTrip = () => {
+        const itineraryName = newItineraryName
+        axios.post('/api/alltrips', {itineraryName})
+        .then(res => {
+          setTrips(res.data)
+          toggleDropdown()
+        })
+        .catch(err => console.log(err));
+    }
+
+    const toggleDropdown = () => {
+        if(dropdown === 'hide'){
+          setDropdown('show')
+        } else {
+          setDropdown('hide')
         }
     }
 
@@ -84,7 +105,7 @@ const AllTrips = () => {
                                     </div>
                                 </Link>
 
-                                <div>
+                                <div className='buttons'>
                                 {editView === 'show' ?
                                 null
                                 :  <button className='modal-button' onClick={() => toggleEditView(trip.itinerary_id)}>Edit</button>}
@@ -92,8 +113,23 @@ const AllTrips = () => {
                                 <button className='modal-button' onClick={() => deleteTrip(trip.itinerary_id)}>Delete Trip</button>
                                 </div>
                             </div>
+                                
                         )
-                    })
+                    }) 
+                    : <div className='signedOutTrips'>
+                        <h1 className='signInTrips'>Sign in to create a trip!</h1>
+                    </div>}
+                    {dropdown === 'hide' ?
+                    <div className='createDiv'>
+                        <h1 onClick={toggleDropdown} className='create'>Create a Trip! +</h1>
+                    </div>
+                    : null }
+                    {dropdown === 'show' ?
+                        <section className='createDrop'>
+                            <input placeholder='New Trip Name' onChange={e => setNewItineraryName(e.target.value)}/>
+                            <button onClick={() => createNewTrip()}>Save</button>
+                            <button onClick={() => toggleDropdown()}>Cancel</button>
+                        </section>
                     : null}
             </section>
                     </div>
