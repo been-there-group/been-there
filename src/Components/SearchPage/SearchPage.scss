@@ -19,9 +19,8 @@
     z-index: 1;
 }
 
-//this is nothing????
+//this is the container housing the map
 .map-container{
-    border: 3px solid red;
     width: 60vw;
     display: flex;
     flex-direction: column;
@@ -30,7 +29,7 @@
     top: 3vh;
 }
 
-//this is the search input?
+//this is the search input
 .google-places-autocomplete{
 
     position: fixed;
@@ -90,7 +89,7 @@
     margin-top: 2%;
 }
 
-//what is a single result? 
+
 .single-result{
     height: auto;
     margin-top: 7%;
