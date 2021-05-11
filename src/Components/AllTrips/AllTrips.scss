@@ -93,3 +93,15 @@
     padding: 2px;
     border-radius: 10px;
 }
+
+.new-trip-button-all-trips {
+    height: 35px;
+    border-radius: 50px;
+    background-color: white;
+    border: 1px solid grey;
+    color: rgb(230, 102, 87);
+}
+.new-trip-button-all-trips:hover {
+    background-color: grey;
+    color: white;
+}

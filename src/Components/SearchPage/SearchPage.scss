@@ -217,6 +217,18 @@
     background: rgb(230, 102, 87);
     color: white;
  }
+ .new-trip-button{
+    height: 35px;
+    border-radius: 50px;
+    background-color: white;
+    border: 1px solid grey;
+    color: rgb(230, 102, 87);
+ }
+ .new-trip-button:hover {
+    background-color: grey;
+    border: 1px solid white;
+    color: white;
+ }
 
 
  // LOADING ANIMATION //

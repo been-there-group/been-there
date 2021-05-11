@@ -129,8 +129,8 @@ const AllTrips = () => {
                     {dropdown === 'show' ?
                         <section className='createDrop'>
                             <input placeholder='New Trip Name' onChange={e => setNewItineraryName(e.target.value)}/>
-                            <button onClick={() => createNewTrip()}>Save</button>
-                            <button onClick={() => toggleDropdown()}>Cancel</button>
+                            <button className='new-trip-button-all-trips' onClick={() => createNewTrip()}>Save</button>
+                            <button className='new-trip-button-all-trips' onClick={() => toggleDropdown()}>Cancel</button>
                         </section>
                     : null}
             </section>

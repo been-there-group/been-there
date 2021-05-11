@@ -123,8 +123,8 @@ const IndividualPlaces = (props) => {
         {newTrip === 'show' ?
           <section>
             <input placeholder='New Trip Name' onChange={e => setItineraryName(e.target.value)}/>
-            <button onClick={() => createNewTrip()}>Save</button>
-            <button onClick={() => toggleNewTrip()}>Cancel</button>
+            <button className="new-trip-button" onClick={() => createNewTrip()}>Save</button>
+            <button className="new-trip-button" onClick={() => toggleNewTrip()}>Cancel</button>
           </section>
         : null}
         
