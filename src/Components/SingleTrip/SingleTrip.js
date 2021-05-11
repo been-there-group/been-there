@@ -12,7 +12,7 @@ const SingleTrip = (props) => {
 
     const [items, setItems] = useState([]);
     const [itineraryName, setItineraryName] = useState('');
-    const [itineraryId, setItineraryId] = useState('');
+    // const [itineraryId, setItineraryId] = useState('');
     const [editView, setEditView] = useState('hide');
     const [itineraryItemId, setItineraryItemId] = useState(null);
     const [startDate, setStartDate] = useState('');
@@ -28,15 +28,16 @@ const SingleTrip = (props) => {
 
     // console.log(props)
     useEffect(() => {
+        const itineraryId = id;
         if(user_id){
-            axios.get(`/api/singletrip/${id}`)
+            axios.get(`/api/singletrip/${itineraryId}`)
             .then(res => {
-                // console.log("res.data=", res.data);
-                setItems(res.data);
-                setItineraryName(res.data[0].itinerary_name)
-                setStartDate(res.data[0].start_date);
-                setEndDate(res.data[0].end_date);
-                setItineraryId(res.data[0].itinerary_id);
+                console.log("res.data=", res.data);
+                // setItems(res.data);
+                // setItineraryName(res.data[0].itinerary_name)
+                // setStartDate(res.data[0].start_date);
+                // setEndDate(res.data[0].end_date);
+                // setItineraryId(res.data[0].itinerary_id);
             })
             
         }
@@ -67,20 +68,20 @@ const SingleTrip = (props) => {
             
         })
     }
-    function updateStartDate(start_date){
-        const itinerary_id = itineraryId;
-        axios.put('/api/editstart', {itinerary_id, start_date})
-        .then(res => {
-            setItems(res.data)
-        })
-    }
-    function updateEndDate(end_date){
-        const itinerary_id = itineraryId;
-        axios.put('/api/alltrips/end', {itinerary_id, end_date})
-        .then(res => {
-            setItems(res.data)
-        })
-    }
+    // function updateStartDate(start_date){
+    //     const itinerary_id = itineraryId;
+    //     axios.put('/api/editstart', {itinerary_id, start_date})
+    //     .then(res => {
+    //         setItems(res.data)
+    //     })
+    // }
+    // function updateEndDate(end_date){
+    //     const itinerary_id = itineraryId;
+    //     axios.put('/api/alltrips/end', {itinerary_id, end_date})
+    //     .then(res => {
+    //         setItems(res.data)
+    //     })
+    // }
 
     const MyContainer = ({className, children}) => {
         return (
@@ -106,9 +107,9 @@ const SingleTrip = (props) => {
                     <header className='single-trip-header'>{itineraryName}</header>
                     <section className='trip-dates-container'>
                         
-                        <DatePicker className='start-end-date' selected={startDate} onChange={(date) => updateStartDate(date)} calendarContainer={MyContainer} />
+                        {/* <DatePicker className='start-end-date' selected={startDate} onChange={(date) => updateStartDate(date)} calendarContainer={MyContainer} />
                         <p>-</p>
-                        <DatePicker className='start-end-date' selected={endDate} onSelect={date => updateEndDate(date)} calendarContainer={MyContainer} />
+                        <DatePicker className='start-end-date' selected={endDate} onSelect={date => updateEndDate(date)} calendarContainer={MyContainer} /> */}
                     </section>
                 </section>
             </div>
@@ -137,7 +138,7 @@ const SingleTrip = (props) => {
                     <div>
                         <p>choose date:</p>
                     <DatePicker selected={itemDate} onChange={date => setItemDate(date)} calendarContainer={MyContainer} />
-                    {/* <button className='save-button-calendar' onClick={() => editItem(itineraryItemId)}>Save</button> */}
+                    <button className='save-button-calendar' onClick={() => editItem(itineraryItemId)}>Save</button>
                     </div>
                     : null
                 }
