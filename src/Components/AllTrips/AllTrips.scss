@@ -1,80 +1,93 @@
 @use "../../sass";
 
-@media (min-width: 100px){
-    .edit-view{
-        position: relative;
-        width: 50vw;
-        height: auto;
-        left: 25vw;
-        // bottom: 15vh;
-        // background-color: azure;
-        // border: 3px solid hotpink;
-        // top: 10vh;
-    }
-    .edit-view-hide{
-        display: none;
-    }
-    .trips-container{
-        position: relative;
-        top: 25vh;
-        border-radius: 20px;
-        display: flex;
-        justify-content: space-between;
-        width: 60vw;
-        left: 20vw;
-        background: rgba(255, 255, 255, 0.6);
-        margin-bottom: 10px;
-        padding: 5px;
+.edit-view{
+    position: relative;
+    width: 50vw;
+    height: auto;
+}
+.edit-view-hide{
+    display: none;
+}
+.trips-container{
+    position: relative;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90vw;
+    background: rgba(255, 255, 255, 0.6);
+    margin-bottom: 10px;
+    padding: 6px;
+}
+.mapped-trips{
+    max-width: 58vw;
+    height: auto;
+    color: black;
+    font-size: 23px;
+    display: flex;
+    align-items: center;
+}
 
-    }
-    .mapped-trips{
-        // background-color:rgb(176, 210, 226);
-        // width: 60vw;
-        height: auto;
-        ;
-        // position: relative;
-        color: black;
-        text-decoration-color: white;
-        font-size: 30px;
-        display: flex;
-        // justify-content: center;
-        align-items: center;
-        // border: 3px solid rgb(117, 50, 73);
-    }
-    
-    
-    .link{
-        text-decoration: none;
-    }
-    
-    .all-trips-body {
-        @include sass.flexCenterRelative(column);   
-        position: relative;
-        top: 5vh;
-    }
-    
-    .all-trips-body > header {
-        position: relative;
-        font-size: 30px;
-        top: 10vh;
-        // border: 3px solid rgb(104, 59, 74);
-        
-    }
-    
-    .all-trips-background {
-        width: 100vw;
-        height: 100vh;
-        object-fit: cover;
-    }
-    
-    .all-trips-container {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        bottom: 500px;
-        
-    }
 
+.link{
+    text-decoration: none;
+}
+
+.all-trips-body {
+    @include sass.flexCenterRelative(column);   
+    position: relative;
+    top: 5vh;
+}
+
+.all-trips-body > header {
+    position: relative;
+    font-size: 30px;
+    top: 10vh;
+}
+
+.all-trips-background {
+    width: 100vw;
+    height: 95vh;
+    object-fit: cover;
+}
+
+.all-trips-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 22vh;
+    width: 100vw;
+    
+}
+.signedOutTrips{
+    @include sass.flexCenterRelative(column);
+}
+.signInTrips{
+    max-width: 95vw;
+    position: relative;
+    background: rgba(255, 255, 255, 0.6);
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 30px;
+    border-radius: 20px;
+    bottom: 200px;
+}
+.buttons{
+    @include sass.flexCenterRelative(row);
+    justify-content: space-between;
+    width: 32vw;
+}
+
+.createDiv{
+    @include sass.flexCenterRelative(column);
+    border: hotpink solid 1px;
+    margin: 20px;
+}
+.create{
+    font-size: 20px;
+    :hover{
+        font-weight: 900;
     }
+}
