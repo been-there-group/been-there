@@ -12,8 +12,9 @@ const Home = (props) => {
     const key = process.env.REACT_APP_GOOGLE_API
 
     function handleClick(){
-        props.history.push({pathname: '/search-page', state: {address: value}})
+        props.history.push({pathname: `/search-page/${value.label}`, state: {address: value}})
     }
+    console.log(value)
 
 
     return(

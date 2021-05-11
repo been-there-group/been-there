@@ -327,15 +327,22 @@ const SearchPage = (props) => {
     getCasinos()
   }, [lat]);
 
+  // useEffect(() => {
+  //   if (props.location.state.address.label) {
+  //     setAddress(props.location.state.address.label);
+  //   } else if (props.location.state.address) {
+  //     setAddress(props.location.state.address);
+  //   } else {
+  //     setAddress(value.label);
+  //   }
+  // }, [value]);
+  
+  // console.log(address)
+
   useEffect(() => {
-    if (props.location.state.address.label) {
-      setAddress(props.location.state.address.label);
-    } else if (props.location.state.address) {
-      setAddress(props.location.state.address);
-    } else {
-      setAddress(value.label);
-    }
-  }, [value]);
+    setAddress(props.match.params.value)
+  }, [])
+  
 
   useEffect(() => {
     // setAddress(value.label)
@@ -451,10 +458,6 @@ const SearchPage = (props) => {
 
       <Nav />
       <div className="search-page">
-      {/* <div className="loading-animation">
-        <img className="airplane" alt="" src={loadingAirplane}/>
-        <p>Getting You There...</p>
-      </div> */}
         <section className='map-container'>
 
         <div className="google-places-autocomplete">
@@ -552,7 +555,7 @@ const SearchPage = (props) => {
         </section>
 
         <div className="mapped-things-container">
-          <header className='check-out-these-places'>Check Out These Places!</header>
+          <header className='check-out-these-places'>Check Out These Places in {address}!</header>
           {loading
           ? <div className="loading-animation">
             <img className="airplane" alt="" src={loadingAirplane}/>
