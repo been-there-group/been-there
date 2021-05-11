@@ -70,7 +70,7 @@ li{
   box-shadow: 0px 0px 5px 0px #414141;
 }
 .siteName{
-  font-size: 3.75vh;
+  font-size: 20px;
   letter-spacing: 5px;
   color: #e66657;
 }
@@ -108,3 +108,14 @@ li{
 //     width: 55vw;
 //   }
 // }
+
+@media (min-width: 700px){
+  .siteName{
+    font-size: 30px;
+  }
+}
+@media (min-width: 1200px){
+  .siteName{
+    font-size: 3.75vh;
+  }
+}
