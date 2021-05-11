@@ -7,7 +7,7 @@ const IndividualPlaces = (props) => {
 
   return(
     <div className='mapped-place'>
-        <Link className='destinationLink' to={{pathname: '/search-page', state: {address: props.places.place}}}>
+        <Link className='destinationLink' to={{pathname: `/search-page/${props.places.place}`, state: {address: props.places.place}}}>
       <img className='mapped-image' src={props.places.url} alt={props.places.place} />
       <div className='destinationNames'>{props.places.place}</div>
         </Link>
