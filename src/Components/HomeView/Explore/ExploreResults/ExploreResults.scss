@@ -1,6 +1,12 @@
-
+@use '../../../../sass';
 
 .mappedExplore{
-  position: relative;
+  @include sass.flexCenterRelative(column);
   top: 10vh;
+}
+
+.explore-header{
+  font-size: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }

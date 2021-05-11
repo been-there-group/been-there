@@ -104,9 +104,9 @@ const IndividualPlaces = (props) => {
 
         <div className='single-result-bottom-left'>
           <section className="name-and-rating">
-            <p className="place-type">{props.places.types[0]}</p>
             <p className="place-name" onClick={() => toggleModal()}> {props.places.name} </p>
-            <p className="place-status">{props.places.business_status}</p>
+            <p className="place-type">Type: {props.places.types[0]}</p>
+            <p className="place-status">Status: {props.places.business_status === 'OPERATIONAL' ? 'Open' : 'Closed'}</p>
             <h1 className="rating">Rating: {props.places.rating}</h1>
           </section>
           <section className='button-container'>
