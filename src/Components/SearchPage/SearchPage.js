@@ -568,7 +568,7 @@ const SearchPage = (props) => {
             return b.rating - a.rating
           }).map((places, index) => {
             return (
-              <div>
+              <div className="individual-places-container">
                 <IndividualPlaces key={index} places={places} list={list}/>
               </div>
             );
