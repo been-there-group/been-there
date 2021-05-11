@@ -8,8 +8,8 @@ module.exports = {
     addItinerary: async (req, res) => {
         const db = await req.app.get('db');
         const {user_id} = req.session.user;
-        const {itineraryName} = req.body;
-        db.itinerary.post_itinerary(user_id, itineraryName)
+        const {itineraryName, start_date, end_date} = req.body;
+        db.itinerary.post_itinerary(user_id, itineraryName, start_date, end_date)
         .then(itineraries => res.status(200).send(itineraries))
     },
     editItinerary: async (req, res) => {

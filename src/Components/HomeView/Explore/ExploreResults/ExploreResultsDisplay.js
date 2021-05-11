@@ -45,7 +45,9 @@ const ExploreResultsDisplay = (props) => {
       }
 
     const createNewTrip = () => {
-        axios.post('/api/alltrips', {itineraryName})
+        const start_date = new Date();
+        const end_date = new Date();
+        axios.post('/api/alltrips', {itineraryName, start_date, end_date})
         .then(res => {
           setTrips(res.data)
           toggleDropdown()
