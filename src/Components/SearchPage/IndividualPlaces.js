@@ -59,7 +59,7 @@ const IndividualPlaces = (props) => {
   }
 
   const saveToTrip = (itineraryId) =>{
-    const day = 'none';
+    const day = new Date();
     const duration = 1;
     const place_id = props.places.place_id;
     const place_name = props.places.name;
