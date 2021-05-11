@@ -30,7 +30,7 @@ const Nav = (props) => {
           dispatch(updateUser(res.data))
         //   console.log(res.data)
         })
-        .catch(err => console.log(err));
+        .catch(err => console.log(err))
       }, [])
 
     function login(){
@@ -136,14 +136,14 @@ const Nav = (props) => {
                 } className='profilePic' alt='profile pic' onClick={handleClick} />
             </div>
 
-            <div className={
+            {/* <div className={
                 authMenu === 'authOpen' || 
                 loginMenu === 'loginOpen' ||
-                registerMenu === 'registerMenuOpen' ? 'open-2' : 'closed'}></div>
+                registerMenu === 'registerMenuOpen' ? 'open-2' : 'closed'}></div> */}
 
             <ul className={authMenu === 'authClosed' ? 'closed' : 'open'}>
-                <button className="modal-button" onClick={registerView}>Sign Up</button>
-                <button className="modal-button" onClick={loginView}>Login</button>
+                <button className="-button" onClick={registerView}>Sign Up</button>
+                <button className="-button" onClick={loginView}>Login</button>
             </ul>
 
             <div className={loginMenu === 'loginClosed' ? 'closed' : 'open'}>

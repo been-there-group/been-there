@@ -80,13 +80,15 @@ const ExploreResultsDisplay = (props) => {
 
                 {dropdown === 'show' ?
                     <section className='explore-dropdown'>
+                      {newTrip === 'hide' ?
                         <p className='explore-modal-button-2' onClick={() => toggleNewTrip()}>Create a New Trip +</p>
+                      : null}
         
                         {newTrip === 'show' ?
-                            <section>
+                            <section className='newTrip'>
                                 <input placeholder='New Trip Name' onChange={e => setItineraryName(e.target.value)}/>
-                                <button onClick={() => createNewTrip()}>Save</button>
-                                <button onClick={() => toggleNewTrip()}>Cancel</button>
+                                <button className='explore-modal-button-2' onClick={() => createNewTrip()}>Save</button>
+                                <button className='explore-modal-button-2' onClick={() => toggleNewTrip()}>Cancel</button>
                             </section>
                         : null}
         

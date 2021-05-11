@@ -49,9 +49,15 @@
     .myTripAd{
         font-size: 25px;
     }
+    .ad-image{
+        max-height: 60vh;
+    }
 }
 @media (min-width: 1200px){
     .itineraryHeader{
         font-size: 40px;
+    }
+    .ad-image{
+        max-height: 70vh;
     }
   }
