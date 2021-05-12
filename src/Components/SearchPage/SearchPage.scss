@@ -1,170 +1,183 @@
 @use "../../sass";
 
+//The whole page
 .search-page{
-    display: flex;
-    position: relative;
-    flex-direction: row;
+    @include sass.flexCenterRelative(column);
     top: 10vh;
-    height: auto;
-    overflow: hidden;
-
-}
-
-//this is the literal interactive map
-#mapId {
-    width: 50vw;
-    height: 350px;
-    position: fixed;
-    top: 25vh;
-    z-index: 1;
+    // height: auto;
+    // overflow: hidden;
 }
 
 //this is the container housing the map
 .map-container{
-    width: 60vw;
+    width: 90vw;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    // justify-content: flex-start;
     align-items: center;
-    top: 3vh;
+    margin: 10px;
+    // top: 3vh;
+    // border: blue solid 1px;
+}
+
+//this is the literal interactive map
+#mapId {
+    width: 90vw;
+    height: 30vh;
+    position: relative;
+    // display: none;
+    // top: 25vh;
+    z-index: 1;
 }
 
 //this is the search input
 .google-places-autocomplete{
-    position: fixed;
+    // position: relative;
     z-index: 1;
     top: 13vh;
     display: flex;
 }
 
+//The box holding the chackboxes
 .checkboxes{
-    position: fixed;
-    top: 20vh;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+    width: 90vw;
+    border: solid rgb(103, 103, 103) 1px;
+    border-radius: 5px;
 }
 
+//the checkboxes and lables themselves
+.checkboxes-input{
+    @include sass.flexCenterRelative(row);
+}
+
+//checkout these places header
 .check-out-these-places {
-        font-size: 40px;
-        position: relative;
-        top: 2vh;
+    margin: 10px;
+    font-size: 30px;
+    position: relative;
+    // top: 2vh;
+}
+
+//container holding the header and each attraction
+.mapped-things-container {
+    height: auto;
+    width: 100vw;
+    padding-right: 3%;
 }
 
 //IndividualPlace.js
 .place-name{
-    font-size: 24px;
-    margin-bottom: 3%;
+    font-size: 18.5px;
+    margin-bottom: 5px;
 }
 
 .place-status{
-    margin-bottom: 3%;
+    font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .rating{
-    font-size: 20px;
-    margin-bottom: 1%;
+    font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .place-type{
-    margin-bottom: 1%;
+    font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .place-image{
-    height: 200px;
-    width: 300px;
+    height: 15vh;
+    width: 15vh;
     object-fit: cover;
     border-radius: 10px;
 }
 
 .no-image{
-    height: 200px;
-    width: 300px;
+    height: 15vh;
+    width: 15vh;
 }
 
 .divider{
-    width: 90%;
+    width: 90vw;
     height: 1px;
     background-color: rgb(187, 184, 184);
     position: relative;
-    left: 10%;
-    margin-bottom: 2%;
-    margin-top: 2%;
+    // left: 10%;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
 }
 
 
 .single-result{
-    height: auto;
-    margin-top: 7%;
-    margin-bottom: 7%;
+    @include sass.flexCenterRelative(column);
+    text-align: left;
+    // right: 0px;
+    width: 100vw;
+    // border: solid hotpink 1px;
 }
 
 .single-result-bottom{
-    display: flex;
-    justify-content: flex-end;
+    @include sass.flexCenterRelative(row);
+    width: 90vw;
+    justify-content: space-between;
 }
 
 .single-result-bottom-left{
-    width: 100%;
+    width: 90vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+
+.modal-button-search {
+    @include sass.flexCenterRelative(column);
+    margin-top: 5px;
+    height: 28px;
+    border-radius: 50px;
+    background-color: white;
+    border: 1px solid grey;
+    color: rgb(230, 102, 87);
+}
+.modal-button-search:hover {
+    background-color: grey;
+    border: 1px solid white;
+    color: white;
+}
+.modal-button-2-search:hover {
+    background-color: grey;
+    border: 1px solid white;
+    color: white;
+}
+.modal-button-2-search {
+    position: relative;
+    margin-top: 5px;
+    height: 28px;
+    border-radius: 50px;
+    background-color: rgb(230, 102, 87);
+    border: 1px solid grey;
+    color: white;
+    cursor: pointer;
+}
+.explore-dropdown{
+    width: 45vw;
+}
+
+
 //// end of single result stuff
 
 
-// modal stuff
-.dropdown{
-    margin-top: 10%;
-    margin-right: 3%;
-    padding: 3%;
-}
-
-.itinerary-name:hover{
-    cursor: pointer;
-}
-
-.modal{
-    position: fixed;
-    border: 5px solid hotpink;
-    background-color: white;
-    height: 600px;
-    width: 60vw;
-    left: 20vw;
-    z-index: 3;
-}
-
-.close-modal{
-    position: fixed;
-    z-index: 3;
-}
-
-.overlay{
-    position: fixed;
-    height: 500%;
-    width: 500%;
-    background-color: gray;
-    margin-left: -200%;
-    opacity: (60%);
-    z-index: 2;
-    top: -10vh;
-    border: 5px solid hotpink;
-    
-}
-
-.modal-body {
-    @include sass.flexCenterRelative(column);
-    border: 1px solid rgb(230, 101, 87);
-    
-}
 
 //containers
-.mapped-things-container {
-    height: auto;
-    width: 40vw;
-    padding-right: 3%;
-}
 
 .button-container{
+    width: 45vw;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 // //various buttons
@@ -211,9 +224,12 @@
  }
 
  .search-button {
+    position: relative;
+    right: 30px;
     border: none;
     height: 33px;
     border-radius: 50%;
+    margin: 3px;
     background: rgb(230, 102, 87);
     color: white;
  }
@@ -233,24 +249,25 @@
 
  // LOADING ANIMATION //
 .loading-animation {
-    position: fixed;
-    top: 25px;
-    width: 45vw;
-    height: 100vh;
+    position: relative;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    // top: 25px;
+    width: 100vw;
+    justify-content: center;
     align-items: center;
 }
 .airplane {
-    height: 200px;
+    position: relative;
+    height: 150px;
     animation: airplane 1s ease infinite alternate;
 }
 .loading-animation p {
     position: relative;
-    top: 30%;
-    right: 350px;
+    margin-top: 120px;
+    // right: 350px;
     transform: translateY(-75%);
-    font-size: 20px;
+    font-size: 22px;
 }
 
 @keyframes airplane {
@@ -263,29 +280,143 @@
 }
 
 //media queries
-// @media (max-width: 376px) {
-//     .search-page {
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: center;
-//         align-items: center;
-//         width: 100vw;
 
-//     }
+@media (min-width: 700px) {
+    .place-name{
+        font-size: 25px;
+        margin-bottom: 7px;
+    }
+    .button-container{
+        width: 20vw;
+        display: flex;
+        justify-content: space-between;
+    }
+    .name-and-rating{
+        height: 17vh;
+    }
+    .place-image{
+        height: 17vh;
+        width: 17vh;
+    }
+    .no-image{
+        height: 17vh;
+        width: 17vh;
+    }
+    .explore-dropdown{
+        width: 35vw;
+    }
+    
+    .place-status{
+        font-size: 18px;
+      margin-bottom: 5px;
+    }
+    
+    .rating{
+        font-size: 18px;
+      margin-bottom: 5px;
+    }
+    
+    .place-type{
+        font-size: 18px;
+      margin-bottom: 5px;
+    }
+}
+@media (min-width: 1200px) {
+    .search-page{
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-around;
+    }
 
-//     #mapId{
-//         height: 150px;
-//         width: 200px;
-//     }
-//     .check-out-these-places {
-//         top: 35vh;
-//         width: 50vw;
-//     }
-//     .individual-places-container {
-//         // top: 60vh;
-//         width: 75vw;
-//     }
-//     .single-result {
-//         top: 60vh;
-//     }
-// }
+    //map
+    .map-container{
+        position: sticky;
+        top: 12vh;
+        width: 50vw;
+    }
+    #mapId {
+        width: 45vw;
+        height: 68vh;
+        position: relative;
+        // display: none;
+        // top: 25vh;
+        z-index: 1;
+    }
+    
+    //this is the search input
+    .google-places-autocomplete{
+        // position: relative;
+        z-index: 1;
+        top: 13vh;
+        display: flex;
+        width: 50vw;
+    }
+    
+    //The box holding the chackboxes
+    .checkboxes{
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 10px;
+        width: 45vw;
+        border: solid rgb(103, 103, 103) 1px;
+        border-radius: 5px;
+    }
+    
+    //the checkboxes and lables themselves
+    .checkboxes-input{
+        @include sass.flexCenterRelative(row);
+    }
+
+    //plane
+    .loading-animation{
+        height: 80vh;
+        width: 50vw;
+    }
+    .airplane {
+        height: 200px;
+        left: 80px;
+    }
+
+
+    // mapped things
+    .individual-places-container{
+        width: 50vw;
+    }
+    .mapped-things-container{
+        width: 45vw;
+    }
+    .divider{
+        width: 45vw;
+    }
+    .single-result{
+        width: 45vw;
+    }
+    .single-result-bottom{
+        width: 45vw;
+    }
+    // .single-result-bottom-left{
+    //     width: 45vw;
+    // }
+    
+    .button-container{
+        width: 10vw;
+        display: flex;
+        justify-content: space-between;
+    }
+    .name-and-rating{
+        height: 17vh;
+    }
+    .place-image{
+        height: 19vh;
+        width: 19vh;
+    }
+    .no-image{
+        height: 19vh;
+        width: 19vh;
+    }
+    .explore-dropdown{
+        width: 20vw;
+    }
+    
+}
