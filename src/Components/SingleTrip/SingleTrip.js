@@ -1,25 +1,26 @@
 import React, { useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 import allTripsBackground from '../../assets/allTripsBackground.png'
 import './SingleTrip.scss';
 import Nav from '../Nav/Nav';
 import SingleTripDisplay from '../SingleTrip/SingleTripDisplay';
 import DatePicker from "react-datepicker";
 import CalendarContainer from './Calendar/CalendarContainer';
+import EditViewSingleTrip from './EditViewSingleTrip';
 
 const SingleTrip = (props) => {
 
     const [items, setItems] = useState([]);
     const [itineraryName, setItineraryName] = useState('');
-    // const [itineraryId, setItineraryId] = useState('');
+    const [itineraryId, setItineraryId] = useState('');
     const [editView, setEditView] = useState('hide');
     const [itineraryItemId, setItineraryItemId] = useState(null);
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
-    const [itemDate, setItemDate] = useState(new Date());
-    const [newDuration, setNewDuration] = useState('1');
-
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+    const [itemDay, setItemDay] = useState(null);
+    const [newDuration, setNewDuration] = useState(null);
 
     const user = useSelector((state) => state.userReducer);
     const {user_id} = user;
@@ -33,18 +34,21 @@ const SingleTrip = (props) => {
             axios.get(`/api/singletrip/${itineraryId}`)
             .then(res => {
                 console.log("res.data=", res.data);
-                // setItems(res.data);
-                // setItineraryName(res.data[0].itinerary_name)
-                // setStartDate(res.data[0].start_date);
-                // setEndDate(res.data[0].end_date);
-                // setItineraryId(res.data[0].itinerary_id);
+                setItems(res.data.itineraryItems);
+                setItineraryName(res.data.itinerary[0].itinerary_name)
+
+                setStartDate(new Date(res.data.itinerary[0].start_date));
+                setEndDate(new Date(res.data.itinerary[0].end_date));
+                setItineraryId(res.data.itinerary[0].itinerary_id);
             })
             
         }
-    }, [user_id, id, items])
+    }, [user_id, id])
 
-    const toggleEditView = (itinerary_item_id) => {
-        setItineraryItemId(itinerary_item_id)
+    const toggleEditView = (itinerary_item_id, item_day, item_duration) => {
+        setItineraryItemId(itinerary_item_id);
+        setItemDay(item_day);
+        setNewDuration(item_duration);
         if(editView === 'hide'){
             setEditView('show')
         } else {
@@ -58,30 +62,23 @@ const SingleTrip = (props) => {
             setItems(res.data)
         })
     }
-    function editItem(itineraryItemId){
-        const day = itemDate;
-        const duration = newDuration;
-        console.log('getting to here')
-        axios.put(`/api/singletrip/${itineraryItemId}`, {day, duration})
+
+    function updateStartDate(start_date){
+        const itinerary_id = itineraryId;
+        axios.put('/api/editstart', {itinerary_id, start_date})
         .then(res => {
             setItems(res.data)
-            
+            setStartDate(start_date)
         })
     }
-    // function updateStartDate(start_date){
-    //     const itinerary_id = itineraryId;
-    //     axios.put('/api/editstart', {itinerary_id, start_date})
-    //     .then(res => {
-    //         setItems(res.data)
-    //     })
-    // }
-    // function updateEndDate(end_date){
-    //     const itinerary_id = itineraryId;
-    //     axios.put('/api/alltrips/end', {itinerary_id, end_date})
-    //     .then(res => {
-    //         setItems(res.data)
-    //     })
-    // }
+    function updateEndDate(end_date){
+        const itinerary_id = itineraryId;
+        axios.put('/api/editend', {itinerary_id, end_date})
+        .then(res => {
+            setItems(res.data)
+            setEndDate(end_date)
+        })
+    }
 
     const MyContainer = ({className, children}) => {
         return (
@@ -107,9 +104,9 @@ const SingleTrip = (props) => {
                     <header className='single-trip-header'>{itineraryName}</header>
                     <section className='trip-dates-container'>
                         
-                        {/* <DatePicker className='start-end-date' selected={startDate} onChange={(date) => updateStartDate(date)} calendarContainer={MyContainer} />
+                        <DatePicker className='start-end-date' selected={startDate} onSelect={(date) => updateStartDate(date)} calendarContainer={MyContainer} />
                         <p>-</p>
-                        <DatePicker className='start-end-date' selected={endDate} onSelect={date => updateEndDate(date)} calendarContainer={MyContainer} /> */}
+                        <DatePicker className='start-end-date' selected={endDate} onSelect={date => updateEndDate(date)} calendarContainer={MyContainer} />
                     </section>
                 </section>
             </div>
@@ -125,10 +122,10 @@ const SingleTrip = (props) => {
                                     <SingleTripDisplay key={index} item={item}/>
                                 </section>
                                 <section className='button-container'>
-                                    <button className='modal-button' onClick={() => toggleEditView(item.itinerary_item_id, item.day)}>✎</button>
+                                    <button className='modal-button' onClick={() => toggleEditView(item.itinerary_item_id, item.day, item.duration)}>✎</button>
                                     <button className='modal-button' onClick={() => deleteItem(item.itinerary_item_id)}>x</button>
                                 </section>
-                                <div className="divider-2"></div>
+                                
                                 
                             </div>
                         )
@@ -136,12 +133,11 @@ const SingleTrip = (props) => {
                     : null}
                     {editView === 'show' ?
                     <div>
-                        <p>choose date:</p>
-                    <DatePicker selected={itemDate} onChange={date => setItemDate(date)} calendarContainer={MyContainer} />
-                    <button className='save-button-calendar' onClick={() => editItem(itineraryItemId)}>Save</button>
+                        <EditViewSingleTrip itinerary_id={itineraryId} itinerary_item_id={itineraryItemId} item_day={itemDay} item_duration={newDuration}/>
                     </div>
                     : null
                 }
+                <div className="divider-2"></div>
             </section>
         </div>
     )

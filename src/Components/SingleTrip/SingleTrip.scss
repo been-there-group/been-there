@@ -54,6 +54,7 @@
         // border: 2px solid hotpink;
         background: rgba(255, 255, 255, 0.6);
         padding: 5%;
+        margin-top: 50px;
         border-radius: 20px;
     }
     .single-trip-container {
@@ -99,15 +100,16 @@
         margin-bottom: 2%;
         margin-top: 7%;
     }
-    // .calendar-container{
-    //     position: relative;
-    //     height: 300px;
-    //     width: 100px;
-    //     background-color: orchid;
-    // }
-    .save-button-calendar{
-        position: absolute;
-        top: 65vh;
+    
+    //EditViewSingleTrip
+    .edit-container{
+        // border: 2px solid hotpink;
+        position: relative;
+        width: 70vw;
+        right: 5vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 }
 
