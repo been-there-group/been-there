@@ -588,7 +588,7 @@ const SearchPage = (props) => {
             <img className="airplane" alt="" src={loadingAirplane}/>
             <p>Getting You There...</p>
             </div>
-        : null}
+          :null }
 
 
           {results.sort((a, b) => {
