@@ -83,7 +83,7 @@ const IndividualPlaces = (props) => {
                   
     return(
       <section className='dropdown-trips'>
-        <p className='itinerary-name'key={index} onClick={() => saveToTrip(trip.itinerary_id)}>+ {trip.itinerary_name}</p>
+        <p className='explore-modal-button-2'key={index} onClick={() => saveToTrip(trip.itinerary_id)}>{trip.itinerary_name}</p>
       </section>
     )
   })
@@ -111,25 +111,27 @@ const IndividualPlaces = (props) => {
             <h1 className="rating">Rating: {props.places.rating}</h1>
           </section>
           <section className='button-container'>
-            <button className="modal-button" onClick={() => toggleDropdown()}>Add to a Trip</button> 
-            <button className="modal-button-2" onClick={() => saveToBucketList()}>♡</button>
+            <button className="modal-button-search" onClick={() => toggleDropdown()}>Add to a Trip</button> 
+            <button className="modal-button-2-search" onClick={() => saveToBucketList()}>♡</button>
           </section>
 
           {dropdown === 'show' ?
-      <section className='dropdown'>
-        <p className='modal-button' onClick={() => toggleNewTrip()}>Create a New Trip +</p>
+      <section className='explore-dropdown'>
+        <div className='explore-user-trips'>
+        {userTrips}
+        </div>
+        {newTrip === 'hide' ?
+          <p className='explore-modal-button-2' onClick={() => toggleNewTrip()}>Create a New Trip +</p>
+        : null}
         
         {newTrip === 'show' ?
-          <section>
+          <section className='newTrip'>
             <input placeholder='New Trip Name' onChange={e => setItineraryName(e.target.value)}/>
-            <button className="new-trip-button" onClick={() => createNewTrip()}>Save</button>
-            <button className="new-trip-button" onClick={() => toggleNewTrip()}>Cancel</button>
+            <button className="explore-modal-button-2" onClick={() => createNewTrip()}>Save</button>
+            <button className="explore-modal-button-2" onClick={() => toggleNewTrip()}>Cancel</button>
           </section>
         : null}
         
-        <div className='user-trips'>
-        {userTrips}
-        </div>
 
       </section>
 
