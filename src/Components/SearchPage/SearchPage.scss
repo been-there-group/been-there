@@ -6,6 +6,7 @@
     top: 10vh;
     // height: auto;
     // overflow: hidden;
+    // border: chartreuse solid 1px;
 }
 
 //this is the container housing the map
@@ -28,6 +29,7 @@
     // display: none;
     // top: 25vh;
     z-index: 1;
+    // border: rgb(39, 71, 7) solid 1px;
 }
 
 //this is the search input
@@ -36,6 +38,7 @@
     z-index: 1;
     top: 13vh;
     display: flex;
+    // border: rgb(0, 204, 255) solid 1px;
 }
 
 //The box holding the chackboxes
@@ -56,17 +59,21 @@
 
 //checkout these places header
 .check-out-these-places {
-    margin: 10px;
-    font-size: 30px;
     position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 30px;
     // top: 2vh;
+    // border: rgb(255, 0, 157) solid 1px;
 }
 
 //container holding the header and each attraction
 .mapped-things-container {
+    @include sass.flexCenterRelative(column);
     height: auto;
     width: 100vw;
     padding-right: 3%;
+    // border: rgb(251, 255, 0) solid 1px;
 }
 
 //IndividualPlace.js
