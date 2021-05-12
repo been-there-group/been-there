@@ -124,8 +124,11 @@ const Account = (props) => {
                 <header>Your Account</header>
                 <section className={edit === "noEdit" ? "noEdit" : "edit"}>
                     <main className="username">Username: {username}</main>
+                    <br/>
                     <div className="email">Email: {email}</div>
-                    <div className="profile-pic">Profile Picture: <img src={profile_pic}/></div>
+                    <br/>
+                    <div className="profile-pic">Profile Picture: <img alt="" className="preview" src={profile_pic}/></div>
+                    <br/>
                     <button className="modal-button" onClick={handleClick}>Edit Account</button>
                 </section>
                 <section className={edit === "noEdit" ? "edit" : "noEdit"}>
