@@ -10,6 +10,7 @@
     @include sass.backgroundImage('https://miro.medium.com/max/3200/1*JfM2ePprvMkJtqNcxsCn9Q.jpeg', 205vw auto);
     height: 450px;
     object-fit: cover;
+    @include sass.flexCenterRelative(column);
 }
 .google-places-autocomplete-home{
     position: relative;
@@ -80,17 +81,23 @@ path{
         background-size: 145vw auto;
     }
     .google-places-autocomplete-home{
-
         height: 200px;
+    }
+    .search-bar-home{
+        width: 60vw;
     }
 }
 @media (min-width: 1200px){
     .homeSearch{
         height: 700px;
         background-size: 100vw auto;
+
     }
     .google-places-autocomplete-home{
-
+        width: 50vw;
         height: 600px;
+    }
+    .search-bar-home{
+        width: 50vw;
     }
 }
