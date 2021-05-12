@@ -9,7 +9,7 @@ import L from "leaflet"
 import { ReactReduxContext } from "react-redux";
 import IndividualPlaces from "./IndividualPlaces";
 import Nav from "../Nav/Nav";
-import loadingAirplane from '../../assets/loadingAirplane.png'
+import newLoadingAirplane from '../../assets/newLoadingAirplane.png'
 import "./SearchPage.scss";
 
 const SearchPage = (props) => {
@@ -585,7 +585,7 @@ const SearchPage = (props) => {
           <header className='check-out-these-places'>Check Out These Places in {address}!</header>
           {loading
           ? <div className="loading-animation">
-            <img className="airplane" alt="" src={loadingAirplane}/>
+            <img className="airplane" alt="" src={newLoadingAirplane}/>
             <p>Getting You There...</p>
             </div>
           :null }
