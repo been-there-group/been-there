@@ -2,27 +2,27 @@ const bcrypt = require('bcryptjs');
 
 module.exports = {
   register: async (req, res) => {
-    const {username, password, email, profilePic} = req.body;
+    const {username, password, email, profile_pic} = req.body;
     const db = req.app.get('db');
-    
+
     const results = await db.users.get_user_by_username([username]);
     const existingUser = results[0];
-    
+
     if(existingUser){
       return res.status(409).send('Username Taken')
     };
-    
+
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
-    
-    const registerUser = await db.users.register_user([username, hash, email, profilePic]);
+
+    const registerUser = await db.users.register_user([username, hash, email, profile_pic]);
 
     console.log(registerUser);
-    
+
     const user = registerUser[0];
-    
-    req.session.user = {user_id: user.user_id, username: user.username, email: user.email, profilePic: user.profilePic};
-    
+
+    req.session.user = {user_id: user.user_id, username: user.username, email: user.email, profile_pic: user.profile_pic};
+
     res.status(200).send(req.session.user);
   },
   login: async (req, res) => {
@@ -60,10 +60,11 @@ module.exports = {
   },
   edit: async (req, res) => {
     const {user_id} = req.session.user;
-    const {username, email, profilePic} = req.body;
+    const {username, email, profile_pic} = req.body;
     const db = req.app.get('db');
-    
-    const results = await db.users.update_user_info([username, profilePic, email, user_id])
+
+    const results = await db.users.update_user_info([username, profile_pic, email, user_id])
+    req.session.user = results[0]
 
     return res.status(200).send(results)
   }

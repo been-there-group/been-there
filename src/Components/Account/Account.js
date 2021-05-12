@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import Nav from '../Nav/Nav';
 import { v4 as randomString } from 'uuid';
 import Dropzone from 'react-dropzone';
+import {useSelector, useDispatch} from 'react-redux';
+import {updateUser} from '../../redux/userReducer';
 import { GridLoader } from 'react-spinners';
 import blueMountains from '../../assets/blueMountains.png'
 import './Account.scss';
@@ -10,11 +12,12 @@ import './Account.scss';
 const Account = (props) => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
-    const [profilePic, setProfilePic] = useState('');
+    const [profile_pic, setProfilePic] = useState('');
     const [userId, setUserId] = useState();
     const [edit, setEdit] = useState('noEdit');
     const [isUploading, setIsUploading] = useState(false);
     const [url, setUrl] = useState('http://via.placeholder.com/450x450')
+    const dispatch = useDispatch()
 
     useEffect(() => {
         axios.get('/api/get-me')
@@ -33,7 +36,7 @@ const Account = (props) => {
         setIsUploading(true);
         // We are creating a file name that consists of a random string, and the name of the file that was just uploaded with the spaces removed and hyphens inserted instead. This is done using the .replace function with a specific regular expression. This will ensure that each file uploaded has a unique name which will prevent files from overwriting other files due to duplicate names.
         const fileName = `${randomString()}-${file.name.replace(/\s/g, '-')}`;
-    
+
         // We will now send a request to our server to get a "signed url" from Amazon. We are essentially letting AWS know that we are going to upload a file soon. We are only sending the file-name and file-type as strings. We are not sending the file itself at this point.
         axios
           .get('/api/signs3', {
@@ -50,14 +53,14 @@ const Account = (props) => {
             console.log(err);
           });
       };
-    
+
       const uploadFile = (file, signedRequest, url) => {
         const options = {
           headers: {
             'Content-Type': file.type,
           },
         };
-    
+
         axios
           .put(signedRequest, file, options)
           .then(response => {
@@ -79,7 +82,7 @@ const Account = (props) => {
             }
           });
       };
-    
+
 
       //end of aws
 
@@ -98,15 +101,14 @@ const Account = (props) => {
     function editEmail(e){
         setEmail(e);
     };
-    // function editProfilePic(e){
-    //     setProfilePic(e);
-    // };
+
 
     function editUser(){
         console.log('saveEdit');
-        axios.put('/api/edit', {username, email, profilePic})
+        axios.put('/api/edit', {username, email, profile_pic})
             .then(result => {
                 console.log(result)
+                dispatch(updateUser(result.data[0]))
                 handleClick();
             })
             .catch(error => console.log(error))
@@ -123,7 +125,7 @@ const Account = (props) => {
                 <section className={edit === "noEdit" ? "noEdit" : "edit"}>
                     <main className="username">Username: {username}</main>
                     <div className="email">Email: {email}</div>
-                    <div className="profile-pic">Profile Picture: {profilePic}</div>
+                    <div className="profile-pic">Profile Picture: <img src={profile_pic}/></div>
                     <button className="modal-button" onClick={handleClick}>Edit Account</button>
                 </section>
                 <section className={edit === "noEdit" ? "edit" : "noEdit"}>
