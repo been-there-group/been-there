@@ -128,18 +128,15 @@ const Nav = (props) => {
                 <img className="logo" alt="" src={bestLogo1}/>
                 </Link>
             </div>
+            <Link to={"/"} className="nav-link">
             <header className='siteName'>Been There</header>
+            </Link>
             <div className='profilePicHome'>
                 <img src={profile_pic
                     ? profile_pic
                     : 'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png'
                 } className='profilePic' alt='profile pic' onClick={handleClick} />
             </div>
-
-            {/* <div className={
-                authMenu === 'authOpen' || 
-                loginMenu === 'loginOpen' ||
-                registerMenu === 'registerMenuOpen' ? 'open-2' : 'closed'}></div> */}
 
             <ul className={authMenu === 'authClosed' ? 'closed' : 'open'}>
                 <button className="-button" onClick={registerView}>Sign Up</button>
@@ -160,7 +157,7 @@ const Nav = (props) => {
                     {errorMsg && <h3>{errorMsg}<span onClick= {removeErrorMsg}>X</span></h3>}
                     <input className='input' placeholder='Username' onChange={e => setUsername(e.target.value)}/>
                     <input className='input' placeholder='Email' onChange={e => setEmail(e.target.value)}/>
-                    <input className='input' placeholder='Password' onChange={e => setPassword (e.target.value)}/>
+                    <input className='input' placeholder='Password' type='password' onChange={e => setPassword (e.target.value)}/>
                     <button onClick={register} className='-button'>Register</button>
                 </div>
             </div>

@@ -107,16 +107,15 @@ li{
   margin: 10px;
   color: #e66657;
 }
+.-button:hover{
+  background-color: #e66657;
+  color: white;
+  border: #e66657;
+}
 input:focus, textarea:focus, select:focus{
   outline: none;
 }
 
-// @media (min-width: 768px) {
-//   .open-2 {
-//     // box-shadow: 5px 10px 10px 5px #292828;
-
-//   }
-// }
 
 
 
