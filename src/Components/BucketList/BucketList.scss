@@ -19,10 +19,9 @@ object-fit: cover;
     justify-content: space-around;
     flex-wrap: wrap;
     top: 15vh;
-    height: auto;
+    // height: 100vh;
     width: 75vw;
     padding: 10px;
-    
 }
 
 .bucket-list-images {
@@ -74,13 +73,14 @@ object-fit: cover;
 }
 
 .mapped-container {
-    
+    height: 115vh;
     position: relative;
     top: 6vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    
 }
  
 .mapped-container > header {
@@ -88,3 +88,11 @@ object-fit: cover;
     position: relative;
     top: 50px;
 }
+// .bl-footer{
+//     position: relative;
+//     display: flex;
+//     bottom: 0px;
+//     // width: 100vw;
+//     border: chartreuse solid 1px;
+//     background: rgba(255, 255, 255, 0.7);
+// }

@@ -105,3 +105,9 @@
     background-color: grey;
     color: white;
 }
+
+@media (min-width: 1200px) {
+    .trips-container {
+        width: 45vw;
+    }
+}
