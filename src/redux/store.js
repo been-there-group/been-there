@@ -2,6 +2,7 @@ import {createStore, combineReducers} from 'redux';
 import userReducer from './userReducer';
 import mapReducer from './mapReducer'
 import bucketReducer from './bucketReducer';
+import {devToolsEnhancer} from 'redux-devtools-extension'
 
 let rootReducer = combineReducers({
   userReducer,
@@ -9,4 +10,4 @@ let rootReducer = combineReducers({
   bucketReducer
 });
 
-export default createStore(rootReducer);
+export default createStore(rootReducer, devToolsEnhancer());

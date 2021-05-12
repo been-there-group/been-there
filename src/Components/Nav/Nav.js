@@ -28,7 +28,7 @@ const Nav = (props) => {
         axios.get(`/api/get-me`)
         .then((res) => {
           dispatch(updateUser(res.data))
-        //   console.log(res.data)
+          console.log(res.data)
         })
         .catch(err => console.log(err))
       }, [])
@@ -47,10 +47,10 @@ const Nav = (props) => {
             setErrorMsg('Incorrect username or password!')
         })
     };
-    
+
     function register(){
-        const profilePic = `https://robohash.org/${username}.png`;
-        axios.post('/api/register', {username, password, email, profilePic})
+        const profile_pic = `https://robohash.org/${username}.png`;
+        axios.post('/api/register', {username, password, email, profile_pic})
             .then(res => {
                 // console.log('.then')
                 const {user_id} = res.data;
@@ -63,7 +63,7 @@ const Nav = (props) => {
                 setErrorMsg('username taken')
             })
     };
-    
+
     function logout(){
         axios.post('/api/logout')
         .then(res => {
@@ -77,7 +77,7 @@ const Nav = (props) => {
             handleClick();
         })
     };
-    
+
     function handleClick(){
         // console.log(props);
         // const {user_id} = false;
@@ -85,7 +85,7 @@ const Nav = (props) => {
         setRegisterMenu('registerClosed');
         if(!user_id){
             if(authMenu === 'authClosed'){
-                setAuthMenu('authOpen');              
+                setAuthMenu('authOpen');
             } else {
                 setAuthMenu('authClosed');
             };
@@ -123,6 +123,7 @@ const Nav = (props) => {
 
     return(
         <div className="nav-body">
+            {console.log(profile_pic)}
             <div>
                 <Link to={"/"}>
                 <img className="logo" alt="" src={bestLogo1}/>
@@ -137,7 +138,7 @@ const Nav = (props) => {
             </div>
 
             {/* <div className={
-                authMenu === 'authOpen' || 
+                authMenu === 'authOpen' ||
                 loginMenu === 'loginOpen' ||
                 registerMenu === 'registerMenuOpen' ? 'open-2' : 'closed'}></div> */}
 
@@ -178,5 +179,5 @@ const mapStateToProps = (reduxState) => {
     return {
       user: reduxState
   }}
-  
+
   export default withRouter(connect(mapStateToProps, {updateUser, logout})(Nav));
