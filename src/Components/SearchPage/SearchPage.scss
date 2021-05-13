@@ -34,9 +34,9 @@
 
 //this is the search input
 .google-places-autocomplete{
-    // position: relative;
+    position: relative;
     z-index: 1;
-    top: 13vh;
+    top: 6vh;
     display: flex;
     // border: rgb(0, 204, 255) solid 1px;
 }
@@ -239,6 +239,7 @@
     margin: 3px;
     background: rgb(230, 102, 87);
     color: white;
+    bottom: 50px;
  }
  .new-trip-button{
     height: 35px;
@@ -354,9 +355,9 @@
     
     //this is the search input
     .google-places-autocomplete{
-        // position: relative;
+        position: relative;
         z-index: 1;
-        top: 13vh;
+        top: 23vh;
         display: flex;
         width: 50vw;
     }
@@ -386,7 +387,12 @@
         height: 200px;
         // left: 80px;
     }
-
+    .css-2b097c-container{
+        // border: 1px solid aqua;
+    }
+    .css-2b097c-container{
+        // border: 1px solid aqua;
+    }
 
     // mapped things
     .individual-places-container{
