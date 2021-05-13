@@ -26,7 +26,7 @@ const IndividualPlaces = (props) => {
             setTrips(res.data)
         })
     }
-}, [user_id])
+}, [user_id, trips])
 
   const toggleDropdown = () => {
     if(dropdown === 'hide'){
