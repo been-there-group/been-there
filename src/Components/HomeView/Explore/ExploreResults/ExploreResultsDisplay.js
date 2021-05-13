@@ -1,15 +1,29 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useSelector} from 'react-redux';
 import axios from 'axios';
 import noImage from '../../../../assets/noImage.png';
 import './ExploreResultsDisplay.scss';
 
 const ExploreResultsDisplay = (props) => {
-    const [dropdown, setDropdown] = useState('hide');
-    const [newTrip, setNewTrip] = useState('hide');
-    const [trips, setTrips] = useState([]);
-    const [itineraryName, setItineraryName] = useState('');
+  const [dropdown, setDropdown] = useState('hide');
+  const [newTrip, setNewTrip] = useState('hide');
+  const [trips, setTrips] = useState([]);
+  const [itineraryName, setItineraryName] = useState('');
 
-    const key = process.env.REACT_APP_GOOGLE_API
+  const key = process.env.REACT_APP_GOOGLE_API;
+
+  const user = useSelector((state) => state.userReducer);
+  const {user_id} = user;
+
+    useEffect(() => {
+      if(user_id){
+          axios.get('/api/alltrips')
+          .then(res => {
+              // console.log("res.data", res.data);
+              setTrips(res.data)
+          })
+      }
+  }, [user_id, trips])
 
     const toggleDropdown = () => {
       if(dropdown === 'hide'){
@@ -57,8 +71,8 @@ const ExploreResultsDisplay = (props) => {
     let userTrips = trips.map((trip, index) => {
                   
         return(
-          <section className='dropdown-trips'>
-            <p className='itinerary-name'key={index} onClick={() => saveToTrip(trip.itinerary_id)}>+ {trip.itinerary_name}</p>
+          <section className='explore-modal-button-2'>
+            <p className='itinerary-name'key={index} onClick={() => saveToTrip(trip.itinerary_id)}>{trip.itinerary_name}</p>
           </section>
         )
       })
@@ -82,6 +96,7 @@ const ExploreResultsDisplay = (props) => {
 
                 {dropdown === 'show' ?
                     <section className='explore-dropdown'>
+                      {userTrips}
                       {newTrip === 'hide' ?
                         <p className='explore-modal-button-2' onClick={() => toggleNewTrip()}>Create a New Trip +</p>
                       : null}
@@ -95,7 +110,7 @@ const ExploreResultsDisplay = (props) => {
                         : null}
         
                         <div className='explore-user-trips'>
-                            {userTrips}
+                            {/* {userTrips} */}
                         </div>
                     </section>
                 : null}

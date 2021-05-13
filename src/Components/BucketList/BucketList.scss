@@ -7,9 +7,10 @@
 }
 
 .header-image {
-width: 100vw;
-height: 115vh;
-object-fit: cover;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
 }
 
 .bucket-list-container {
@@ -73,12 +74,20 @@ object-fit: cover;
 }
 
 .mapped-container {
+
+    // background-image: url('../../assets/RealBackground.png');
+    // width:100%;
+    // height: 100vh;
+    // background-attachment: fixed;
+    // background-size: cover;
+
     height: 115vh;
+
     position: relative;
     top: 6vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     
 }
@@ -87,6 +96,7 @@ object-fit: cover;
     font-size: 30px;
     position: relative;
     top: 50px;
+    z-index: 1;
 }
 // .bl-footer{
 //     position: relative;

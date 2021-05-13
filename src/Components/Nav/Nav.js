@@ -125,13 +125,13 @@ const Nav = (props) => {
         <div className="nav-body">
             {console.log(profile_pic)}
             <div>
-                <Link to={"/"}>
-                <img className="logo" alt="" src={bestLogo1}/>
+                <Link to={"/"} className="nav-link">
+                    <img className="logo" alt="" src={bestLogo1}/>
+                    <header className='siteName'>Been There</header>
                 </Link>
+            {/* <Link to={"/"} > */}
+            {/* </Link> */}
             </div>
-            <Link to={"/"} className="nav-link">
-            <header className='siteName'>Been There</header>
-            </Link>
             <div className='profilePicHome'>
                 <img src={profile_pic
                     ? profile_pic

@@ -1,20 +1,32 @@
+@use '../../sass';
+
 @media (min-width: 100px){
     .single-trip-home{
+        @include sass.flexCenterRelative(column);
+        // background-image: url('../../assets/allTripsBackground.png');
+        background-repeat: no-repeat;
+        // background-size: 100vw, 100vh;
         width: 100vw;
-        height: 100vh;
+        height: 90vh;
+        top: 10vh;
+        justify-content: flex-start;
     }
     .single-trip-body {
-        position: absolute;
+        @include sass.flexCenterRelative(column);
         width: 100vw;
         height: auto;
-        bottom: 640px;
+        margin-top: 20px;
+        // bottom: 640px;
         // border: 2px solid peru;
+    }
+    .single-trip-header{
+        font-size: 30px;
     }
     .single-trip-header-and-dates-container{
         // border: 1px solid lime;
         width: 80vw;
         position: relative;
-        left: 10vw;
+        // left: 10vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -23,39 +35,90 @@
     }
     .trip-dates-container{
         // border: 1px solid pink;
-        margin-top: 4%;
-        display: flex;
-        justify-content: space-evenly;
+        // margin-top: 4%;
+        @include sass.flexCenterRelative(row);
         width: 75vw;
     }
     .start-end-date{
+        margin: 10px;
         border: none;
         // border: 1px solid lime;
-        width: 65%;
+        // width: 30%;
         background-color: transparent;
         font-weight: bold;
         text-align: center;
         background: rgba(255, 255, 255, 0.6);
-        padding: 4%;
-        padding-top: 5%;
-        padding-bottom: 5%;
+        padding: 10px;
+        font-style:italic;
+        // padding-top: 5%;
+        // padding-bottom: 5%;
         border-radius: 20px;
+        font-size: 15px;
+    }
+    .datepicker{
+        border: none;
+        // border: 1px solid lime;
+        width: 80px;
+        background-color: transparent;
+        font-weight: bold;
+        font-size: 15px;
+        text-align: center;
+        // background: rgba(255, 255, 255, 0.6);
+        // padding: 4%;
+        // padding-top: 5%;
+        // padding-bottom: 5%;
+        border-radius: 20px;
+        cursor: pointer;
+
+    }
+    .start-end-date:hover{
+        background: rgba(255, 255, 255, 1);
+        cursor: pointer;
+    }
+    .activities-planned{
+        // border: 1px solid lime;
+        width: 80vw;
+        display: flex;
+        justify-content: flex-start;
+        font-size: 25px;
+        margin-bottom: 30px;
+        
     }
     .single-trip-container-container{
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        @include sass.flexCenterRelative(column);
         align-items: flex-end;
-        bottom: 600px;
+        // bottom: 600px;
         height: auto;
-        width: 80vw;
-        left: 5vw;
+        width: 85vw;
+        // left: 5vw;
         // border: 2px solid hotpink;
-        background: rgba(255, 255, 255, 0.6);
-        padding: 5%;
+        background: rgba(255, 255, 255, 1);
+        padding: 2%;
         margin-top: 50px;
         border-radius: 20px;
+        
+        // border: solid hotpink 1px;
+    }
+    .column-title-container{
+        // border: 1px solid chartreuse;
+        display: flex;
+        width: 80vw;
+        justify-content: space-between;
+        margin-bottom: 1%;
+    }
+    // .column-title-where{
+    //     width: 33.3%;
+    //     display: flex;
+    //     justify-content: flex-start;
+    //     font-weight: bold;
+    //     font-size: 20px;
+    // }
+    .column-title{
+        width: 33.3%;
+        display: flex;
+        justify-content: flex-start;
+        font-weight: bold;
+        font-size: 14px;
     }
     .single-trip-container {
         // border: 2px solid lime;
@@ -64,54 +127,108 @@
         flex-direction: column;
         justify-content: center;
         align-items: flex-end;
-
+        
     }
     .mapped-single-trip-items{
         // border: 1px solid lavender;
         display: flex;
         justify-content: space-between;
         width: 80vw;
+        margin-top: 10px;
     }
     .single-trip-name{
         width: 33.3%;
         // border: 1px solid lime;
         display: flex;
-        font-weight: bold;
+        justify-content: flex-start;
+        font-size: 14px;
+        text-align:left;
     }
     .single-trip-day{
         width: 33.3%;
+        font-size: 14px;
+        display: flex;
+        justify-content: flex-start;
     }
     .single-trip-duration{
         width: 33.3%;
-    }
-    .button-container{
-        // border: 1px solid blue;
-    }
-
-    .delete-item{
-        position: relative;   
-    }
-    .divider-2{
-        width: 90%;
-        height: 1px;
-        background-color: rgb(187, 184, 184);
-        position: relative;
-        right: 5%;
-        margin-bottom: 2%;
-        margin-top: 7%;
-    }
-    
-    //EditViewSingleTrip
-    .edit-container{
-        // border: 2px solid hotpink;
-        position: relative;
-        width: 70vw;
-        right: 5vw;
+        font-size: 14px;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        justify-content: flex-start;
     }
+    // .button-container{
+        //     // border: 1px solid blue;
+        // }
+        
+        .delete-item{
+            position: relative;   
+        }
+        .divider-2{
+            width: 90%;
+            height: 1px;
+            background-color: rgb(187, 184, 184);
+            position: relative;
+            right: 5%;
+            // margin-bottom: 2%;
+            // margin-top: 7%;
+        }
+        
+        //EditViewSingleTrip
+        .edit-container{
+            // border: 2px solid hotpink;
+            position: relative;
+            width: 80vw;
+            right: 1vw;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .choose-a-date{
+            width: 30vw;
+            
+        }
+        .choose-a-date > p{
+            font-size: 14px;
+            
+        }
+        .datepicker-2{
+            width: 30vw;
+            cursor: pointer;
+        }
+        .set-duration > p{
+            font-size: 14px;
+            
+        }
+        .set-duration > input{
+            width: 10vw;
+            text-align: center;
+        }
+        .set-duration{
+            width: 30vw;
+            
+        }
+        
+        .button-container-trip{
+            @include sass.flexCenterRelative(row);
+            width: 50px;
+        }
+        .hidden-div{
+            width:50px;
+        }
+    }
+    @media (min-width:700px){
+        .single-trip-name{
+            font-size: 20px;
+        }
+        .single-trip-day{
+            font-size: 20px;
+        }
+        .single-trip-duration{
+            font-size: 20px;
+        }
+        .column-title{
+            font-size: 20px;
+        }
 }
-
 
 
