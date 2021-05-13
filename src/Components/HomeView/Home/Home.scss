@@ -7,9 +7,10 @@
     top: 10vh;
 }
 .homeSearch{
-    @include sass.backgroundImage('https://miro.medium.com/max/3200/1*JfM2ePprvMkJtqNcxsCn9Q.jpeg', 100vw auto);
+    @include sass.backgroundImage('https://miro.medium.com/max/3200/1*JfM2ePprvMkJtqNcxsCn9Q.jpeg', 200vw auto);
     height: 450px;
     object-fit: cover;
+    // border: 1px solid hotpink;
     @include sass.flexCenterRelative(column);
 }
 .google-places-autocomplete-home{

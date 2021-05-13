@@ -165,10 +165,10 @@ const Nav = (props) => {
             </div>
 
             <ul className={menu === 'closed' ? 'closed' : 'open'}>
-                <li><Link to={`/all-trips/${user_id}`} className="nav-link">Your Trips</Link></li>
-                <li><Link to={`/bucketlist/${user_id}`} className="nav-link" >Bucket List</Link></li>
-                <li><Link to={`/account/${user_id}`} className="nav-link" >Your Account</Link></li>
-                <li onClick={logout}>Logout</li>
+                <li><Link to={`/all-trips/${user_id}`} className="nav-link-2">Your Trips</Link></li>
+                <li><Link to={`/bucketlist/${user_id}`} className="nav-link-2" >Bucket List</Link></li>
+                <li><Link to={`/account/${user_id}`} className="nav-link-2" >Your Account</Link></li>
+                <li className="nav-link-2" onClick={logout}>Logout</li>
             </ul>
         </div>
     )
