@@ -20,10 +20,9 @@
     justify-content: space-around;
     flex-wrap: wrap;
     top: 15vh;
-    height: auto;
+    // height: 100vh;
     width: 75vw;
     padding: 10px;
-    
 }
 
 .bucket-list-images {
@@ -75,17 +74,22 @@
 }
 
 .mapped-container {
+
     // background-image: url('../../assets/RealBackground.png');
     // width:100%;
     // height: 100vh;
     // background-attachment: fixed;
     // background-size: cover;
+
+    height: 115vh;
+
     position: relative;
     top: 6vh;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
+    
 }
  
 .mapped-container > header {
@@ -94,3 +98,11 @@
     top: 50px;
     z-index: 1;
 }
+// .bl-footer{
+//     position: relative;
+//     display: flex;
+//     bottom: 0px;
+//     // width: 100vw;
+//     border: chartreuse solid 1px;
+//     background: rgba(255, 255, 255, 0.7);
+// }

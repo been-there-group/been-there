@@ -55,9 +55,13 @@
 }
 @media (min-width: 1200px){
     .itineraryHeader{
-        font-size: 40px;
+        font-size: 45px;
     }
     .ad-image{
         max-height: 70vh;
+    }
+    .itineraryText{
+        font-size: 30px;
+        width: 40vw;
     }
   }

@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { savedPlaces } from '../../redux/bucketReducer';
 import Nav from '../Nav/Nav';
+// import Footer from '../Footer/Footer';
+
 import RealBackground from "../../assets/RealBackground.png"
 import pushpin from "../../assets/pushpin.png"
 import './BucketList.scss';
@@ -54,9 +56,10 @@ const BucketList = () => {
                 <img className="header-image" alt="" src={RealBackground} />
                 <div className="bucket-list-container">
                 {mappedPlaces}
+                {/* <div className='bl-footer'><Footer /></div> */}
+            
                 </div>
             </div>
-
         </div>
     )
 }

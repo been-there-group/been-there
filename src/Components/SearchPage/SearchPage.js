@@ -4,12 +4,21 @@ import { updateLocation } from "../../redux/mapReducer";
 import { useDispatch, useSelector } from "react-redux";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import axios from "axios";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, AttributionControl } from "react-leaflet";
 import L from "leaflet"
 import { ReactReduxContext } from "react-redux";
 import IndividualPlaces from "./IndividualPlaces";
 import Nav from "../Nav/Nav";
-import loadingAirplane from '../../assets/loadingAirplane.png'
+import barIcon from '../../assets/barIcon.png'
+import artIcon from '../../assets/artIcon.png'
+import restaurantIcon from '../../assets/restaurantIcon.png'
+import aquariumIcon from '../../assets/aquaruimIcon.png'
+import museumIcon from '../../assets/museumIcon.png'
+import casinoIcon from '../../assets/casinoIcon.png'
+import amusementParkIcon from '../../assets/amusementParkIcon.png'
+import zooIcon from '../../assets/zooIcon.png'
+import spaIcon from '../../assets/spaIcon.png'
+import newLoadingAirplane from '../../assets/newLoadingAirplane.png'
 import "./SearchPage.scss";
 
 const SearchPage = (props) => {
@@ -406,18 +415,66 @@ const SearchPage = (props) => {
     }
   }, [artBtn, museumBtn, amusementBtn, restaurantBtn, barBtn, casinoBtn, spaBtn, aquariumBtn, zooBtn]);
 
-// const getIcon = (e) => {
-//   for (let j = 0; j < e.types; j++){
-//     if(e.types[j] = 'restaurant'){
-//       return restaurantIcon
-//     } else if(e.types[j] = 'zoo'){
-//       return zooIcon
-//     } else{
-//       return
-//     }
-//   }
-// }
+  // const restaurantIcon = () => {
+  //   return L.icon({
+  //     iconUrl: require("../../assets/martiniGlass.png"),
+  //     iconSize: 20
+  //   })
+  // }
 
+const getIcon = (e) => {
+  if(e.types.find(res=>res == 'art_gallery')){
+    return L.icon({
+      iconUrl: artIcon,
+      iconSize: 30
+    })
+    }else if(e.types.find(res => res == 'restaurant')){
+     return L.icon({
+      iconUrl: restaurantIcon,
+      iconSize: 30
+    })
+    }else if(e.types.find(res => res == 'bar')){
+      return L.icon({
+       iconUrl: barIcon,
+       iconSize: 30
+     })
+     }else if(e.types.find(res => res == 'aquarium')){
+      return L.icon({
+       iconUrl: aquariumIcon,
+       iconSize: 30
+     })
+     }else if(e.types.find(res => res == 'museum')){
+      return L.icon({
+       iconUrl: museumIcon,
+       iconSize: 30
+     })
+     }else if(e.types.find(res => res == 'casino')){
+      return L.icon({
+       iconUrl: casinoIcon,
+       iconSize: 30
+     })
+     }else if(e.types.find(res => res == 'amusement_park')){
+      return L.icon({
+       iconUrl: amusementParkIcon,
+       iconSize: 30
+     })
+     }else if(e.types.find(res => res == 'zoo')){
+      return L.icon({
+       iconUrl: zooIcon,
+       iconSize: 30
+     })
+     }else if(e.types.find(res => res == 'spa')){
+      return L.icon({
+       iconUrl: spaIcon,
+       iconSize: 30
+     })
+     } else {
+      return L.icon({
+        iconUrl: restaurantIcon,
+        iconSize: 30
+      })
+    }
+}
 
   const renderMap = () => {
     return (
@@ -440,9 +497,7 @@ const SearchPage = (props) => {
                 <Marker
                   position={[e.geometry.location.lat, e.geometry.location.lng]}
                   key={i}
-                  // icon ={()=>{
-                  //   getIcon(e)
-                  // }}
+                  icon={getIcon(e)}
                 >
                   <Popup>{e.name}</Popup>
                 </Marker>
@@ -486,7 +541,7 @@ const SearchPage = (props) => {
             />
             <label for="amusementBtn">Amusement Parks</label>
           </div>
-          
+
           <div className='checkboxes-input'>
             <input
               type="checkbox"
@@ -497,7 +552,7 @@ const SearchPage = (props) => {
             />
             <label for="artBtn">Art Galleries</label>
           </div>
-          
+
           <div className='checkboxes-input'>
             <input
               type="checkbox"
@@ -511,7 +566,7 @@ const SearchPage = (props) => {
 
           <div className='checkboxes-input'>
             <input
-              
+
               type="checkbox"
               value="restaurantBtn"
               id="restaurantBtn"
@@ -585,7 +640,7 @@ const SearchPage = (props) => {
           <header className='check-out-these-places'>Check Out These Places in {address}!</header>
           {loading
           ? <div className="loading-animation">
-            <img className="airplane" alt="" src={loadingAirplane}/>
+            <img className="airplane" alt="" src={newLoadingAirplane}/>
             <p>Getting You There...</p>
             </div>
           :null }
