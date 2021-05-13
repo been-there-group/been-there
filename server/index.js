@@ -1,4 +1,4 @@
-//require statements for installs 
+//require statements for installs
 require("dotenv").config();
 const massive = require("massive");
 const express = require("express");
@@ -9,11 +9,12 @@ const singleTripCtrl = require('./controllers/singleTripCtrl');
 const allTripsCtrl = require('./controllers/allTripsCtrl');
 const bucketCtrl = require('./controllers/bucketCtrl');
 
-//middlware 
+//middlware
 const app = express();
 
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env;
 app.use(express.json());
+app.use(express.static(`${__dirname}/../build`))
 
 //aws stuff
 const aws = require('aws-sdk');
@@ -53,7 +54,7 @@ app.get('/api/signs3', (req, res) => {
 });
 
 
-//session stuff 
+//session stuff
 app.use(session ({
     resave: false,
     saveUninitialized: true,
@@ -82,19 +83,19 @@ app.put('/api/editend', allTripsCtrl.editItineraryEndDate);
 app.delete('/api/alltrips/:itineraryId', allTripsCtrl.deleteItinerary);
 
 //Single Trip (Itinerary Items) Endpoints
-app.get('/api/singletrip/:itineraryId', singleTripCtrl.getItineraryItems); 
-app.post('/api/singletrip/:itineraryId', singleTripCtrl.addItineraryItem); 
+app.get('/api/singletrip/:itineraryId', singleTripCtrl.getItineraryItems);
+app.post('/api/singletrip/:itineraryId', singleTripCtrl.addItineraryItem);
 app.put('/api/singletrip/:itineraryItemId', singleTripCtrl.editItineraryItem);
 app.delete('/api/singletrip/:itineraryItemId', singleTripCtrl.deleteItineraryItem);
 
-//Bucket Endpoints 
+//Bucket Endpoints
 app.get('/api/bucketList/:id', bucketCtrl.getAllSaved); //looks at all the saved places by a certain user_id
 app.post('/api/save', bucketCtrl.savePlace); //saves a place based on a place_id - but uses a request body.
 app.put('/api/remove/:id', bucketCtrl.removeBucketItem) //removes a bucket item based on place id.. but maybe ALSO user_id?
 app.delete('/api/delete/:id', bucketCtrl.deleteAll) //deletes all bucket items from a user based on user_id
 
 
-//massive 
+//massive
 massive ({
     connectionString: CONNECTION_STRING,
     ssl: {
