@@ -44,6 +44,11 @@ table {
 
 .App {
   text-align: center;
+  // border: 1px solid red;
+  width: 100%;
+  padding: 0px;
+  margin:0px;
+  overflow: -moz-hidden-unscrollable;
 }
 
 .App-logo {

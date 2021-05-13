@@ -7,7 +7,7 @@
     top: 10vh;
 }
 .homeSearch{
-    @include sass.backgroundImage('https://miro.medium.com/max/3200/1*JfM2ePprvMkJtqNcxsCn9Q.jpeg', 205vw auto);
+    @include sass.backgroundImage('https://miro.medium.com/max/3200/1*JfM2ePprvMkJtqNcxsCn9Q.jpeg', 100vw auto);
     height: 450px;
     object-fit: cover;
     @include sass.flexCenterRelative(column);
@@ -23,7 +23,7 @@
 // }
 .css-2b097c-container{
     position: relative;
-    // bottom: 50px;
+    bottom: 50px;
     // width: 280px;
     // height: 100px;
     width: 90vw;
@@ -32,6 +32,11 @@
 .css-1wa3eu0-placeholder{
     // display: none;
     visibility: hidden;
+}
+.css-1wa3eu0-placeholder:hover{
+    // display: none;
+    visibility: hidden;
+    cursor: text;
 }
 .css-1wa3eu0-placeholder::before{
     visibility:  visible;
@@ -73,6 +78,10 @@ path{
     border-radius: 50%;
     background: rgb(230, 102, 87);
     color: white;
+    bottom: 50px;
+}
+.searchButton:hover{
+    cursor: pointer;
 }
 
 @media (min-width: 700px){
@@ -89,15 +98,30 @@ path{
 }
 @media (min-width: 1200px){
     .homeSearch{
-        height: 700px;
+        height: 790px;
         background-size: 100vw auto;
-
+        position: relative;
+        right: 0px;
+        width: 100%;
+        // background-image: none;
     }
+    // .new-background-img{
+    //     position: absolute;
+    //     width: 100%;
+    //     left: 0px;
+    //     overflow: -moz-hidden-unscrollable;
+    //     height: 700px;
+    //     object-fit: cover;
+    // }
     .google-places-autocomplete-home{
         width: 50vw;
         height: 600px;
     }
     .search-bar-home{
         width: 50vw;
+    }
+    .home-body{
+        width: auto;
+        // border: 1px solid aqua;
     }
 }

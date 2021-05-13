@@ -18,7 +18,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  border-bottom: solid rgb(46, 46, 46) .5px;
+  border-bottom: solid rgb(236, 236, 236) .5px;
   // box-shadow: 0px 0px 9px -2px white, 0px 0px 9px -2px #000000, 0px 0px 9px -2px #000000, 0px 0px 9px -2px white;
 }
 
@@ -45,14 +45,21 @@ li{
 
 }
 .nav-link {
+  position: relative;
+  display:flex;
+  // flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
+  // width: 7vw;
+  font-size: 11px;
 }
 
 .logo {
   position: relative;
   left: 15px;
-  height: 9vh;
-  width: 9vh;
+  height: 7vh;
+  width: 7vh;
 }
 
 .nav-body {
@@ -71,17 +78,20 @@ li{
 }
 .profilePic{
   position: relative;
-  right: 15px;
+  right: 25px;
   // border: solid rgb(104, 104, 104) 1px;
   border-radius: 50%;
-  height: 8vh;
-  width: 8vh;
+  height: 6vh;
+  width: 6vh;
   object-fit: cover;
   box-shadow: 0px 0px 5px 0px #5a5959;
 }
+.profilePic:hover{
+  cursor: pointer;
+}
 .siteName{
-  font-size: 20px;
-  letter-spacing: 5px;
+  font-size: 15px;
+  // letter-spacing: 5px;
   color: #e66657;
 }
 
@@ -90,6 +100,7 @@ li{
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  right: 30px;
 }
 .input{
   height: 30px;
@@ -129,8 +140,17 @@ input:focus, textarea:focus, select:focus{
 }
 @media (min-width: 1200px){
   .siteName{
-    font-size: 3.75vh;
+    font-size: 16px;
+    margin-left: 3px;
+    margin-top: 5px;
   }
+  .nav-body{
+    // border: 1px solid chartreuse;
+    width: 100%;
+    right: 1px;
+    left: 1px;
+  }
+
 }
 
 

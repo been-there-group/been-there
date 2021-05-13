@@ -23,7 +23,7 @@ const AllTrips = () => {
 
     useEffect(() => {
         if(user_id){
-            console.log('yes')
+            // console.log('yes')
             axios.get('/api/alltrips')
             .then(res => {
                 console.log("res.data", res.data);

@@ -23,6 +23,7 @@ const Home = (props) => {
                 <Nav />
             </div>
             <div className="home-body">
+                {/* <img className='new-background-img' src='https://miro.medium.com/max/3200/1*JfM2ePprvMkJtqNcxsCn9Q.jpeg'/> */}
                 {/* <div>Home</div> */}
                 <div className='homeSearch'>
                     <div className='google-places-autocomplete-home'>
@@ -39,7 +40,7 @@ const Home = (props) => {
                 </div>
                 <PopularDestinations />
                 <Explore />
-                <ItineraryAd />
+                {/* <ItineraryAd /> */}
                 <Footer />
                 </div>
         </div>
