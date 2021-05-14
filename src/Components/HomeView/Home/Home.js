@@ -30,7 +30,7 @@ const Home = (props) => {
                         {/* {console.log(process.env.REACT_APP_GOOGLE_API)} */}
                         {/* {console.log(latitude)} */}
                         <div className='searchBarHome'>
-                            
+
                             <div className="search-bar-home">
                                 <GooglePlacesAutocomplete className="GooglePlacesAutocomplete" apiKey= {`${key}`} selectProps={{value, onChange: setValue,}} placeholder='Where are you going?'/>
                                 <button className='searchButton' onClick={() => handleClick()}>Search</button>
@@ -40,7 +40,7 @@ const Home = (props) => {
                 </div>
                 <PopularDestinations />
                 <Explore />
-                {/* <ItineraryAd /> */}
+                <ItineraryAd />
                 <Footer />
                 </div>
         </div>
