@@ -15,6 +15,10 @@ const app = express();
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env;
 app.use(express.json());
 app.use(express.static(`${__dirname}/../build`))
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 //aws stuff
 const aws = require('aws-sdk');
