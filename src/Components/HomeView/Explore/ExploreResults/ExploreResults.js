@@ -15,14 +15,14 @@ const ExploreResults = (props) => {
     useEffect(() => {
 
       const activity = (props.match.params.name).toLowerCase()
-      axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${activity}&key=${key}`)
+      axios.get(`https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${activity}&key=${key}`)
         .then(res => {
           let first = [...res.data.results];
           setPlaces(first)
           if (res.data.next_page_token) {
             setTimeout(() => {
               return axios
-                .get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`)
+                .get(`https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`)
                 .then((res) => {
                   setPlaces([...first, ...res.data.results]);
                 });
