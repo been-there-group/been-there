@@ -69,7 +69,7 @@ const SearchPage = (props) => {
   const getRestaurants = () => {
    return axios
       .get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=restaurants&key=${key}`
+        `https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=restaurants&key=${key}`
       )
       .then((res) => {
         let first = [...res.data.results];
@@ -79,8 +79,11 @@ const SearchPage = (props) => {
           setTimeout(() => {
            return axios
               .get(
-                `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+                `https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
               )
+              // .get(
+              //   `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+              // )
               .then((res) => {
                 setRestaurants([...first, ...res.data.results]);
               });
@@ -93,7 +96,7 @@ const SearchPage = (props) => {
   const getBars = () => {
    return axios
       .get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=bar&key=${key}`
+        `https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=bar&key=${key}`
       )
       .then((res) => {
         let first = [...res.data.results];
@@ -103,7 +106,7 @@ const SearchPage = (props) => {
           setTimeout(() => {
            return axios
               .get(
-                `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+                `https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
               )
               .then((res) => {
                 setBars([...first, ...res.data.results]);
@@ -117,7 +120,7 @@ const SearchPage = (props) => {
   const getCasinos = () => {
    return axios
       .get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=casino&key=${key}`
+        `https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=casino&key=${key}`
       )
       .then((res) => {
         let first = [...res.data.results];
@@ -127,7 +130,7 @@ const SearchPage = (props) => {
           setTimeout(() => {
            return axios
               .get(
-                `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+                `https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
               )
               .then((res) => {
                 setCasinos([...first, ...res.data.results]);
@@ -143,7 +146,7 @@ const SearchPage = (props) => {
 
      axios
      .get(
-       `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=amusement_park&key=${key}`
+       `https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=amusement_park&key=${key}`
        )
        .then((res) => {
         let first = [...res.data.results];
@@ -152,7 +155,7 @@ const SearchPage = (props) => {
           setTimeout(() => {
            return axios
            .get(
-                `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+                `https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
                 )
                 .then((res) => {
                   setAmusementParks([...first, ...res.data.results]);
@@ -170,7 +173,7 @@ const SearchPage = (props) => {
     return new Promise((resolve, reject) => {
       axios
       .get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=art_gallery&key=${key}`
+        `https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=art_gallery&key=${key}`
       )
       .then((res) => {
         let first = [...res.data.results];
@@ -179,7 +182,7 @@ const SearchPage = (props) => {
           setTimeout(() => {
             axios
             .get(
-                `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+                `https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
                 )
                 .then((res) => {
                   setArts([...first, ...res.data.results]);
@@ -198,7 +201,7 @@ const SearchPage = (props) => {
    return new Promise((resolve, reject) => {
      axios
      .get(
-       `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=museum&key=${key}`
+       `https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=museum&key=${key}`
        )
        .then((res) => {
          let first = [...res.data.results];
@@ -207,7 +210,7 @@ const SearchPage = (props) => {
            setTimeout(() => {
               axios
              .get(
-               `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+               `https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
                )
                .then((res) => {
                  setMuseums([...first, ...res.data.results]);
@@ -226,7 +229,7 @@ const SearchPage = (props) => {
    return new Promise((resolve, reject) => {
      axios
      .get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=spa&key=${key}`
+        `https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=spa&key=${key}`
         )
       .then((res) => {
         let first = [...res.data.results];
@@ -235,7 +238,7 @@ const SearchPage = (props) => {
           setTimeout(() => {
             axios
             .get(
-              `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+              `https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
               )
               .then((res) => {
                 setSpas([...first, ...res.data.results]);
@@ -254,7 +257,7 @@ const SearchPage = (props) => {
    return new Promise((resolve, reject) => {
      axios
      .get(
-       `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=aquarium&key=${key}`
+       `https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=aquarium&key=${key}`
        )
        .then((res) => {
          let first = [...res.data.results];
@@ -263,7 +266,7 @@ const SearchPage = (props) => {
            setTimeout(() => {
              axios
              .get(
-               `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+               `https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
                 )
                 .then((res) => {
                   setAquariums([...first, ...res.data.results]);
@@ -282,7 +285,7 @@ const SearchPage = (props) => {
     return new Promise((resolve, reject) => {
       axios
       .get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=zoo&key=${key}`
+        `https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=15000&type=zoo&key=${key}`
         )
       .then((res) => {
         let first = [...res.data.results];
@@ -291,7 +294,7 @@ const SearchPage = (props) => {
           setTimeout(() => {
             axios
             .get(
-              `https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
+              `https://cors.bridged.cc/https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${res.data.next_page_token}&key=${key}`
               )
               .then((res) => {
                 setZoos([...first, ...res.data.results]);
