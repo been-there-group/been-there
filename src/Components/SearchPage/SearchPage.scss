@@ -377,6 +377,7 @@
     //the checkboxes and lables themselves
     .checkboxes-input{
         @include sass.flexCenterRelative(row);
+        // z-index: -2;
     }
 
     //plane

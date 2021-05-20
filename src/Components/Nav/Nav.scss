@@ -75,7 +75,7 @@ li{
 
 .nav-body {
   @include sass.flexCenterRelative(row);
-  z-index: 2;
+  z-index: 6;
   background-color: white;
   justify-content: space-between;
   position: fixed;
